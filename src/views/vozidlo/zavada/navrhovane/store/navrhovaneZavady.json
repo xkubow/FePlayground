@@ -1,0 +1,272 @@
+[
+  {
+    "definiceZavadyId": 12345,
+    "sqsZavadaMistoText": "Sample Location Text 1",
+    "probability": 0.85,
+    "sqsZavadaSkupinaId": 67890,
+    "sqsZavadaMistoId": 11111,
+    "sqsZavadaRadekId": 22222,
+    "sqsZavadaSkupinaText": "Sample Group Text 1",
+    "zpusobOpravy": "Sample Repair Method 1",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.75,
+        "sqsZavadaTypId": 33333,
+        "sqsZavadaTypText": "Sample Type Text 1",
+        "sqsZavadaVinikId": 44444,
+        "sqsZavadaVinikText": "Sample Cause Text 1",
+        "pocetZavad": 5,
+        "selected": true
+      },
+      {
+        "rowNumber": 2,
+        "probability": 0.60,
+        "sqsZavadaTypId": 55555,
+        "sqsZavadaTypText": "Sample Type Text 2",
+        "sqsZavadaVinikId": 66666,
+        "sqsZavadaVinikText": "Sample Cause Text 2",
+        "pocetZavad": 3,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12346,
+    "sqsZavadaMistoText": "Sample Location Text 2",
+    "probability": 0.92,
+    "sqsZavadaSkupinaId": 67891,
+    "sqsZavadaMistoId": 11112,
+    "sqsZavadaRadekId": 22223,
+    "sqsZavadaSkupinaText": "Sample Group Text 2",
+    "zpusobOpravy": "Sample Repair Method 2",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.80,
+        "sqsZavadaTypId": 33334,
+        "sqsZavadaTypText": "Sample Type Text 3",
+        "sqsZavadaVinikId": 44445,
+        "sqsZavadaVinikText": "Sample Cause Text 3",
+        "pocetZavad": 7,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12347,
+    "sqsZavadaMistoText": "Sample Location Text 3",
+    "probability": 0.78,
+    "sqsZavadaSkupinaId": 67892,
+    "sqsZavadaMistoId": 11113,
+    "sqsZavadaRadekId": 22224,
+    "sqsZavadaSkupinaText": "Sample Group Text 3",
+    "zpusobOpravy": "Sample Repair Method 3",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.65,
+        "sqsZavadaTypId": 33335,
+        "sqsZavadaTypText": "Sample Type Text 4",
+        "sqsZavadaVinikId": 44446,
+        "sqsZavadaVinikText": "Sample Cause Text 4",
+        "pocetZavad": 2,
+        "selected": true
+      },
+      {
+        "rowNumber": 2,
+        "probability": 0.55,
+        "sqsZavadaTypId": 55556,
+        "sqsZavadaTypText": "Sample Type Text 5",
+        "sqsZavadaVinikId": 66667,
+        "sqsZavadaVinikText": "Sample Cause Text 5",
+        "pocetZavad": 4,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12348,
+    "sqsZavadaMistoText": "Sample Location Text 4",
+    "probability": 0.88,
+    "sqsZavadaSkupinaId": 67893,
+    "sqsZavadaMistoId": 11114,
+    "sqsZavadaRadekId": 22225,
+    "sqsZavadaSkupinaText": "Sample Group Text 4",
+    "zpusobOpravy": "Sample Repair Method 4",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.70,
+        "sqsZavadaTypId": 33336,
+        "sqsZavadaTypText": "Sample Type Text 6",
+        "sqsZavadaVinikId": 44447,
+        "sqsZavadaVinikText": "Sample Cause Text 6",
+        "pocetZavad": 6,
+        "selected": true
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12349,
+    "sqsZavadaMistoText": "Sample Location Text 5",
+    "probability": 0.95,
+    "sqsZavadaSkupinaId": 67894,
+    "sqsZavadaMistoId": 11115,
+    "sqsZavadaRadekId": 22226,
+    "sqsZavadaSkupinaText": "Sample Group Text 5",
+    "zpusobOpravy": "Sample Repair Method 5",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.85,
+        "sqsZavadaTypId": 33337,
+        "sqsZavadaTypText": "Sample Type Text 7",
+        "sqsZavadaVinikId": 44448,
+        "sqsZavadaVinikText": "Sample Cause Text 7",
+        "pocetZavad": 8,
+        "selected": false
+      },
+      {
+        "rowNumber": 2,
+        "probability": 0.75,
+        "sqsZavadaTypId": 55557,
+        "sqsZavadaTypText": "Sample Type Text 8",
+        "sqsZavadaVinikId": 66668,
+        "sqsZavadaVinikText": "Sample Cause Text 8",
+        "pocetZavad": 1,
+        "selected": true
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12350,
+    "sqsZavadaMistoText": "Sample Location Text 6",
+    "probability": 0.82,
+    "sqsZavadaSkupinaId": 67895,
+    "sqsZavadaMistoId": 11116,
+    "sqsZavadaRadekId": 22227,
+    "sqsZavadaSkupinaText": "Sample Group Text 6",
+    "zpusobOpravy": "Sample Repair Method 6",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.68,
+        "sqsZavadaTypId": 33338,
+        "sqsZavadaTypText": "Sample Type Text 9",
+        "sqsZavadaVinikId": 44449,
+        "sqsZavadaVinikText": "Sample Cause Text 9",
+        "pocetZavad": 3,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12351,
+    "sqsZavadaMistoText": "Sample Location Text 7",
+    "probability": 0.90,
+    "sqsZavadaSkupinaId": 67896,
+    "sqsZavadaMistoId": 11117,
+    "sqsZavadaRadekId": 22228,
+    "sqsZavadaSkupinaText": "Sample Group Text 7",
+    "zpusobOpravy": "Sample Repair Method 7",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.72,
+        "sqsZavadaTypId": 33339,
+        "sqsZavadaTypText": "Sample Type Text 10",
+        "sqsZavadaVinikId": 44450,
+        "sqsZavadaVinikText": "Sample Cause Text 10",
+        "pocetZavad": 9,
+        "selected": true
+      },
+      {
+        "rowNumber": 2,
+        "probability": 0.60,
+        "sqsZavadaTypId": 55558,
+        "sqsZavadaTypText": "Sample Type Text 11",
+        "sqsZavadaVinikId": 66669,
+        "sqsZavadaVinikText": "Sample Cause Text 11",
+        "pocetZavad": 2,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12352,
+    "sqsZavadaMistoText": "Sample Location Text 8",
+    "probability": 0.87,
+    "sqsZavadaSkupinaId": 67897,
+    "sqsZavadaMistoId": 11118,
+    "sqsZavadaRadekId": 22229,
+    "sqsZavadaSkupinaText": "Sample Group Text 8",
+    "zpusobOpravy": "Sample Repair Method 8",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.77,
+        "sqsZavadaTypId": 33340,
+        "sqsZavadaTypText": "Sample Type Text 12",
+        "sqsZavadaVinikId": 44451,
+        "sqsZavadaVinikText": "Sample Cause Text 12",
+        "pocetZavad": 4,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12353,
+    "sqsZavadaMistoText": "Sample Location Text 9",
+    "probability": 0.93,
+    "sqsZavadaSkupinaId": 67898,
+    "sqsZavadaMistoId": 11119,
+    "sqsZavadaRadekId": 22230,
+    "sqsZavadaSkupinaText": "Sample Group Text 9",
+    "zpusobOpravy": "Sample Repair Method 9",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.83,
+        "sqsZavadaTypId": 33341,
+        "sqsZavadaTypText": "Sample Type Text 13",
+        "sqsZavadaVinikId": 44452,
+        "sqsZavadaVinikText": "Sample Cause Text 13",
+        "pocetZavad": 5,
+        "selected": true
+      },
+      {
+        "rowNumber": 2,
+        "probability": 0.70,
+        "sqsZavadaTypId": 55559,
+        "sqsZavadaTypText": "Sample Type Text 14",
+        "sqsZavadaVinikId": 66670,
+        "sqsZavadaVinikText": "Sample Cause Text 14",
+        "pocetZavad": 6,
+        "selected": false
+      }
+    ]
+  },
+  {
+    "definiceZavadyId": 12354,
+    "sqsZavadaMistoText": "Sample Location Text 10",
+    "probability": 0.89,
+    "sqsZavadaSkupinaId": 67899,
+    "sqsZavadaMistoId": 11120,
+    "sqsZavadaRadekId": 22231,
+    "sqsZavadaSkupinaText": "Sample Group Text 10",
+    "zpusobOpravy": "Sample Repair Method 10",
+    "detail": [
+      {
+        "rowNumber": 1,
+        "probability": 0.79,
+        "sqsZavadaTypId": 33342,
+        "sqsZavadaTypText": "Sample Type Text 15",
+        "sqsZavadaVinikId": 44453,
+        "sqsZavadaVinikText": "Sample Cause Text 15",
+        "pocetZavad": 7,
+        "selected": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+.el-dialog {
+  @media only screen and (max-width: 992px) {
+    --el-dialog-width: 80%;
+    --el-dialog-margin-top: 0px;
+  }
+  @media only screen and (max-width: 768px) {
+    --el-dialog-width: 100%;
+    --el-dialog-margin-top: 0px;
+  }
+  // div:first-child {
+  //   border: none;
+  // }
+}

@@ -1,0 +1,39 @@
+@forward "variables";
+
+/*
+Write your variables here. All available variables can be
+found in element-ui/packages/theme-chalk/src/common/var.scss.
+For example, to overwrite the theme color:
+*/
+$--color-primary: #62A84C !default;
+$--color-dms-gray: #4E5163 !default;
+$--color-dms-gray-light: #dfdfdf !default;
+$--color-dms-hover-gray: #797b8d !default;
+
+$--el-main-padding: 10px !default;
+$--el-header-height: 20px !default;
+
+// Navigation menu
+$menu-width-collapse: 75px !default;
+$menu-width: 200px !default;
+$--menu-item-color:#fff !default;
+$--menu-item-fill: $--color-dms-gray !default;
+$--menu-item-hover-fill: $--color-dms-hover-gray !default;
+$--menu-background-color: $--color-dms-gray !default;
+
+$--color-required: #fff7e7;
+$--input-focus-border: $--color-dms-gray;
+
+/* icon font path, required */
+// $--font-path: '~element-plus/lib/theme-chalk/fonts';
+
+// Main
+$--main-window-height: calc(100vh - var(--main-header-height));
+$--main-height: calc(100% - var(--main-header-height) - var(--main-footer-hight));
+$--main-header-height: 40px;
+$--main-footer-height: 32px;
+
+// filter
+$--filter-side-height: calc(100vh - var(--main-header-height) - 2*var(--main-footer-hight));
+// @import "~element-plus/packages/theme-chalk/src/index";
+// $--custom-col-break: $--sm;

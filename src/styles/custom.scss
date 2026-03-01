@@ -1,0 +1,65 @@
+@use 'element-index.scss';
+@use 'variables.scss';
+@use "element-variables.scss";
+@use 'custom-dialog.scss';
+@use "custom-layout-main";
+@use "custom-layout-list";
+@use "custom-layout-edit";
+@use "custom-menu";
+@use "custom-breadcrumb";
+@use "custom-login.scss";
+@use "custom-icon.scss";
+@use "custom-table.scss";
+@use "custom-form.scss";
+@use "custom-select.scss";
+@use "custom-divider.scss";
+@use "custom-description.scss";
+@use "custom-tabs.scss";
+@use 'custom-upload.scss';
+@use 'custom-input.scss';
+@use 'tiptap-editor.scss';
+@use 'element-plus/dist/index.css';
+@use 'element-plus/theme-chalk/display.css';
+@use 'colors' as *;
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--table-tr-bg-color: white;
+	--table-td-bg-color--selection: ;
+	--table-tr-color: black;
+	--color-table-odd: #FAFAFA;
+	@each $color, $types in $colors {
+		@each $type, $value in $types {
+			--clr-#{$color}-#{$type}: #{$value};
+		}
+	} 
+}
+
+.status_count {
+	font-size: 30pt;
+	// display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.status_count, .actual {
+	padding: 0 10px;
+}
+
+.title {
+	margin: 0px;
+	text-align: start;
+	font-size: 20pt;
+	font-weight: bold;
+}
+.sub_title {
+	font-weight: 400;
+	font-size: 15pt;
+}
+
+.el-collapse-item__content {
+	padding-bottom: 10px;
+}

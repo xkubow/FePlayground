@@ -1,0 +1,220 @@
+@use "variables" as *;
+@use 'element-index.scss' as *;
+
+$color-white: #ffffff;
+$color-grey: #dddddd;
+
+// **
+// Toolbar Button
+// **
+.btn-tiptap {
+  padding-right: 5px;
+  padding-left: 5px;
+  i {
+    font-size: 20px;
+  }
+}
+
+
+
+
+// **
+// Editor
+// **
+.editor {
+  position: relative;
+  margin: 0px;
+  width: 100%;
+
+  &__content {
+    word-wrap: break-word;
+    font-size: 1rem;
+    line-height: 1;
+
+    .ProseMirror {
+      min-height: 60px;
+      max-height: 280px;
+      overflow: auto;
+      outline: 0;
+      border: 1px solid $color-base-gray-light;
+      border-radius: 5px;
+      padding: 5px;
+
+      > :first-child {
+        margin-top: 0 !important;
+      }
+
+      &[contenteditable="false"] {
+        // border-color: $--disabled-border-base;
+        // background-color: $--disabled-fill-base;
+        // color: $--disabled-color-base;
+      }
+    }
+
+    * {
+      caret-color: currentColor;
+    }
+
+    p, h1, h2, h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin-top: 1rem;
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      margin-top: .75rem;
+      font-size: 2rem;
+    }
+
+    h3 {
+      margin-top: .5rem;
+      font-size: 1.5rem;
+    }
+
+    pre {
+      padding: 0.7rem 1rem;
+      border-radius: 5px;
+      background: $color-black;
+      color: $color-white;
+      font-size: 0.8rem;
+      overflow-x: auto;
+
+      code {
+        display: block;
+      }
+    }
+
+    p code {
+      display: inline-block;
+      padding: 0 0.4rem;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      background: rgba($color-black, 0.1);
+      color: rgba($color-black, 0.8);
+    }
+
+    ul,
+    ol {
+      padding-left: 1rem;
+    }
+
+    li > p,
+    li > ol,
+    li > ul {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      cursor: pointer;
+    }
+
+    blockquote {
+      border-left: 3px solid rgba($color-black, 0.1);
+      color: rgba($color-black, 0.8);
+      padding-left: 0.8rem;
+      font-style: italic;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 3px;
+    }
+
+    table {
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+
+      td, th {
+        min-width: 1em;
+        border: 2px solid $color-grey;
+        padding: 3px 5px;
+        vertical-align: top;
+        box-sizing: border-box;
+        position: relative;
+
+        > * {
+          margin-bottom: 0;
+        }
+      }
+
+      th {
+        font-weight: bold;
+        text-align: left;
+      }
+
+      .selectedCell:after {
+        z-index: 2;
+        position: absolute;
+        content: "";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(200, 200, 255, 0.4);
+        pointer-events: none;
+      }
+
+      .column-resize-handle {
+        position: absolute;
+        right: -2px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        z-index: 20;
+        background-color: #adf;
+        pointer-events: none;
+      }
+    }
+
+    .tableWrapper {
+      margin: 1em 0;
+      overflow-x: auto;
+    }
+
+    .resize-cursor {
+      cursor: col-resize;
+    }
+
+  }
+}
+
+
+.comment-item {
+	border: 1px solid var(--el-border-color-base);
+	border-radius: 5px;
+  padding: 2px;
+	// min-height: 60px;
+}
+.comment-header {
+  height: 1em;
+	p {
+		margin-block-start: 1px;
+		margin-block-end: 15px;
+		font-size: 0.7em;
+    margin-bottom: 0px;
+	}
+}
+
+.p-2 {
+  p {
+		margin: 3px 0px;
+	}
+}

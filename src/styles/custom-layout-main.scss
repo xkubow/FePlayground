@@ -1,0 +1,157 @@
+@use "sass:map";
+@use "variables" as *;
+
+body {
+	margin: 0;
+	* {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	.main-container > section {
+		min-height: 100vh;
+	}
+}
+
+.k-main {
+	.el-header {
+		display: flex;
+		align-items: flex-end;
+    padding: 0px;
+		--el-header-height: 40px;
+	}
+
+	main {
+		--el-main-padding: 0px;
+		// display: flex;
+		// gap: 10px 10px;
+		align-items: stretch;
+	}
+}
+
+.margin-content {
+	margin: 2px;
+}
+
+.full-content-height-container {
+	display: flex;
+	// gap: 10px 10px;
+	align-items: stretch;
+}
+
+#page-head {
+	background-color: $color-base-gray;
+	padding-left: 0;
+	display: flex;
+	align-items: center;
+	color: #fff;
+	.logo {
+		// width: $menu-width;
+		display: flex;
+		// width: $menu-width;
+		padding-left: 10px;
+		flex-direction: column;
+		text-align: center;
+		span:first-child {
+			padding: 4px 0 0 0;
+			font-size: 19px;
+		}
+		span:last-child {
+			font-size: 8px;
+		}
+	}
+	> div:last-child {
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: auto;
+		span:last-child {
+			padding-left: 5px;
+		}
+	}
+}
+
+//asi tabulka pouziva
+.content-stretch {
+	box-sizing: border-box;
+	height: 100%;
+	.el-table__inner-wrapper {
+		height: 100%;
+	}
+	.el-table__body-wrapper{
+		height: 100%;
+	}
+	.el-scrollbar__view {
+		height: 100%;
+	}
+}
+
+li a {
+	text-decoration: none;
+}
+
+// ::-webkit-scrollbar {
+//     width: 10px;
+//     height: 10px;
+// }
+
+// ::-webkit-scrollbar-track {
+//     background: $color-base-gray-light;
+// }
+
+// /* Handle */
+
+// ::-webkit-scrollbar-thumb {
+//     background: $color-line-gray;
+// }
+
+// /* Handle on hover */
+
+// ::-webkit-scrollbar-thumb:hover {
+//     background: $color-text-primary;
+// }
+
+.el-card {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	@media only screen and (max-width: 992px)  {
+		--el-card-padding: 5px;
+	}
+}
+
+.card_body_p-0 {
+    padding-bottom: 0 !important;
+	padding-left: 0px !important;
+	padding-top: 5px !important;
+}
+
+.card_p-0 {
+    padding-bottom: 0 !important;
+}
+
+.card_header_p-0 {
+    padding: 5px 0px !important;
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+// .el-card__header {
+// 	padding: 8px 10px;
+// 	border-bottom: 1px solid var(--el-card-border-color);
+// 	box-sizing: border-box;
+// }
+
+// Element notifications
+// .el-notification.right {
+//     margin-top: 2rem;
+// }
+
+.el-header {
+	display: flex;
+	align-items: flex-end;
+}
+
+.el-footer {
+	display: flex;
+}
+
+.spaceBetween {
+	justify-content: space-between;
+}

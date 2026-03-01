@@ -1,0 +1,91 @@
+{
+  "totalCount": 2,
+  "rows": [
+    {
+      "definiceZavadyId": 1,
+      "sqsZavadaMistoId": 5818,
+      "pocetZavad": 4,
+      "probability": 1,
+      "sqsZavadaSkupinaId": 908,
+      "sqsZavadaSkupinaText": "A5_MFK",
+      "sqsZavadaMistoText": "ŘJ - KAMERA",
+      "zpusobOpravy": "asdasdas",
+      "sqsZavadaRadekId": 116672,
+      "detail": [
+        {
+          "rowNumber": 1,
+          "sqsZavadaVinikId": 5,
+          "sqsZavadaVinikText": "Lisovna",
+          "sqsZavadaTypId": 6,
+          "sqsZavadaTypText": "Zvlnění",
+          "selected": false,
+          "probability": 0.3333333333333333,
+          "pocetZavad": 1
+        },
+        {
+          "rowNumber": 2,
+          "sqsZavadaVinikId": 2,
+          "sqsZavadaVinikText": "Dodavatel",
+          "sqsZavadaTypId": 5,
+          "sqsZavadaTypText": "Volné/Neupev.",
+          "selected": false,
+          "probability": 0.3333333333333333,
+          "pocetZavad": 2
+        },
+        {
+          "rowNumber": 3,
+          "sqsZavadaVinikId": 1,
+          "sqsZavadaVinikText": "Nespecifikovaný viník",
+          "sqsZavadaTypId": 1,
+          "sqsZavadaTypText": "Chybí/Nekompl.",
+          "selected": false,
+          "probability": 0.3333333333333333,
+          "pocetZavad": 1
+        }
+      ]
+    },
+    {
+      "definiceZavadyId": 2,
+      "sqsZavadaMistoId": 5805,
+      "pocetZavad": 1,
+      "probability": 0.6,
+      "sqsZavadaSkupinaId": 917,
+      "sqsZavadaSkupinaText": "C0_AAN AGA",
+      "sqsZavadaMistoText": "REPRODUKTOR - S-ACTOR",
+      "zpusobOpravy": "4 r",
+      "sqsZavadaRadekId": 116661,
+      "detail": [
+        {
+          "rowNumber": 1,
+          "sqsZavadaVinikId": 5,
+          "sqsZavadaVinikText": "Lisovna",
+          "sqsZavadaTypId": 6,
+          "sqsZavadaTypText": "Zvlnění",
+          "selected": false,
+          "probability": 0.65,
+          "pocetZavad": 0
+        },
+        {
+          "rowNumber": 2,
+          "sqsZavadaVinikId": 2,
+          "sqsZavadaVinikText": "Dodavatel",
+          "sqsZavadaTypId": 5,
+          "sqsZavadaTypText": "Volné/Neupev.",
+          "selected": true,
+          "probability": 0.52,
+          "pocetZavad": 0
+        },
+        {
+          "rowNumber": 3,
+          "sqsZavadaVinikId": 1,
+          "sqsZavadaVinikText": "Nespecifikovaný viník",
+          "sqsZavadaTypId": 1,
+          "sqsZavadaTypText": "Chybí/Nekompl.",
+          "selected": false,
+          "probability": 0.11,
+          "pocetZavad": 0
+        }
+      ]
+    }
+  ]
+}

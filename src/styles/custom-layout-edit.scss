@@ -1,0 +1,35 @@
+.k-text_area-label {
+  align-items: center;
+  justify-content: space-between;
+  p {
+    margin-block-start: 7px;
+    margin-block-end: 7px;
+    margin-bottom: 0px;
+  }
+}
+
+.el-form--default.el-form--label-top .el-form-item .el-form-item__label {
+  margin-bottom: 0px;
+}
+.el-form-item__label {
+  margin-bottom: 0px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.edit-container {
+  .sub-page-header {
+    .sub-title {
+      display: flexbox;
+      margin: 0px;
+      overflow: hidden;
+      @media only screen and (max-width: 992px) {
+        text-align: start;
+        font-size: 15pt;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@use "variables" as *;
+
+.el-aside {
+  --el-aside-width: 300px;
+
+  @media only screen and (max-width: 992px)  {
+    --el-aside-width: calc(100vw - 20px);
+  }
+}
+
+.k-filter-aside {
+  height: 100%;
+  .el-header {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    --el-header-height: null;
+    flex-wrap: wrap;
+    .search-button {
+      width: 100%;
+    }
+  }
+  .k-filter-aside-main {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    padding: 4px;
+  }
+  .k-filter-aside-footer {
+    align-items: flex-end;
+    height: 35px;
+    button {
+      padding: 0px;
+      width: 100%;
+    }
+  }
+}
+
+.filtre-colapse-button {
+  width: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    .filter-colapse-icons {
+      background-color: $color-hover-gray;
+    }
+  }
+  .filter-colapse-icons {
+    border-radius: 20px;
+    padding: 35px 0px;
+  }
+}
+
+// Table buttons
+.table-buttons {
+  .el-button {
+    float: right;
+    margin-left: 5px;
+    + .el-button {
+      margin-left: 5px;
+    }
+    &.pull-left {
+      float: left;
+      margin-right: 5px;
+      margin-left: 0;
+    }
+  }
+}

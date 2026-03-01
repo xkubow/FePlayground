@@ -1,0 +1,75 @@
+@use 'element-index.scss' as *;
+@use "variables" as *;
+
+.el-dialog {
+	.el-dialog__header {
+		border-bottom: solid 1px $color-line-gray;
+	}
+}
+
+.login-wrapper {
+	max-height: 100vh;
+
+	.background {
+		width: 100%;
+		background-size: cover;
+		// background-image: url("/img/background.jpg");
+	}
+
+	.overlay {
+		height: 95vh;
+		width: 100%;
+		position: fixed;
+		background-size: auto 100%;
+		background-position: right;
+		background-repeat: no-repeat;
+		top: 0;
+		right: 0;
+		z-index: 1;
+		// background-image: url("/img/crystal-overlay.png");
+	}
+
+	& > .left-panel {
+		background: white;
+		height: 100vh;
+		width: 300px;
+		z-index: 2;
+		position: absolute;
+		@media only screen and (max-width: 992px)  {
+			width: 100%;
+		}
+
+		.login {
+			height: 300px;
+			width: 100%;
+			position: absolute;
+			top: calc(((100vh - 300px) / 2) - 10%);
+			padding: 20px;
+
+			.title {
+				font-weight: bold;
+				font-size: 150%;
+				margin-bottom: 20px;
+			}
+			.button {
+				display: block;
+				width: 80%;
+				margin: 10px auto;
+				border-radius: 20px;
+			}
+		}
+	}
+
+	.dialog-footer {
+		.buttons {
+			margin-top: 30px;
+
+			button {
+				display: block;
+				width: 80%;
+				margin: 10px auto;
+				border-radius: 20px;
+			}
+		}
+	}
+}
