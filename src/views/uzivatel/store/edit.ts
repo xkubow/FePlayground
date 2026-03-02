@@ -7,20 +7,20 @@ import { apiProvider } from '../api';
 import { NAME } from '../constants';
 
 export const server = {
-	id: null as string | null,
-	dzc: null as string | null,
-	mfaPerNr: null as string | null,
-	jmeno: null as string | null,
-	prijmeni: null as string | null,
-	zobrazeneJmeno: null as string | null,
-	oddeleni: null as string | null,
-	email: null as string | null,
-	vstupDatum: null as Date | null,
-	vyrazenDatum: null as Date | null,
-	vyrobniLinkaId: null as number | null,
-	station: false,
-	neovereno: false,
-	zkusenost: null as number | null,
+  id: null as string | null,
+  dzc: null as string | null,
+  mfaPerNr: null as string | null,
+  jmeno: null as string | null,
+  prijmeni: null as string | null,
+  zobrazeneJmeno: null as string | null,
+  oddeleni: null as string | null,
+  email: null as string | null,
+  vstupDatum: null as Date | null,
+  vyrazenDatum: null as Date | null,
+  vyrobniLinkaId: null as number | null,
+  station: false,
+  neovereno: false,
+  zkusenost: null as number | null,
 };
 export const local = {};
 export const props = {};
@@ -38,9 +38,9 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {} as ActionOptions<typeof name, typeof server, typeof local, typeof props, typeof tables>;
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters,
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters,
+  extraActions,
 });

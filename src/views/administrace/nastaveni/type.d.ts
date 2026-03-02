@@ -1,4 +1,4 @@
 export type Nastaveni = {
-	prilohaVelikostMax: number | null;
-	useSwKeyboard: boolean;
+  prilohaVelikostMax: number | null;
+  useSwKeyboard: boolean;
 };

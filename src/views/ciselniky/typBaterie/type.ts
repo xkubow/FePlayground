@@ -1,5 +1,5 @@
 export type TypBaterie = {
-	id: number;
-	text: string;
-	poznamka: string;
+  id: number;
+  text: string;
+  poznamka: string;
 };

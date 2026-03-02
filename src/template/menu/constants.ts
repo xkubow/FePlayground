@@ -1,14 +1,14 @@
 export const enum MenuType {
-	GROUP,
-	SUBMENU,
+  GROUP,
+  SUBMENU,
 }
 
 export const enum UriType {
-	NAME,
-	EDIT,
-	PATH,
-	CREATE,
-	LIST,
+  NAME,
+  EDIT,
+  PATH,
+  CREATE,
+  LIST,
 }
 
 export const NAME = 'menu';

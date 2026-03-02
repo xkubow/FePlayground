@@ -1,7 +1,7 @@
 <template>
-	<el-tooltip :teleported="false">
-		<slot />
-	</el-tooltip>
+  <el-tooltip :teleported="false">
+    <slot />
+  </el-tooltip>
 </template>
 
 <script setup lang="ts"></script>

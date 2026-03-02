@@ -1,12 +1,12 @@
-@forward "variables";
+@forward 'variables';
 
 /*
 Write your variables here. All available variables can be
 found in element-ui/packages/theme-chalk/src/common/var.scss.
 For example, to overwrite the theme color:
 */
-$--color-primary: #62A84C !default;
-$--color-dms-gray: #4E5163 !default;
+$--color-primary: #62a84c !default;
+$--color-dms-gray: #4e5163 !default;
 $--color-dms-gray-light: #dfdfdf !default;
 $--color-dms-hover-gray: #797b8d !default;
 
@@ -16,7 +16,7 @@ $--el-header-height: 20px !default;
 // Navigation menu
 $menu-width-collapse: 75px !default;
 $menu-width: 200px !default;
-$--menu-item-color:#fff !default;
+$--menu-item-color: #fff !default;
 $--menu-item-fill: $--color-dms-gray !default;
 $--menu-item-hover-fill: $--color-dms-hover-gray !default;
 $--menu-background-color: $--color-dms-gray !default;
@@ -34,6 +34,6 @@ $--main-header-height: 40px;
 $--main-footer-height: 32px;
 
 // filter
-$--filter-side-height: calc(100vh - var(--main-header-height) - 2*var(--main-footer-hight));
+$--filter-side-height: calc(100vh - var(--main-header-height) - 2 * var(--main-footer-hight));
 // @import "~element-plus/packages/theme-chalk/src/index";
 // $--custom-col-break: $--sm;

@@ -1,7 +1,7 @@
 <template>
-	<el-icon>
-		<slot />
-	</el-icon>
+  <el-icon>
+    <slot />
+  </el-icon>
 </template>
 
 <script setup lang="ts"></script>

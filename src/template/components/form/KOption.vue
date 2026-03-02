@@ -1,5 +1,5 @@
 <template>
-	<el-option />
+  <el-option />
 </template>
 
 <script setup lang="ts" />

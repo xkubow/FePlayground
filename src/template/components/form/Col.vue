@@ -1,15 +1,15 @@
 <template>
-	<el-col v-bind="{ ...$props, ...$attrs, xs }">
-		<slot />
-	</el-col>
+  <el-col v-bind="{ ...$props, ...$attrs, xs }">
+    <slot />
+  </el-col>
 </template>
 
 <script setup lang="ts">
-export interface Props {
-	xs?: number;
-}
+  export interface Props {
+    xs?: number;
+  }
 
-withDefaults(defineProps<Props>(), { xs: 24 });
+  withDefaults(defineProps<Props>(), { xs: 24 });
 </script>
 
 <style scoped></style>

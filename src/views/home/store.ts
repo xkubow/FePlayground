@@ -3,8 +3,8 @@ import { pageStoreFactory } from '@/template/page/store';
 import { NAME } from './constants';
 
 const serverData = {
-	id: null as number | null,
-	name: null as string | null,
+  id: null as number | null,
+  name: null as string | null,
 };
 
 export type ServerData = typeof serverData;

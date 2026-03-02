@@ -8,15 +8,15 @@ import { NAME } from '../constants';
 import { table as label } from '../tables/label';
 
 export const server = {
-	barva4Kod: null as string | null,
-	uiBarvaKod: null as number | null,
-	vstupDatum: null as Date | null,
+  barva4Kod: null as string | null,
+  uiBarvaKod: null as number | null,
+  vstupDatum: null as Date | null,
 };
 export const local = {};
 export const props = {};
 
 export const tables = {
-	label,
+  label,
 };
 
 const name = editName(NAME);
@@ -30,9 +30,9 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {} as ActionOptions<typeof name, typeof server, typeof local, typeof props, typeof tables>;
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters,
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters,
+  extraActions,
 });

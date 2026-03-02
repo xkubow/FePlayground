@@ -9,21 +9,21 @@ import type { EnumAutomatickeZpracovaniTestu } from '../resulty/type';
 import { table as resultyTable } from '../resulty/tables';
 
 export const server = {
-	automatickeZpracovaniTestuEnum: null as EnumAutomatickeZpracovaniTestu | null,
-	text: null as string | null,
-	definiceZavadyId: null as number | null,
-	sqsZavadaKategorieId: EnumSqsZavadaKategorie.Elektricka as number | null,
-	sqsZavadaSkupinaId: null as number | null,
-	sqsZavadaRadekId: null as number | null,
-	sqsZavadaTypId: null as number | null,
-	sqsZavadaVinikId: null as number | null,
-	zavadaText: null as string | null,
+  automatickeZpracovaniTestuEnum: null as EnumAutomatickeZpracovaniTestu | null,
+  text: null as string | null,
+  definiceZavadyId: null as number | null,
+  sqsZavadaKategorieId: EnumSqsZavadaKategorie.Elektricka as number | null,
+  sqsZavadaSkupinaId: null as number | null,
+  sqsZavadaRadekId: null as number | null,
+  sqsZavadaTypId: null as number | null,
+  sqsZavadaVinikId: null as number | null,
+  zavadaText: null as string | null,
 };
 export const local = {};
 export const props = {};
 
 export const tables = {
-	resulty: resultyTable,
+  resulty: resultyTable,
 };
 
 const name = editName(NAME);
@@ -37,9 +37,9 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {} as ActionOptions<typeof name, typeof server, typeof local, typeof props, typeof tables>;
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters,
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters,
+  extraActions,
 });

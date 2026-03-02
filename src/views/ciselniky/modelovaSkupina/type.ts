@@ -1,4 +1,4 @@
 export type ModelovaSkupina = {
-	modelovaSkupinaKod: string;
-	text: string;
+  modelovaSkupinaKod: string;
+  text: string;
 };

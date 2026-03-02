@@ -1,10 +1,10 @@
 <template>
-	<el-menu>
-		<template #title>
-			<slot name="title" />
-		</template>
-		<slot />
-	</el-menu>
+  <el-menu>
+    <template #title>
+      <slot name="title" />
+    </template>
+    <slot />
+  </el-menu>
 </template>
 
 <script setup lang="ts"></script>

@@ -14,16 +14,16 @@ import './utils';
 import VueDOMPurifyHTML from 'vue-dompurify-html';
 
 export default {
-	install: (app: App, options: InstallOptions): App => {
-		app.use(Router, options);
-		app.use(ElementPlus, { size: 'default', locale: cs });
-		app.use(VueDOMPurifyHTML);
-		app.use(Menu, options);
-		app.use(i18n);
-		app.use(KComponents);
-		app.use(Layouts);
-		app.use(Store);
+  install: (app: App, options: InstallOptions): App => {
+    app.use(Router, options);
+    app.use(ElementPlus, { size: 'default', locale: cs });
+    app.use(VueDOMPurifyHTML);
+    app.use(Menu, options);
+    app.use(i18n);
+    app.use(KComponents);
+    app.use(Layouts);
+    app.use(Store);
 
-		return app;
-	},
+    return app;
+  },
 };

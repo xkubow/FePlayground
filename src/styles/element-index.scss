@@ -1,13 +1,12 @@
-
 // You should use them in scss, because we calculate it by sass.
 // comment next lines to use default color
 @forward 'element-plus/theme-chalk/src/common/var.scss' with (
-    $header: (
-      'height': 40px,
-    ),
-    $color-info: #6aadee !default,
-    $color-white: #ffffff !default,
-  );
+  $header: (
+    'height': 40px,
+  ),
+  $color-info: #6aadee !default,
+  $color-white: #ffffff !default
+);
 
 // if you want to import all
 // @use "element-plus/theme-chalk/src/index.scss" as *;

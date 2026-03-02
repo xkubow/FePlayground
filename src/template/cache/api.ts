@@ -6,20 +6,20 @@ import type { DropdownList } from './../page/@types/mode.d';
 export type LoadCache = { dropdownList: Record<string, DropdownList> };
 
 export class Provider extends HttpRequest {
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 
-	loadCache(): Response<LoadCache> {
-		return Promise.resolve({
-			data: {
-				dropDownList: {
-					mistoTestu: [],
-				},
-			},
-		} as AxiosResponse);
-		// return this.fetch<LoadCache>(`${NAME}/loadCache`);
-	}
+  loadCache(): Response<LoadCache> {
+    return Promise.resolve({
+      data: {
+        dropDownList: {
+          mistoTestu: [],
+        },
+      },
+    } as AxiosResponse);
+    // return this.fetch<LoadCache>(`${NAME}/loadCache`);
+  }
 }
 
 export const apiProvider = new Provider();

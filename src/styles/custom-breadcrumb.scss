@@ -1,32 +1,31 @@
 @use 'element-index.scss' as *;
 
 .el-breadcrumb {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-		padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
 
+  .el-breadcrumb__separator {
+    margin: 0 px;
+  }
 
-	.el-breadcrumb__separator {
-		margin: 0 px;
-	}
+  .el-breadcrumb__inner {
+    color: $color-white !important;
 
-	.el-breadcrumb__inner {
-		color: $color-white !important;
+    &.is-link {
+      a {
+        color: $color-white !important;
+        font-weight: normal !important;
+      }
+    }
 
-		&.is-link {
-			a {
-				color: $color-white !important;
-				font-weight: normal !important;
-			}
-		}
+    a {
+      text-decoration: underline;
 
-		a {
-			text-decoration: underline;
-
-			&:hover {
-				text-decoration: none;
-			}
-		}
-	}
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }

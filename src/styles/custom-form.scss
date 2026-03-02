@@ -33,7 +33,7 @@
   display: none;
 }
 .opacity-0 {
-  opacity : 0;
+  opacity: 0;
 }
 .of-h {
   overflow: hidden;
@@ -113,10 +113,10 @@
   }
 }
 .mw-13 {
-	min-width: 13vw;
+  min-width: 13vw;
 }
 .mw-6 {
-	min-width: 6vw;
+  min-width: 6vw;
 }
 
 .shadow {
@@ -133,9 +133,9 @@
 }
 
 video {
-	@media screen and (orientation: portrait) {
-	}
-	@media screen and (orientation: landscape) {
-		height: 100vh;
-	}
+  @media screen and (orientation: portrait) {
+  }
+  @media screen and (orientation: landscape) {
+    height: 100vh;
+  }
 }

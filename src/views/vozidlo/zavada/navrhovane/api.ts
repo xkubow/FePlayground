@@ -6,18 +6,18 @@ import { NAME_API } from '../constants';
 import { NAME } from './constants';
 
 class ZavadaProvider extends BaseApi {
-	filter(params?: Record<string, unknown>): Response {
-		return {} as Response;
-	}
-	tableUrl(tableName: string): string {
-		const isMainTable = tableName === STORE_TABLE;
-		switch (tableName) {
-			case STORE_TABLE:
-				return `${this.apiPath}/Archiv/Prehled/`;
-			default:
-				return `${this.apiPath}${isMainTable ? '' : tableName}/`;
-		}
-	}
+  filter(params?: Record<string, unknown>): Response {
+    return {} as Response;
+  }
+  tableUrl(tableName: string): string {
+    const isMainTable = tableName === STORE_TABLE;
+    switch (tableName) {
+      case STORE_TABLE:
+        return `${this.apiPath}/Archiv/Prehled/`;
+      default:
+        return `${this.apiPath}${isMainTable ? '' : tableName}/`;
+    }
+  }
 }
 
 export const apiProvider = new ZavadaProvider(NAME, `${NAME_VOZIDLO}/${NAME_API}`);

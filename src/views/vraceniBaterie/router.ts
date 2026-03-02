@@ -8,5 +8,10 @@ import { createName } from '@/template/page/constants';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
 export const route = new Path(NAME, { List, Edit }).addChildren([
-        ChildPath(`:mode(${PageMode.CREATE})/:eskalaceId`, createName(`${NAME}From${ESKALACE_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.eskalaceId === undefined)
-    ]);
+  ChildPath(
+    `:mode(${PageMode.CREATE})/:eskalaceId`,
+    createName(`${NAME}From${ESKALACE_NAME}`),
+    Edit,
+    (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.eskalaceId === undefined,
+  ),
+]);

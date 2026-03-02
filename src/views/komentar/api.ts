@@ -8,12 +8,12 @@ import type { Table } from '@/template/components/table';
 import type { Komentar } from './type';
 //[`${this.area}Id`]
 class KomentarProvider extends BaseApi {
-	getByMasterId(id: number) {
-		return this.fetch<Table<Komentar>>(`${this.apiPath}grid`, { [`${this.area}Id`]: id }, { showError: true, cancelPrevious: false });
-	}
-	updateKomentarEntity(data?: Record<string, unknown>): Response {
-		return this.update(this.apiPath, undefined, data);
-	}
+  getByMasterId(id: number) {
+    return this.fetch<Table<Komentar>>(`${this.apiPath}grid`, { [`${this.area}Id`]: id }, { showError: true, cancelPrevious: false });
+  }
+  updateKomentarEntity(data?: Record<string, unknown>): Response {
+    return this.update(this.apiPath, undefined, data);
+  }
 }
 
 export const apiProvider = new KomentarProvider(NAME, VOZIDLO_NAME);

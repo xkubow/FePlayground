@@ -1,7 +1,7 @@
 <template>
-	<el-row>
-		<slot />
-	</el-row>
+  <el-row>
+    <slot />
+  </el-row>
 </template>
 
 <script setup lang="ts"></script>

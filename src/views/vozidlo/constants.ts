@@ -13,10 +13,10 @@ export const zxingPath1 = 'http://zxing.appspot.com/scan';
 export const zxingPath = 'intent://scan#Intent;scheme=http;package=com.google.zxing.client.android;end';
 
 export enum testStatus {
-	NOT_TESTED = 0,
-	OK = 1,
-	NOK = 2,
-	OPRAVENE = 3,
+  NOT_TESTED = 0,
+  OK = 1,
+  NOK = 2,
+  OPRAVENE = 3,
 }
 
 export const prilohyUrl = `${import.meta.env.VITE_APP_API_BASE_URL}/${NAME}/${NAME_PRILOHY}?knr=`;

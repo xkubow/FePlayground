@@ -6,10 +6,10 @@ import type { Blikacka } from '../type';
 export const columns: Column[] = [];
 
 export const table = new Table<Blikacka>({
-	columns,
-	rows: [],
-	name: 'blikacka',
-	operations: OperationFlags.DEFAULT,
-	rowKey: 'knr',
-	gridId: 1,
+  columns,
+  rows: [],
+  name: 'blikacka',
+  operations: OperationFlags.DEFAULT,
+  rowKey: 'knr',
+  gridId: 1,
 });

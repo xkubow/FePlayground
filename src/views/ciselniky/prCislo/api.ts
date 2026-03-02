@@ -5,12 +5,12 @@ import { NAME as NAME_CISELNIKY } from '../constants';
 import { NAME } from './constants';
 
 export class Provider extends BaseApi {
-	filter(): Response {
-		return {} as Response;
-	}
-	getDropDownList(): Response<DropdownItem[]> {
-		return this.fetch<DropdownItem[]>(`${this.apiPath}/GetDropDownList`);
-	}
+  filter(): Response {
+    return {} as Response;
+  }
+  getDropDownList(): Response<DropdownItem[]> {
+    return this.fetch<DropdownItem[]>(`${this.apiPath}/GetDropDownList`);
+  }
 }
 
 export const apiProvider = new Provider(NAME, NAME_CISELNIKY);

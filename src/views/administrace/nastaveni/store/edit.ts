@@ -7,7 +7,7 @@ import { apiProvider } from '../api';
 import { NAME } from '../constants';
 
 export const server = {
-	prilohaVelikostMax: null as number | null,
+  prilohaVelikostMax: null as number | null,
 };
 export const local = {};
 export const props = {};
@@ -25,9 +25,9 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {} as ActionOptions<typeof name, typeof server, typeof local, typeof props, typeof tables>;
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters,
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters,
+  extraActions,
 });

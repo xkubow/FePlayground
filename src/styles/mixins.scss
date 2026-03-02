@@ -1,8 +1,8 @@
 @mixin box-shadow($values) {
-    -webkit-box-shadow: $values;
-    -moz-box-shadow: $values;
-    box-shadow: $values;
+  -webkit-box-shadow: $values;
+  -moz-box-shadow: $values;
+  box-shadow: $values;
 }
 @mixin bg-opacity($color, $opacity: 1) {
-    background-color: rgba($color, $opacity);
+  background-color: rgba($color, $opacity);
 }

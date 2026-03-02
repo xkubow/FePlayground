@@ -5,14 +5,14 @@ import { NAME as NAME_CISELNIKY } from '../constants';
 import { NAME } from './constants';
 
 class BarvaProvider extends BaseApi {
-	filter(): Response {
-		return {} as Response;
-	}
-	tableUrl(tableName: string): string {
-		const isMainTable = tableName === STORE_TABLE;
-		const table = isMainTable ? '' : `${tableName}/`;
-		return `${this.apiPath}${table}`;
-	}
+  filter(): Response {
+    return {} as Response;
+  }
+  tableUrl(tableName: string): string {
+    const isMainTable = tableName === STORE_TABLE;
+    const table = isMainTable ? '' : `${tableName}/`;
+    return `${this.apiPath}${table}`;
+  }
 }
 
 export const apiProvider = new BarvaProvider(NAME, NAME_CISELNIKY);

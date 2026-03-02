@@ -14,22 +14,22 @@ import { NAME } from '../constants';
 import type { VozidloStitek } from '../type';
 
 export const server = {
-	id: null as number | null,
-	stitekKod: null as string | null,
-	text: null as string | null,
-	vstupDatum: null as Date | null,
-	vyrazenoDatum: null as Date | null,
+  id: null as number | null,
+  stitekKod: null as string | null,
+  text: null as string | null,
+  vstupDatum: null as Date | null,
+  vyrazenoDatum: null as Date | null,
 };
 export const local = {};
 export const props = {};
 
 export const tables = {
-	prCislo: new Table<PrCislo>({
-		...prCislo,
-		loadByEntityId: true,
-		operations: OperationFlags.DELETE,
-		filterMapper: (payload) => ({ vozidloStitekId: payload.serverData.id, vozidloStitekIdIn: true }),
-	}),
+  prCislo: new Table<PrCislo>({
+    ...prCislo,
+    loadByEntityId: true,
+    operations: OperationFlags.DELETE,
+    filterMapper: (payload) => ({ vozidloStitekId: payload.serverData.id, vozidloStitekIdIn: true }),
+  }),
 };
 
 const name = editName(NAME);
@@ -41,12 +41,12 @@ export type PageType = typeof page;
 const extraGetters: _GettersTree<PageType> = {};
 
 const extraActions = {
-	async loadEntity(params: { id: string | number }) {
-		const response = await apiProvider?.loadEntity<VozidloStitek>(params.id);
-		const entity = _.last(this.entity);
-		entity && response?.data && dataMapper(entity.serverData, response?.data);
-		return response;
-	},
+  async loadEntity(params: { id: string | number }) {
+    const response = await apiProvider?.loadEntity<VozidloStitek>(params.id);
+    const entity = _.last(this.entity);
+    entity && response?.data && dataMapper(entity.serverData, response?.data);
+    return response;
+  },
 } as ActionOptions<typeof name, typeof server, typeof local, typeof props, typeof tables>;
 
 export type N = typeof name;
@@ -60,9 +60,9 @@ export type A = typeof extraActions;
 export type PageStoreVS = PageStore<S, L, P, T, A, G>;
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters,
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters,
+  extraActions,
 });

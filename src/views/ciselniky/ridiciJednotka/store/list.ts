@@ -8,17 +8,17 @@ import { NAME } from '../constants';
 import { table } from '../tables';
 
 export const server = {
-	modelovaTridaKod: null as null | string,
+  modelovaTridaKod: null as null | string,
 };
 
 export const local = {
-	dropDownList: { modelovaTridaKod: [] as DropdownItem[] },
+  dropDownList: { modelovaTridaKod: [] as DropdownItem[] },
 };
 
 export const props = {};
 
 export const tables = {
-	table,
+  table,
 };
 
 type Server = typeof server;
@@ -30,11 +30,11 @@ type ExtraActions = { loadOnLinkaChange(): Promise<void> } & PageActionsGlobal<S
 type ExtraGetters = PageGetters<Server, Local, Props, Tables>;
 
 const extraActions = {
-	async filter(filter: Record<string, unknown>) {
-		if (!this.last) return;
-		const respontModelovaTridaKod = await apiProvider.getDropDownList();
-		this.last.localData.dropDownList.modelovaTridaKod = respontModelovaTridaKod?.data ?? [];
-	},
+  async filter(filter: Record<string, unknown>) {
+    if (!this.last) return;
+    const respontModelovaTridaKod = await apiProvider.getDropDownList();
+    this.last.localData.dropDownList.modelovaTridaKod = respontModelovaTridaKod?.data ?? [];
+  },
 } as ActionOptions<typeof name, Server, Local, Props, Tables, ExtraGetters, ExtraActions>;
 
 const name = listName(NAME);
@@ -42,9 +42,9 @@ const name = listName(NAME);
 const page = new Page(name, server, local, props, tables);
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters: {},
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters: {},
+  extraActions,
 });

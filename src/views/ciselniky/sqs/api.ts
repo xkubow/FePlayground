@@ -6,25 +6,25 @@ import type { SqsZavadaRadek } from '../types';
 import { NAME } from './constants';
 
 export class Provider extends HttpRequest {
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 
-	getSqsZavadaVinikDropDownList(): Response<DropdownItem[]> {
-		return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaVinikDropDownList`);
-	}
-	getSqsZavadaTypDropDownList(): Response<DropdownItem[]> {
-		return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaTypDropDownList`);
-	}
-	getSqsZavadaKategorieDropDownList(): Response<DropdownItem[]> {
-		return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaKategorieDropDownList`);
-	}
-	getSqsZavadaSkupinaDropDownList(): Response<DropdownItem[]> {
-		return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaSkupinaDropDownList`);
-	}
-	getSqsZavadaRadekDropDownList<T = SqsZavadaRadek[]>(): Response<T> {
-		return this.fetch<T>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaRadekDropDownList`);
-	}
+  getSqsZavadaVinikDropDownList(): Response<DropdownItem[]> {
+    return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaVinikDropDownList`);
+  }
+  getSqsZavadaTypDropDownList(): Response<DropdownItem[]> {
+    return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaTypDropDownList`);
+  }
+  getSqsZavadaKategorieDropDownList(): Response<DropdownItem[]> {
+    return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaKategorieDropDownList`);
+  }
+  getSqsZavadaSkupinaDropDownList(): Response<DropdownItem[]> {
+    return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaSkupinaDropDownList`);
+  }
+  getSqsZavadaRadekDropDownList<T = SqsZavadaRadek[]>(): Response<T> {
+    return this.fetch<T>(`${NAME_CISELNIKY}/${NAME}/GetSqsZavadaRadekDropDownList`);
+  }
 }
 
 export const apiProvider = new Provider();

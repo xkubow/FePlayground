@@ -6,22 +6,22 @@ import { STORE_TABLE } from '@/template/page/constants';
 import { BaseApi } from '@/template/page/api';
 
 export class Provider extends BaseApi {
-	filter(): Response {
-		return {} as Response;
-	}
+  filter(): Response {
+    return {} as Response;
+  }
 
-	getDropDownList(): Response<DropdownItem[]> {
-		return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetDropDownList`);
-	}
+  getDropDownList(): Response<DropdownItem[]> {
+    return this.fetch<DropdownItem[]>(`${NAME_CISELNIKY}/${NAME}/GetDropDownList`);
+  }
 
-	tableUrl(tableName: string): string {
-		const isMainTable = tableName === STORE_TABLE;
-		const table = isMainTable ? '' : `${tableName}/`;
-		return `${this.apiPath}${table}/`;
-	}
-	default(params?: Record<string, unknown> | undefined): Response<unknown> {
-		return {} as Response;
-	}
+  tableUrl(tableName: string): string {
+    const isMainTable = tableName === STORE_TABLE;
+    const table = isMainTable ? '' : `${tableName}/`;
+    return `${this.apiPath}${table}/`;
+  }
+  default(params?: Record<string, unknown> | undefined): Response<unknown> {
+    return {} as Response;
+  }
 }
 
 export const apiProvider = new Provider(NAME, NAME_CISELNIKY);

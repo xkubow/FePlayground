@@ -7,12 +7,12 @@ import { apiProvider } from '../api';
 import { NAME } from '../constants';
 
 export const server = {
-	id: null as null | number,
-	modelovaSkupinaKod: null as null | string,
-	modelovaTridaKod: null as null | string,
-	ridiciJednotkaId: null as null | number,
-	jazykId: 1 as null | number,
-	text: null as null | string,
+  id: null as null | number,
+  modelovaSkupinaKod: null as null | string,
+  modelovaTridaKod: null as null | string,
+  ridiciJednotkaId: null as null | number,
+  jazykId: 1 as null | number,
+  text: null as null | string,
 };
 export const local = {};
 export const props = {};
@@ -30,9 +30,9 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {} as ActionOptions<typeof name, typeof server, typeof local, typeof props, typeof tables>;
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters,
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters,
+  extraActions,
 });

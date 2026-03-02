@@ -25,4 +25,4 @@ const app = createApp(template.layouts.MainLayout);
 app.use(KTemplate, { routes, menu });
 app.mount('#app');
 
-dayjs.locale('cs')
+dayjs.locale('cs');

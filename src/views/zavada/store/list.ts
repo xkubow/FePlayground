@@ -12,7 +12,7 @@ export const local = {};
 export const props = {};
 
 export const tables = {
-	[STORE_TABLE]: table,
+  [STORE_TABLE]: table,
 };
 
 const name = listName(NAME);
@@ -20,9 +20,9 @@ const name = listName(NAME);
 const page = new Page(name, server, local, props, tables);
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters: {},
-	extraActions: {},
+  name,
+  apiProvider,
+  page,
+  extraGetters: {},
+  extraActions: {},
 });

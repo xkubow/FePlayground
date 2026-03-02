@@ -4,9 +4,9 @@ import { AKTIVNI, NAME as NAME_VYROBNI_LINKA } from '../constants';
 import { NAME } from './constants';
 
 class KontrolniBodProvider extends BaseApi {
-	getDropDownList<T = DropdownItem[]>(filter: { vyrobniLinkaId: number }) {
-		return this.fetch<T>(`${this.apiPath}GetDropDownList`, filter);
-	}
+  getDropDownList<T = DropdownItem[]>(filter: { vyrobniLinkaId: number }) {
+    return this.fetch<T>(`${this.apiPath}GetDropDownList`, filter);
+  }
 }
 
 export const apiProvider = new KontrolniBodProvider(NAME_VYROBNI_LINKA, 'Ciselniky', NAME, AKTIVNI);

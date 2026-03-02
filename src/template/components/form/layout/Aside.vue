@@ -1,18 +1,18 @@
 <template>
-	<el-aside>
-		<slot />
-	</el-aside>
+  <el-aside>
+    <slot />
+  </el-aside>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+  import { defineComponent } from 'vue';
 
-export default defineComponent({
-	name: 'k-aside',
-	setup() {
-		return {};
-	},
-});
+  export default defineComponent({
+    name: 'k-aside',
+    setup() {
+      return {};
+    },
+  });
 </script>
 
 <style scoped></style>

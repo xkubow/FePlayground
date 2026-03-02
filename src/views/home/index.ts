@@ -3,13 +3,13 @@ import { NAME } from './constants';
 import Edit from './Edit.vue';
 
 export const route = {
-	path: '/',
-	name: NAME,
-	component: Edit,
+  path: '/',
+  name: NAME,
+  component: Edit,
 };
 
 export const Home = {
-	name: NAME,
-	route,
-	menu: { i18nKey: NAME, to: NAME, uriType: UriType.NAME },
+  name: NAME,
+  route,
+  menu: { i18nKey: NAME, to: NAME, uriType: UriType.NAME },
 };

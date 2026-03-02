@@ -13,23 +13,23 @@ import { apiProvider as apiProviderSegment } from '@/views/vyrobniLinka/segment/
 import { Interval } from '@/template/components/@types';
 
 export const server = {
-	VozidloZavadaId: null as number | null,
-	modelovaTridaKod: [] as string[],
-	modelovaSkupinaKod: [] as string[],
-	vyrobniLinkaId: null as number | null,
-	vyrobniLinkaSegmentId: null as number | null,
-	vstupDatum: new Interval(),
+  VozidloZavadaId: null as number | null,
+  modelovaTridaKod: [] as string[],
+  modelovaSkupinaKod: [] as string[],
+  vyrobniLinkaId: null as number | null,
+  vyrobniLinkaSegmentId: null as number | null,
+  vstupDatum: new Interval(),
 };
 
 export const local = {
-	vyrobniLinkaSegmentList: [] as DropdownItem[],
+  vyrobniLinkaSegmentList: [] as DropdownItem[],
 };
 
 export const props = {};
 
 export const tables = {
-	[STORE_TABLE]: table,
-	// [STORE_TABLE]: new Table({ ...table, rows: tableData.rows }),
+  [STORE_TABLE]: table,
+  // [STORE_TABLE]: new Table({ ...table, rows: tableData.rows }),
 };
 
 type Server = typeof server;
@@ -41,20 +41,20 @@ type ExtraActions = { loadOnLinkaChange(): Promise<void> } & PageActionsGlobal<S
 type ExtraGetters = PageGetters<Server, Local, Props, Tables>;
 
 const extraActions = {
-	async filter(filter: Record<string, unknown>) {
-		const { user } = useAuthorization();
-		if (!this.last) return;
-		this.last.serverData.vyrobniLinkaId = user.value?.vyrobniLinkaId ?? null;
-		this.loadOnLinkaChange();
-	},
-	async loadOnLinkaChange() {
-		if (this.last) {
-			const { vyrobniLinkaId } = this.last.serverData;
-			if (!vyrobniLinkaId) return;
-			const respondSegment = await apiProviderSegment.getDropDownList({ vyrobniLinkaId });
-			this.last.localData.vyrobniLinkaSegmentList = respondSegment?.data ?? [];
-		}
-	},
+  async filter(filter: Record<string, unknown>) {
+    const { user } = useAuthorization();
+    if (!this.last) return;
+    this.last.serverData.vyrobniLinkaId = user.value?.vyrobniLinkaId ?? null;
+    this.loadOnLinkaChange();
+  },
+  async loadOnLinkaChange() {
+    if (this.last) {
+      const { vyrobniLinkaId } = this.last.serverData;
+      if (!vyrobniLinkaId) return;
+      const respondSegment = await apiProviderSegment.getDropDownList({ vyrobniLinkaId });
+      this.last.localData.vyrobniLinkaSegmentList = respondSegment?.data ?? [];
+    }
+  },
 } as ActionOptions<typeof name, Server, Local, Props, Tables, ExtraGetters, ExtraActions>;
 
 const name = listName(NAME);
@@ -62,9 +62,9 @@ const name = listName(NAME);
 const page = new Page(name, server, local, props, tables);
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters: {},
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters: {},
+  extraActions,
 });

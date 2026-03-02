@@ -1,4 +1,4 @@
 export type ModelovaTrida = {
-	modelovaTridaKod: string;
-	text: string;
+  modelovaTridaKod: string;
+  text: string;
 };

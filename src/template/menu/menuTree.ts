@@ -3,16 +3,16 @@ import { reactive } from 'vue';
 import type { MenuItem } from './menu.d';
 
 class MenuTree {
-	menu: MenuItem[] = reactive([]);
-	merge(payload: MenuItem[]) {
-		// Vue.$set(this.menu, _.concat(this.menu, payload));
-		// getCurrentInstance.$set(this.menu, _.concat(this.menu, payload));
-		// const maped = payload.map((i) => {
-		// 	if (!i.uriType) i.uriType = UriType.LIST;
-		// 	return i;
-		// });
-		this.menu = _.concat(this.menu, payload);
-	}
+  menu: MenuItem[] = reactive([]);
+  merge(payload: MenuItem[]) {
+    // Vue.$set(this.menu, _.concat(this.menu, payload));
+    // getCurrentInstance.$set(this.menu, _.concat(this.menu, payload));
+    // const maped = payload.map((i) => {
+    // 	if (!i.uriType) i.uriType = UriType.LIST;
+    // 	return i;
+    // });
+    this.menu = _.concat(this.menu, payload);
+  }
 }
 
 const menuTreeStatic = new MenuTree();

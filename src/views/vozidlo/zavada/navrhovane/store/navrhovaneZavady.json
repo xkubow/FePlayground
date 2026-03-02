@@ -21,7 +21,7 @@
       },
       {
         "rowNumber": 2,
-        "probability": 0.60,
+        "probability": 0.6,
         "sqsZavadaTypId": 55555,
         "sqsZavadaTypText": "Sample Type Text 2",
         "sqsZavadaVinikId": 66666,
@@ -43,7 +43,7 @@
     "detail": [
       {
         "rowNumber": 1,
-        "probability": 0.80,
+        "probability": 0.8,
         "sqsZavadaTypId": 33334,
         "sqsZavadaTypText": "Sample Type Text 3",
         "sqsZavadaVinikId": 44445,
@@ -97,7 +97,7 @@
     "detail": [
       {
         "rowNumber": 1,
-        "probability": 0.70,
+        "probability": 0.7,
         "sqsZavadaTypId": 33336,
         "sqsZavadaTypText": "Sample Type Text 6",
         "sqsZavadaVinikId": 44447,
@@ -164,7 +164,7 @@
   {
     "definiceZavadyId": 12351,
     "sqsZavadaMistoText": "Sample Location Text 7",
-    "probability": 0.90,
+    "probability": 0.9,
     "sqsZavadaSkupinaId": 67896,
     "sqsZavadaMistoId": 11117,
     "sqsZavadaRadekId": 22228,
@@ -183,7 +183,7 @@
       },
       {
         "rowNumber": 2,
-        "probability": 0.60,
+        "probability": 0.6,
         "sqsZavadaTypId": 55558,
         "sqsZavadaTypText": "Sample Type Text 11",
         "sqsZavadaVinikId": 66669,
@@ -237,7 +237,7 @@
       },
       {
         "rowNumber": 2,
-        "probability": 0.70,
+        "probability": 0.7,
         "sqsZavadaTypId": 55559,
         "sqsZavadaTypText": "Sample Type Text 14",
         "sqsZavadaVinikId": 66670,

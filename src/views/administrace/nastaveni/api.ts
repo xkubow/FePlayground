@@ -5,9 +5,9 @@ import { NAME } from './constants';
 import type { Nastaveni } from './type';
 
 class NastaveniProvider extends BaseApi {
-	loadEntity<T = Nastaveni>(): Response<T> {
-		return this.fetch<T>(this.apiPath);
-	}
+  loadEntity<T = Nastaveni>(): Response<T> {
+    return this.fetch<T>(this.apiPath);
+  }
 }
 
 export const apiProvider = new NastaveniProvider(NAME, NAME_ADMINISTRACE);

@@ -1,9 +1,9 @@
-@use "variables" as *;
+@use 'variables' as *;
 
 .el-aside {
   --el-aside-width: 300px;
 
-  @media only screen and (max-width: 992px)  {
+  @media only screen and (max-width: 992px) {
     --el-aside-width: calc(100vw - 20px);
   }
 }

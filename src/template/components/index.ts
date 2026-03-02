@@ -58,66 +58,65 @@ import KMenuItemVue from './form/menu/KMenuItem.vue';
 import KSubMenuVue from './form/menu/KSubMenu.vue';
 import TableColumnSelect from './table/TableColumnSelect.vue';
 
-
 export default {
-	install: (app: App): App => {
-		// Layout
-		app.component('KAside', Aside);
-		app.component('KContainer', Container);
-		app.component('KFooter', Footer);
-		app.component('KHeader', Header);
-		app.component('KMain', Main);
-		app.component('KCard', Card);
-		app.component('KCollapse', KCollapse);
-		app.component('KCollapseItem', KCollapseItem);
-		app.component('KTabPanel', KTabPanel);
-		app.component('KTabs', KTabs);
+  install: (app: App): App => {
+    // Layout
+    app.component('KAside', Aside);
+    app.component('KContainer', Container);
+    app.component('KFooter', Footer);
+    app.component('KHeader', Header);
+    app.component('KMain', Main);
+    app.component('KCard', Card);
+    app.component('KCollapse', KCollapse);
+    app.component('KCollapseItem', KCollapseItem);
+    app.component('KTabPanel', KTabPanel);
+    app.component('KTabs', KTabs);
 
-		// Form
-		app.component('KForm', Form);
-		app.component('KFormItem', FormItem);
-		app.component('KWrapper', Wrapper);
-		app.component('KCol', Col);
-		app.component('KRow', Row);
-		app.component('KButton', Button);
-		app.component('KButtonGroup', ButtonGroup);
-		app.component('KButtonInfo', ButtonInfo);
-		app.component('KInput', Input);
-		app.component('KCheckBox', CheckBox);
-		app.component('KCheckBox3state', KCheckBox3state);
-		app.component('KColorPicker', KColorPicker);
-		app.component('KDateInterval', KDateInterval);
-		app.component('KDatePicker', KDatePicker);
-		app.component('KDialog', KDialog);
-		app.component('KDrawer', KDrawer);
-		app.component('KIcon', KIcon);
-		app.component('KInputNumber', KInputNumber);
-		app.component('KOption', KOption);
-		app.component('KRichText', KRichText);
-		app.component('KStitok', KStitok);
-		app.component('KToolTip', KToolTip);
-		app.component('KUpload', KUpload);
-		app.component('KVirtualKeyboard', KVirtualKeyboard);
-		app.component('KSvgCheckBox', SvgCheckBox);
-		app.component('KSelect', Select);
+    // Form
+    app.component('KForm', Form);
+    app.component('KFormItem', FormItem);
+    app.component('KWrapper', Wrapper);
+    app.component('KCol', Col);
+    app.component('KRow', Row);
+    app.component('KButton', Button);
+    app.component('KButtonGroup', ButtonGroup);
+    app.component('KButtonInfo', ButtonInfo);
+    app.component('KInput', Input);
+    app.component('KCheckBox', CheckBox);
+    app.component('KCheckBox3state', KCheckBox3state);
+    app.component('KColorPicker', KColorPicker);
+    app.component('KDateInterval', KDateInterval);
+    app.component('KDatePicker', KDatePicker);
+    app.component('KDialog', KDialog);
+    app.component('KDrawer', KDrawer);
+    app.component('KIcon', KIcon);
+    app.component('KInputNumber', KInputNumber);
+    app.component('KOption', KOption);
+    app.component('KRichText', KRichText);
+    app.component('KStitok', KStitok);
+    app.component('KToolTip', KToolTip);
+    app.component('KUpload', KUpload);
+    app.component('KVirtualKeyboard', KVirtualKeyboard);
+    app.component('KSvgCheckBox', SvgCheckBox);
+    app.component('KSelect', Select);
 
-		// Menu
-		app.component('KMenu', KMenu);
-		app.component('KMenuItem', KMenuItem);
-		app.component('KSubMenu', KSubMenu);
+    // Menu
+    app.component('KMenu', KMenu);
+    app.component('KMenuItem', KMenuItem);
+    app.component('KSubMenu', KSubMenu);
 
-		// Table
-		app.component('KTable', Table);
-		app.component('KTableCell', TableCell);
-		app.component('KTableColumn', TableColumn);
-		app.component('KTableColumnHeader', TableColumnHeader);
-		app.component('KTableColumnSelect', TableColumnSelect);
-		app.component('KTableFrame', TableFrame);
-		app.component('KTableHeader', TableHeader);
-		return app;
-	},
+    // Table
+    app.component('KTable', Table);
+    app.component('KTableCell', TableCell);
+    app.component('KTableColumn', TableColumn);
+    app.component('KTableColumnHeader', TableColumnHeader);
+    app.component('KTableColumnSelect', TableColumnSelect);
+    app.component('KTableFrame', TableFrame);
+    app.component('KTableHeader', TableHeader);
+    return app;
+  },
 };
 
 export function isIdUpdateStatus(payload: unknown): payload is IdUpdateStatus {
-	return 'updateStatus' in (payload as IdUpdateStatus);
+  return 'updateStatus' in (payload as IdUpdateStatus);
 }

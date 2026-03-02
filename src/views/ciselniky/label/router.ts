@@ -9,16 +9,46 @@ import { createName, editName, PageMode } from '@/template/page/constants';
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
 
 export const route = [
-	new Path(`${NAME}${MODELOVA_SKUPINA_NAME}`, { List }).addChildren([
-		ChildPath(`:mode(${PageMode.CREATE})/:kod`, createName(`${NAME}${MODELOVA_SKUPINA_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.kod === undefined),
-		ChildPath(`:mode(${PageMode.EDIT}|${PageMode.VIEW})/:id/:anchor?`, editName(`${NAME}${MODELOVA_SKUPINA_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined),
-	]),
-	new Path(`${NAME}${MODELOVA_TRIDA_NAME}`, { List }).addChildren([
-		ChildPath(`:mode(${PageMode.CREATE})/:kod`, createName(`${NAME}${MODELOVA_TRIDA_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.kod === undefined),
-		ChildPath(`:mode(${PageMode.EDIT}|${PageMode.VIEW})/:id/:anchor?`, editName(`${NAME}${MODELOVA_TRIDA_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined),
-	]),
-	new Path(`${NAME}${RIDICI_JEDNOTKA_NAME}`, { List }).addChildren([
-		ChildPath(`:mode(${PageMode.CREATE})/:kod`, createName(`${NAME}${RIDICI_JEDNOTKA_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.kod === undefined),
-		ChildPath(`:mode(${PageMode.EDIT}|${PageMode.VIEW})/:id/:anchor?`, editName(`${NAME}${RIDICI_JEDNOTKA_NAME}`), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined),
-	]),
+  new Path(`${NAME}${MODELOVA_SKUPINA_NAME}`, { List }).addChildren([
+    ChildPath(
+      `:mode(${PageMode.CREATE})/:kod`,
+      createName(`${NAME}${MODELOVA_SKUPINA_NAME}`),
+      Edit,
+      (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.kod === undefined,
+    ),
+    ChildPath(
+      `:mode(${PageMode.EDIT}|${PageMode.VIEW})/:id/:anchor?`,
+      editName(`${NAME}${MODELOVA_SKUPINA_NAME}`),
+      Edit,
+      (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined,
+    ),
+  ]),
+  new Path(`${NAME}${MODELOVA_TRIDA_NAME}`, { List }).addChildren([
+    ChildPath(
+      `:mode(${PageMode.CREATE})/:kod`,
+      createName(`${NAME}${MODELOVA_TRIDA_NAME}`),
+      Edit,
+      (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.kod === undefined,
+    ),
+    ChildPath(
+      `:mode(${PageMode.EDIT}|${PageMode.VIEW})/:id/:anchor?`,
+      editName(`${NAME}${MODELOVA_TRIDA_NAME}`),
+      Edit,
+      (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined,
+    ),
+  ]),
+  new Path(`${NAME}${RIDICI_JEDNOTKA_NAME}`, { List }).addChildren([
+    ChildPath(
+      `:mode(${PageMode.CREATE})/:kod`,
+      createName(`${NAME}${RIDICI_JEDNOTKA_NAME}`),
+      Edit,
+      (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.kod === undefined,
+    ),
+    ChildPath(
+      `:mode(${PageMode.EDIT}|${PageMode.VIEW})/:id/:anchor?`,
+      editName(`${NAME}${RIDICI_JEDNOTKA_NAME}`),
+      Edit,
+      (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined,
+    ),
+  ]),
 ];

@@ -7,6 +7,16 @@ import List from './List.vue';
 import type { RouteLocationNormalized, NavigationGuardNext } from 'vue-router';
 
 export const route = new Path(NAME, { List, Edit }).addChildren([
-  ChildPath(`:mode(${PageMode.SELECT_LIST})/:skupinaUzivateluId`, selectListName(NAME), List, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.skupinaUzivateluId === undefined),
-  ChildPath(`:mode(${PageMode.EDIT})/:id`, editName(NAME_SKUPINA_UZIVATEL), Edit, (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined),
+  ChildPath(
+    `:mode(${PageMode.SELECT_LIST})/:skupinaUzivateluId`,
+    selectListName(NAME),
+    List,
+    (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.skupinaUzivateluId === undefined,
+  ),
+  ChildPath(
+    `:mode(${PageMode.EDIT})/:id`,
+    editName(NAME_SKUPINA_UZIVATEL),
+    Edit,
+    (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => to.params.id === undefined,
+  ),
 ]);

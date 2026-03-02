@@ -1,7 +1,7 @@
 import type { AxiosResponse } from 'axios';
 
 export type ApiResponse = {
-	userMessageList: UserMessage[];
+  userMessageList: UserMessage[];
 };
 
 export type UserMessage = { message: string; title: string; type: number };

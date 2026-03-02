@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use 'variables' as *;
 @use 'element-index.scss' as *;
 
 $color-white: #ffffff;
@@ -14,9 +14,6 @@ $color-grey: #dddddd;
     font-size: 20px;
   }
 }
-
-
-
 
 // **
 // Editor
@@ -44,7 +41,7 @@ $color-grey: #dddddd;
         margin-top: 0 !important;
       }
 
-      &[contenteditable="false"] {
+      &[contenteditable='false'] {
         // border-color: $--disabled-border-base;
         // background-color: $--disabled-fill-base;
         // color: $--disabled-color-base;
@@ -55,12 +52,17 @@ $color-grey: #dddddd;
       caret-color: currentColor;
     }
 
-    p, h1, h2, h3 {
+    p,
+    h1,
+    h2,
+    h3 {
       margin-top: 0;
       margin-bottom: 12px;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-weight: bold;
       line-height: 1.2;
     }
@@ -71,12 +73,12 @@ $color-grey: #dddddd;
     }
 
     h2 {
-      margin-top: .75rem;
+      margin-top: 0.75rem;
       font-size: 2rem;
     }
 
     h3 {
-      margin-top: .5rem;
+      margin-top: 0.5rem;
       font-size: 1.5rem;
     }
 
@@ -142,7 +144,8 @@ $color-grey: #dddddd;
       margin: 0;
       overflow: hidden;
 
-      td, th {
+      td,
+      th {
         min-width: 1em;
         border: 2px solid $color-grey;
         padding: 3px 5px;
@@ -163,7 +166,7 @@ $color-grey: #dddddd;
       .selectedCell:after {
         z-index: 2;
         position: absolute;
-        content: "";
+        content: '';
         left: 0;
         right: 0;
         top: 0;
@@ -192,29 +195,27 @@ $color-grey: #dddddd;
     .resize-cursor {
       cursor: col-resize;
     }
-
   }
 }
 
-
 .comment-item {
-	border: 1px solid var(--el-border-color-base);
-	border-radius: 5px;
+  border: 1px solid var(--el-border-color-base);
+  border-radius: 5px;
   padding: 2px;
-	// min-height: 60px;
+  // min-height: 60px;
 }
 .comment-header {
   height: 1em;
-	p {
-		margin-block-start: 1px;
-		margin-block-end: 15px;
-		font-size: 0.7em;
+  p {
+    margin-block-start: 1px;
+    margin-block-end: 15px;
+    font-size: 0.7em;
     margin-bottom: 0px;
-	}
+  }
 }
 
 .p-2 {
   p {
-		margin: 3px 0px;
-	}
+    margin: 3px 0px;
+  }
 }

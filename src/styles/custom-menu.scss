@@ -1,5 +1,5 @@
-@use "sass:map";
-@use "element-variables" as *;
+@use 'sass:map';
+@use 'element-variables' as *;
 @use 'element-index.scss' as *;
 
 .k-aside {
@@ -15,29 +15,28 @@
   border-right: solid 0px var(--el-menu-border-color) !important;
   &.el-menu--collapse {
     width: $menu-width-collapse;
-    @media only screen and (max-width: 992px)  {
+    @media only screen and (max-width: 992px) {
       width: 0px;
     }
   }
   &:not(.el-menu--collapse) {
     width: $menu-width; // width has to be set, otherwise closing animation does not work
-    @media only screen and (max-width: 992px)  {
+    @media only screen and (max-width: 992px) {
       width: 100vw;
     }
 
-    li[role="menuitem"] {
+    li[role='menuitem'] {
       border-right: 0px;
       justify-content: space-around;
     }
   }
 
-  li[role="menuitem"] {
+  li[role='menuitem'] {
     background-color: $color-base-gray;
     justify-content: space-around;
     padding: 0 0px !important;
   }
 }
-
 
 .k-menu-toggle {
   margin: 1rem;
@@ -74,9 +73,9 @@
 }
 
 .el-menu {
-    --el-menu-text-color: white;
-    --el-color-primary-light-9: #62A84C;
-    --el-menu-active-color: #62A84C;
+  --el-menu-text-color: white;
+  --el-color-primary-light-9: #62a84c;
+  --el-menu-active-color: #62a84c;
 }
 
 .el-submenu__title i,

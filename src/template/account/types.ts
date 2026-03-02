@@ -1,5 +1,5 @@
 export type DevUserRespose = {
-	token: string;
-	uzivatelId: string;
-	zobrazeneJmeno: string;
+  token: string;
+  uzivatelId: string;
+  zobrazeneJmeno: string;
 };

@@ -13,33 +13,33 @@ import { table } from '../tables/table';
 import { Interval } from '@/template/components/@types';
 
 export const server = {
-	knr: null as number | null,
-	vin: null as string | null,
-	modelovaTridaKod: [] as string[],
-	prCisloKod: [] as string[],
-	idChyby: [],
-	mistoTestu: [],
-	ridiciJednotkaNdNr: null as string | null,
-	ridiciJednotkaSwVersion: null as number | null,
-	statusTestu: [],
-	vyrobniLinkaId: null as number | null,
-	vyrobniLinkaSegmentId: null as number | null,
-	vyrobniLinkaPracovisteId: [] as number[],
-	testDatum: new Interval(),
-	statusIoEnum: [] as EnumStatusIo[] | null,
-	vyrazeno: false,
+  knr: null as number | null,
+  vin: null as string | null,
+  modelovaTridaKod: [] as string[],
+  prCisloKod: [] as string[],
+  idChyby: [],
+  mistoTestu: [],
+  ridiciJednotkaNdNr: null as string | null,
+  ridiciJednotkaSwVersion: null as number | null,
+  statusTestu: [],
+  vyrobniLinkaId: null as number | null,
+  vyrobniLinkaSegmentId: null as number | null,
+  vyrobniLinkaPracovisteId: [] as number[],
+  testDatum: new Interval(),
+  statusIoEnum: [] as EnumStatusIo[] | null,
+  vyrazeno: false,
 };
 
 export const local = {
-	vyrobniLinkaSegmentList: [] as DropdownItem[],
-	vyrobniLinkaPracovisteList: [] as (DropdownItem & { vyrobniLinkaSegmentId: number })[],
-	statusIoList,
+  vyrobniLinkaSegmentList: [] as DropdownItem[],
+  vyrobniLinkaPracovisteList: [] as (DropdownItem & { vyrobniLinkaSegmentId: number })[],
+  statusIoList,
 };
 
 export const props = {};
 
 export const tables = {
-	[STORE_TABLE]: table,
+  [STORE_TABLE]: table,
 };
 
 type Server = typeof server;
@@ -51,22 +51,22 @@ type ExtraActions = { loadOnLinkaChange(): Promise<void> } & PageActionsGlobal<S
 type ExtraGetters = PageGetters<Server, Local, Props, Tables>;
 
 const extraActions = {
-	async filter(filter: Record<string, unknown>) {
-		const { user } = useAuthorization();
-		if (!this.last) return;
-		this.last.serverData.vyrobniLinkaId = user.value?.vyrobniLinkaId ?? null;
-		this.loadOnLinkaChange();
-	},
-	async loadOnLinkaChange() {
-		if (this.last) {
-			const { vyrobniLinkaId } = this.last.serverData;
-			if (!vyrobniLinkaId) return;
-			const respontSegment = await apiProviderSegment.getDropDownList({ vyrobniLinkaId });
-			this.last.localData.vyrobniLinkaSegmentList = respontSegment?.data ?? [];
-			const respontPracoviste = await apiProviderPracoviste.getDropDownList({ vyrobniLinkaId });
-			this.last.localData.vyrobniLinkaPracovisteList = respontPracoviste?.data ?? [];
-		}
-	},
+  async filter(filter: Record<string, unknown>) {
+    const { user } = useAuthorization();
+    if (!this.last) return;
+    this.last.serverData.vyrobniLinkaId = user.value?.vyrobniLinkaId ?? null;
+    this.loadOnLinkaChange();
+  },
+  async loadOnLinkaChange() {
+    if (this.last) {
+      const { vyrobniLinkaId } = this.last.serverData;
+      if (!vyrobniLinkaId) return;
+      const respontSegment = await apiProviderSegment.getDropDownList({ vyrobniLinkaId });
+      this.last.localData.vyrobniLinkaSegmentList = respontSegment?.data ?? [];
+      const respontPracoviste = await apiProviderPracoviste.getDropDownList({ vyrobniLinkaId });
+      this.last.localData.vyrobniLinkaPracovisteList = respontPracoviste?.data ?? [];
+    }
+  },
 } as ActionOptions<typeof name, Server, Local, Props, Tables, ExtraGetters, ExtraActions>;
 
 const name = listName(NAME);
@@ -74,9 +74,9 @@ const name = listName(NAME);
 const page = new Page(name, server, local, props, tables);
 
 export const useStore = pageStoreFactory({
-	name,
-	apiProvider,
-	page,
-	extraGetters: {},
-	extraActions,
+  name,
+  apiProvider,
+  page,
+  extraGetters: {},
+  extraActions,
 });

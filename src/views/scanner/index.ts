@@ -3,14 +3,14 @@ import { NAME, VYHLEDAT_VOZIDLO_APP_MENU, VYHLEDAT_VOZIDLO_APP_URI } from './con
 import { route } from './router';
 
 export const Scanner = {
-	name: NAME,
-	route,
-	menu: [
-		{
-			i18nKey: VYHLEDAT_VOZIDLO_APP_MENU,
-			to: VYHLEDAT_VOZIDLO_APP_URI,
-			uriType: UriType.PATH,
-		},
-		{ i18nKey: 'vyhledatVozidlo', to: 'BarcodeScennerVozidlo', uriType: UriType.NAME },
-	],
+  name: NAME,
+  route,
+  menu: [
+    {
+      i18nKey: VYHLEDAT_VOZIDLO_APP_MENU,
+      to: VYHLEDAT_VOZIDLO_APP_URI,
+      uriType: UriType.PATH,
+    },
+    { i18nKey: 'vyhledatVozidlo', to: 'BarcodeScennerVozidlo', uriType: UriType.NAME },
+  ],
 };

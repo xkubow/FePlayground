@@ -7,6 +7,6 @@ export type KTable = typeof kTable;
 export type IdUpdateStatus = { id: string; updateStatus: UpdateStatus | null };
 
 export class Interval<T = Date> {
-	od: T | null = null;
-	do: T | null = null;
+  od: T | null = null;
+  do: T | null = null;
 }

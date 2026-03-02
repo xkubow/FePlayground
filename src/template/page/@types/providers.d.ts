@@ -1,5 +1,5 @@
 export type InitStoreModule = {
-	resetStoreState: () => void;
-	setPropsToStore: () => void;
-	setPropsToServerStore: () => void;
+  resetStoreState: () => void;
+  setPropsToStore: () => void;
+  setPropsToServerStore: () => void;
 };

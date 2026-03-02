@@ -1,7 +1,7 @@
 <template>
-	<el-collapse-item>
-		<slot />
-	</el-collapse-item>
+  <el-collapse-item>
+    <slot />
+  </el-collapse-item>
 </template>
 
 <script setup lang="ts"></script>
