@@ -4,11 +4,7 @@
 	</slot>
 </template>
 
-<script lang="ts">
-export default {
-	name: 'k-table-cell',
-};
-</script>
+
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue';

@@ -34,6 +34,7 @@
 							@update:dobaOpravyMinuty="updateDobaOpravyMinuty" @update:text="updateCasOpravyText"
 							@update:intervalOpravy="updateIntervalOpravy" />
 						<k-row>
+							{{ dropDownList.sqsZavadaKategorie }}
 							<k-select :span="3" label-key="kategorie" v-model="sqsZavadaKategorieId"
 								:options="dropDownList.sqsZavadaKategorie" @change="sqsZavadaKategorieChange"
 								:disabled="isFromNavrhovane || isViewMode" />

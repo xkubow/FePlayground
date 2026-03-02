@@ -8,26 +8,27 @@
 	</k-wrapper>
 </template>
 
-<script lang="ts">
-import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-import { defineComponent, toRefs } from 'vue';
 
-export default defineComponent({
-	name: 'k-color-picker',
-	emits: ['update:modelValue'],
-	props: {
-		...baseInputProps,
-	},
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const base = baseInput(propsRef, ctx.emit);
+<script setup lang="ts">
+  import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
+  import { toRefs } from 'vue';
 
-		return {
-			base,
-			...base,
-		};
-	},
-});
+  const emit = defineEmits(['update:modelValue']);
+  const props = defineProps({
+    ...baseInputProps,
+  });
+  const propsRef = toRefs(props);
+  const base = baseInput(propsRef, emit);
+  const {
+    validationPropertyCmp,
+    vmodel,
+    placeholderText,
+    labelText,
+    isDisabled,
+    isHiddenLabel,
+    isListMode,
+  } = base;
+  const { showLabel, wrappClass, wrapp, span } = propsRef;
 </script>
 
 <style scoped lang="scss">

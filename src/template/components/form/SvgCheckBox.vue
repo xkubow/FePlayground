@@ -18,36 +18,27 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-import { defineComponent, toRefs } from 'vue';
-import CheckedBoxIcon from '../svg/CheckedBox.vue';
-import UnCheckedBoxIcon from '../svg/UnCheckedBox.vue';
 
-export default defineComponent({
-	name: 'k-svg-check-box',
-	props: {
+<script setup lang="ts">
+	import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
+	import { toRefs } from 'vue';
+	import CheckedBoxIcon from '../svg/CheckedBox.vue';
+	import UnCheckedBoxIcon from '../svg/UnCheckedBox.vue';
+
+	const emit = defineEmits(['update:modelValue']);
+	const props = defineProps({
 		...baseInputProps,
 		value: Boolean,
 		label: String,
 		size: { type: Number, default: 32 },
-	},
-	emits: ['update:modelValue'],
-	components: {
-		CheckedBoxIcon,
-		UnCheckedBoxIcon,
-	},
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const base = baseInput(propsRef, ctx.emit);
+	});
+	const propsRef = toRefs(props);
+	const base = baseInput(propsRef, emit);
 
-		function clicked() {
-			if (base.isDisabled.value) return;
-			base.vmodel.value = !base.vmodel.value;
-		}
-		return { ...base, clicked };
-	},
-});
+	function clicked() {
+		if (base.isDisabled.value) return;
+		base.vmodel.value = !base.vmodel.value;
+}
 </script>
 
 <style scoped lang="scss">

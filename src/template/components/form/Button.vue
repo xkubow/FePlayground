@@ -13,23 +13,20 @@
 	</el-button>
 </template>
 
-<script lang="ts">
-import { defineComponent, toRefs } from 'vue';
-import { baseProps, useBase } from '../base/base';
+<script setup lang="ts">
+	import { toRefs } from 'vue';
+	import { baseProps, useBase } from '../base/base';
 
-export default defineComponent({
-	name: 'k-button',
-	props: {
+	const props = defineProps({
 		...baseProps,
 		tooltip: String,
-	},
-	setup(props) {
-		const propRefs = toRefs(props);
-		const baseInit = useBase(propRefs);
-
-		return { ...baseInit };
-	},
-});
+	});
+	const propRefs = toRefs(props);
+	const base = useBase(propRefs);
+	const {
+		isDisabled,
+		labelText,
+	} = base;
 </script>
 
 <style scoped></style>

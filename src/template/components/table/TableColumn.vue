@@ -25,40 +25,32 @@
 	</el-table-column>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, toRefs, type PropType } from 'vue';
+<script setup lang="ts">
+import { computed, toRefs, type PropType } from 'vue';
 import { baseProps, useBase } from '../base/base';
 import type { Column } from './@types/table';
 import KTableCell from './TableCell.vue';
 import KTableColumnHeader from './TableColumnHeader.vue';
 
-export default defineComponent({
-	name: 'k-table-column',
-	components: {
-		KTableCell,
-		KTableColumnHeader,
-	},
-	emits: ['update:column'],
-	props: {
-		...baseProps,
-		column: { type: Object as PropType<Column> },
-		tableName: String,
-		headerAlign: String,
-		nextSortIndex: Number,
-	},
-	setup(props, { slots }) {
-		const propsRef = toRefs(props);
-		const baseInit = useBase(propsRef);
-
-		const hasHeaderSlot = computed(() => {
-			return !!slots.header;
-		});
-
-		const width = computed(() => propsRef.column.value?.width ?? undefined);
-
-		return { ...baseInit, hasHeaderSlot, width };
-	},
+const emit = defineEmits(['update:column']);
+const props = defineProps({
+	...baseProps,
+	column: { type: Object as Object as PropType<Column> },
+	tableName: String,
+	headerAlign: String,
+	nextSortIndex: Number,
 });
+const propsRef = toRefs(props);
+const baseInit = useBase(propsRef);
+
+const hasHeaderSlot = computed(() => {
+	// slots is available in <script setup>
+	// @ts-ignore
+	return !!slots?.header;
+});
+
+const width = computed(() => propsRef.column?.value?.width ?? undefined);
+const labelText = baseInit.labelText;
 </script>
 
 <style scoped></style>

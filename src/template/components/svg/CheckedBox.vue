@@ -9,17 +9,8 @@
 	</g>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-	props: {
-		color: String,
-	},
-	setup() {
-		return {};
-	},
-});
+<script setup lang="ts">
+defineProps<{ color?: string }>();
 </script>
 
 <style scoped lang="scss"></style>

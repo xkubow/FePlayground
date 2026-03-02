@@ -23,20 +23,19 @@
 	</k-wrapper>
 </template>
 
-<script lang="ts">
-import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-import { emptyFunc } from '@/template/utils/dataMapper';
-import type ElInput from 'element-plus/lib/components/input';
-import { defineComponent, inject, ref, toRefs } from 'vue';
-import { useKVirtualKeyboard } from './KVirtualKeyboard';
-import { useKeyboardStore } from './KVirtualKeyboard/store';
-import type { ChangeOptions } from './KVirtualKeyboard/type';
 
-export default defineComponent({
-	name: 'k-input',
-	emits: ['update:modelValue'],
-	inheritAttrs: false,
-	props: {
+<script setup lang="ts">
+	import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
+	import { emptyFunc } from '@/template/utils/dataMapper';
+	import type ElInput from 'element-plus/lib/components/input';
+	import { inject, ref, toRefs } from 'vue';
+	import { useKVirtualKeyboard } from './KVirtualKeyboard';
+	import { useKeyboardStore } from './KVirtualKeyboard/store';
+	import type { ChangeOptions } from './KVirtualKeyboard/type';
+
+	const emit = defineEmits(['update:modelValue']);
+	defineOptions({ inheritAttrs: false });
+	const props = defineProps({
 		...baseInputProps,
 		mask: { type: String, default: undefined },
 		type: { type: String, default: 'text' },
@@ -47,34 +46,33 @@ export default defineComponent({
 		isAutocomplete: { type: Boolean, default: false },
 		fetchSuggestions: { type: Function, default: () => ({}) },
 		maxlength: { type: Number },
-	},
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const base = baseInput(propsRef, ctx.emit);
+	});
+	const propsRef = toRefs(props);
+	const base = baseInput(propsRef, emit);
+	const {
+		validationPropertyCmp,
+		vmodel,
+		placeholderText,
+		labelText,
+		isDisabled,
+		isHiddenLabel,
+		isListMode,
+	} = base;
+	const { showLabel, wrappClass, wrapp, span, required, suffixText } = propsRef;
+	const elInputRef = ref<typeof ElInput | null>(null);
+	const keyboardStore = useKeyboardStore();
+	const changeKeyboardOptions: ChangeOptions | undefined = inject('changeKeyboardOptions');
+	const filterSubmit = inject('filterSubmit', emptyFunc);
 
-		const elInputRef = ref<typeof ElInput | null>(null);
-
-		const keyboardStore = useKeyboardStore();
-		const changeKeyboardOptions: ChangeOptions | undefined = inject('changeKeyboardOptions');
-		const filterSubmit = inject('filterSubmit', emptyFunc);
-
-		function onKeyReleased(button: string) {
-			if (base.isListMode && button === '{enter}') {
-				filterSubmit && filterSubmit();
-				keyboardStore.dialogVisible = false;
-			}
+	function onKeyReleased(button: string) {
+		if (isListMode && button === '{enter}') {
+			filterSubmit && filterSubmit();
+			keyboardStore.dialogVisible = false;
 		}
+	}
 
-		if (!changeKeyboardOptions) throw Error('changeKeyboardOptions not injected');
-		const { focus } = useKVirtualKeyboard({ changeKeyboardOptions, vmodel: base.vmodel, onKeyReleased });
-		return {
-			base,
-			focus,
-			...base,
-			elInputRef,
-		};
-	},
-});
+	if (!changeKeyboardOptions) throw Error('changeKeyboardOptions not injected');
+	const { focus } = useKVirtualKeyboard({ changeKeyboardOptions, vmodel, onKeyReleased });
 </script>
 
 <style lang="scss" scoped></style>

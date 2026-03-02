@@ -4,42 +4,31 @@
 	</el-form>
 </template>
 
-<script lang="ts">
+
+<script setup lang="ts">
 import type { FormInstance } from 'element-plus';
-import { defineComponent, ref, toRefs } from 'vue';
+import { ref, toRefs } from 'vue';
 
-export default defineComponent({
-	name: 'k-form',
-	props: {
-		model: { type: Object, default: () => ({}) },
-		rules: { type: Object, default: () => ({}) }
+const props = defineProps({
+	model: { type: Object, default: () => ({}) },
+	rules: { type: Object, default: () => ({}) }
+});
+const elFormRef = ref<FormInstance | null>(null);
+const { model, rules } = toRefs(props);
+
+defineExpose({
+	validate: async (...args: any[]) => {
+		try {
+			const t = await elFormRef.value?.validate?.();
+			return t !== false;
+		} catch {
+			return false;
+		}
 	},
-	setup(_props, { expose }) {
-		// Hold the real ElForm instance
-		const elFormRef = ref<FormInstance | null>(null)
-		const { model, rules } = toRefs(_props);
-
-		// Expose a facade so parents can call these on <k-form ref="...">
-		expose({
-			validate: async (...args: any[]) => {
-				try {
-					const t = await elFormRef.value?.validate?.();
-					return t !== false;
-				} catch {
-					return false;
-				}
-
-			},
-			validateField: (...args: any[]) => elFormRef.value?.validateField?.(...args),
-			clearValidate: (...args: any[]) => elFormRef.value?.clearValidate?.(...args),
-			resetFields: (...args: any[]) => elFormRef.value?.resetFields?.(...args),
-
-			// optional: raw instance if needed
-			instance: elFormRef,
-		})
-
-		return { elFormRef, model, rules }
-	},
+	validateField: (...args: any[]) => elFormRef.value?.validateField?.(...args),
+	clearValidate: (...args: any[]) => elFormRef.value?.clearValidate?.(...args),
+	resetFields: (...args: any[]) => elFormRef.value?.resetFields?.(...args),
+	instance: elFormRef,
 });
 </script>
 

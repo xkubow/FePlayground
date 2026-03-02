@@ -1,12 +1,12 @@
 <template>
 	<k-table-column v-bind="{ width }">
 		<template #header>
-			<el-checkbox v-model="seelctAllModel" :disabled="isDisabled" :indeterminate="indeterminate"></el-checkbox>
+			<el-checkbox v-model="selectAllModel" :disabled="disabled" :indeterminate="indeterminate"></el-checkbox>
 		</template>
 		<template #default="scope">
 			<el-checkbox
 				:size="'small'"
-				:disabled="isDisabled"
+				:disabled="disabled"
 				v-model="scope.row.selected"
 				:indeterminate="scope.row.selected === null"
 				@click="clicked"
@@ -19,39 +19,32 @@
 	</k-table-column>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, toRefs } from 'vue';
+<script setup lang="ts">
+import { computed, toRefs } from 'vue';
 import { baseProps, useBase } from '../base/base';
 
-export default defineComponent({
-	name: 'k-table-column-select',
-	props: {
-		...baseProps,
-		selectAll: Boolean,
-		indeterminate: Boolean,
-		width: { type: Number, default: 35 },
+const emit = defineEmits(['allSelectionClicked', 'selectChange', 'update:selectAll']);
+const props = defineProps({
+	...baseProps,
+	selectAll: Boolean,
+	indeterminate: Boolean,
+	width: { type: Number, default: 35 },
+});
+const propsRef = toRefs(props);
+const baseInit = useBase(propsRef);
+
+const selectAllModel = computed({
+	get(): boolean {
+		return propsRef.selectAll?.value;
 	},
-	emits: ['allSelectionClicked', 'selectChange', 'update:selectAll'],
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const baseInit = useBase(propsRef);
-
-		const selectAllModel = computed({
-			get(): boolean {
-				return propsRef.selectAll?.value;
-			},
-			set(val: boolean) {
-				ctx.emit('update:selectAll', val);
-			},
-		});
-
-		function clicked(event: Event) {
-			event.stopPropagation();
-		}
-
-		return { ...baseInit, seelctAllModel: selectAllModel, clicked };
+	set(val: boolean) {
+		emit('update:selectAll', val);
 	},
 });
+
+function clicked(event: Event) {
+	event.stopPropagation();
+}
 </script>
 
 <style lang="scss" scoped></style>

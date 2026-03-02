@@ -33,9 +33,9 @@
 	</el-table-column>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { removesuffixFromName } from '@/template/page/constants';
-import { defineComponent, toRefs } from 'vue';
+import { toRefs } from 'vue';
 import { useRouter } from 'vue-router';
 import { baseProps, useBase } from '../base/base';
 import type { ExtraButton, Row } from './@types/table';
@@ -43,41 +43,31 @@ import { buttonEmits, initButtons } from './buttons';
 import KTableColumnHeader from './TableColumnHeader.vue';
 import { VIEW } from './tableOperations';
 
-export default defineComponent({
-	name: 'k-table-column',
-	components: {
-		KTableColumnHeader,
-	},
-	props: {
-		...baseProps,
-		width: { type: Number, default: 70 },
-		extraButtons: { type: Object as () => ExtraButton[] },
-		objectName: { type: String },
-		operations: Number,
-		rowKey: { type: String, default: '0' },
-		useRowOperations: Boolean,
-	},
-	emits: buttonEmits,
-	setup(props, { emit }) {
-		const router = useRouter();
-
-		const propsRef = toRefs(props);
-		const baseInit = useBase(propsRef);
-		const name = router.currentRoute.value.name as string;
-		const NAME = propsRef.objectName.value ?? removesuffixFromName(name);
-		const buttons = initButtons(NAME, props.extraButtons, emit);
-
-		function btnsVisible(row: Row) {
-			return buttons.extraButtons.filter((b) => b.isVisible(row));
-		}
-
-		function btnDisabled(btn: ExtraButton) {
-			return btn.value === VIEW ? false : undefined;
-		}
-
-		return { ...baseInit, buttons, btnsVisible, btnDisabled };
-	},
+const emit = defineEmits(buttonEmits);
+const props = defineProps({
+	...baseProps,
+	width: { type: Number, default: 70 },
+	extraButtons: { type: Object as () => ExtraButton[] },
+	objectName: { type: String },
+	operations: Number,
+	rowKey: { type: String, default: '0' },
+	useRowOperations: Boolean,
 });
+const router = useRouter();
+const propsRef = toRefs(props);
+const baseInit = useBase(propsRef);
+const labelText = baseInit.labelText;
+const name = router.currentRoute.value.name as string;
+const NAME = propsRef.objectName?.value ?? removesuffixFromName(name);
+const buttons = initButtons(NAME, props.extraButtons, emit);
+
+function btnsVisible(row: Row) {
+	return buttons.extraButtons.filter((b) => b.isVisible(row));
+}
+
+function btnDisabled(btn: ExtraButton) {
+	return btn.value === VIEW ? false : undefined;
+}
 </script>
 
 <style scoped></style>

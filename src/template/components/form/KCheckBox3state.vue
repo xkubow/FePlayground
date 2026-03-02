@@ -11,50 +11,47 @@
 	</k-wrapper>
 </template>
 
-<script lang="ts">
-import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-import _ from 'lodash';
-import { computed, defineComponent, toRefs } from 'vue';
 
-//477
+<script setup lang="ts">
+	import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
+	import _ from 'lodash';
+	import { computed, toRefs } from 'vue';
 
-export default defineComponent({
-	name: 'k-check-box-3state',
-	emits: ['update:modelValue'],
-	props: {
+	const emit = defineEmits(['update:modelValue']);
+	const props = defineProps({
 		...baseInputProps,
-	},
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const base = baseInput(propsRef, ctx.emit);
+	});
+	const propsRef = toRefs(props);
+	const base = baseInput(propsRef, emit);
+	const {
+		validationPropertyCmp,
+		vmodel,
+		placeholderText,
+		labelText,
+		isDisabled,
+		isHiddenLabel,
+		isListMode,
+	} = base;
+	const { showLabel, wrappClass, wrapp, span } = propsRef;
 
-		function map(value: unknown) {
-			switch (value) {
-				case false:
-					return null;
-				case null:
-					return true;
-				case true:
-					return false;
-				default:
-					return false;
-			}
+	function map(value: unknown) {
+		switch (value) {
+			case false:
+				return null;
+			case null:
+				return true;
+			case true:
+				return false;
+			default:
+				return false;
 		}
+	}
 
-		function update() {
-			ctx.emit('update:modelValue', map(propsRef.modelValue?.value));
-		}
+	function update() {
+		emit('update:modelValue', map(propsRef.modelValue?.value));
+	}
 
-		const indeterminate = computed(() => (_.isNull(propsRef.modelValue?.value) ? true : false));
-
-		return {
-			base,
-			...base,
-			update,
-			indeterminate,
-		};
-	},
-});
+	const indeterminate = computed(() => (_.isNull(propsRef.modelValue?.value) ? true : false));
 </script>
 
 <style scoped lang="scss"></style>

@@ -1,17 +1,120 @@
+<script setup lang="ts">
+	defineOptions({ inheritAttrs: false });
+	import type { Priloha } from '@/views/prilohy/type';
+	import type { IBaseInputProps } from '../@types/input';
+	import { baseInput } from '@/template/components/base/baseInput';
+	import { Finished as FinishedIcon } from '@element-plus/icons-vue';
+	import Color from '@tiptap/extension-color';
+	import { Link } from '@tiptap/extension-link';
+	import { Placeholder } from '@tiptap/extension-placeholder';
+	import Style from '@tiptap/extension-text-style';
+	import Typography from '@tiptap/extension-typography';
+	import StarterKit from '@tiptap/starter-kit';
+	import { EditorContent, useEditor } from '@tiptap/vue-3';
+	import { computed, onBeforeUnmount, ref, toRefs, watch } from 'vue';
+	import { RiBold, RiLinkM, RiStrikethrough2 } from 'vue-remix-icons';
+
+	defineOptions({ inheritAttrs: false });
+
+	export interface Props extends IBaseInputProps {
+		modelValue: string | null;
+		editable?: boolean;
+		baseUrl: string;
+		references?: Priloha[];
+		uploadVisible?: boolean;
+	}
+
+	const props = withDefaults(defineProps<Props>(), { editable: true, wrapp: true, uploadVisible: true });
+	const propsRef = toRefs(props);
+	const { wrapp, wrappClass, span, showLabel, editable, references, uploadVisible } = propsRef;
+
+	const showSave = ref((propsRef.modelValue.value?.length ?? 0) > 0);
+	const emits = defineEmits(['update:modelValue', 'upload']);
+	const base = baseInput(propsRef, emits);
+	const {
+		validationPropertyCmp,
+		vmodel,
+		placeholderText,
+		labelText,
+		isDisabled,
+		isHiddenLabel,
+		isListMode,
+	} = base;
+	const linkId = ref<string | number | null>(null);
+	const linkPopUpVisible = ref(false);
+
+	Placeholder.configure({ placeholder: '' });
+	const linkExtension = Link.configure({ openOnClick: true, autolink: false });
+
+	const editor = useEditor({
+		editable: editable.value,
+		extensions: [StarterKit, linkExtension, Typography, Placeholder, Style, Color],
+		content: props.modelValue,
+		onUpdate: ({ editor }) => {
+			emits('update:modelValue', editor.getHTML());
+			showSave.value = editor.getHTML().length > 0;
+		},
+	});
+
+	watch(propsRef.modelValue, (val) => {
+		const isSame = editor.value?.getHTML() === val;
+  if (isSame) return;
+  editor.value?.commands.setContent(val, false);
+});
+
+
+function setColor(event: any) {
+	editor.value?.chain().focus().setColor(event.target?.value).run();
+}
+
+function linkBtnClicked() {
+	if (editor.value?.isActive('link')) editor.value?.commands.unsetLink();
+	else linkPopUpVisible.value = true;
+}
+
+const isTextSelected = computed(() => {
+	if (!editor.value) return false;
+	const { view, state } = editor.value;
+	const { from, to } = view.state.selection;
+	const text = state.doc.textBetween(from, to, ' ');
+	return text.length > 0;
+});
+
+const separator = computed(() => (propsRef.baseUrl.value.includes('?') ? '&' : '?'));
+const selectedReference = computed(() => references.value?.find((r) => r.id === linkId.value));
+const selectedHref = computed(() => (selectedReference.value ? `${propsRef.baseUrl.value}${separator.value}guid=${selectedReference.value.id}` : linkId.value));
+
+function addLink() {
+	if (isTextSelected.value)
+		editor.value
+			?.chain()
+			.focus()
+			.toggleLink({ href: selectedHref.value as string, target: '_blank' })
+			.run();
+	else {
+		const text = selectedReference.value ? selectedReference.value.celyNazev : linkId.value;
+		editor.value?.commands.insertContent(`<a href="${selectedHref.value}">${text}</a>`);
+	}
+	linkId.value = null;
+	linkPopUpVisible.value = false;
+}
+
+function addKomentar() {
+	emits('upload');
+}
+</script>
+
 <template>
-	<k-wrapper
-		ref="wrapper"
-		:show-label="!base.isHiddenLabel && showLabel"
-		v-bind="{
-			...base,
-			disabled: base.isDisabled.value,
-			validationProperty: base.validationPropertyCmp.value,
-			label: base.labelText.value,
-			wrapp: propsRef.wrapp.value,
-			class: propsRef.wrappClass,
-			span: propsRef.span.value,
-		}"
-	>
+  <k-wrapper
+    ref="wrapper"
+    :show-label="!isHiddenLabel && showLabel"
+    :disabled="isDisabled"
+    :validation-property="validationPropertyCmp"
+    :label="labelText"
+    :wrapp="wrapp"
+    :class="wrappClass"
+    :span="span"
+  >
 		<div class="editor">
 			<k-row class="jc-sb">
 				<k-button-group v-if="editable">
@@ -56,123 +159,5 @@
 			<editor-content :editor="editor" class="editor__content" />
 		</div>
 	</k-wrapper>
+
 </template>
-
-<script lang="ts">
-export default {
-	inheritAttrs: false,
-};
-</script>
-
-<script setup lang="ts">
-import { baseInput } from '@/template/components/base/baseInput';
-import type { Priloha } from '@/views/prilohy/type';
-import { Finished as FinishedIcon } from '@element-plus/icons-vue';
-import Color from '@tiptap/extension-color';
-import { Link } from '@tiptap/extension-link';
-import { Placeholder } from '@tiptap/extension-placeholder';
-import Style from '@tiptap/extension-text-style';
-import Typography from '@tiptap/extension-typography';
-import StarterKit from '@tiptap/starter-kit';
-import { EditorContent, useEditor } from '@tiptap/vue-3';
-import { computed, onBeforeUnmount, ref, toRefs, watch, type SetupContext } from 'vue';
-import { RiBold, RiLinkM, RiStrikethrough2 } from 'vue-remix-icons';
-import type { IBaseInputProps } from '../@types/input';
-
-export interface Props extends IBaseInputProps {
-	modelValue: string | null;
-	editable?: boolean;
-	baseUrl: string;
-	references?: Priloha[];
-	uploadVisible?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), { editable: true, wrapp: true, uploadVisible: true });
-const propsRef = toRefs(props);
-
-const showSave = ref((propsRef.modelValue.value?.length ?? 0) > 0);
-
-const emits = defineEmits(['update:modelValue', 'upload']);
-
-const base = baseInput(propsRef, emits);
-const linkId = ref<string | number | null>(null);
-const linkPopUpVisible = ref(false);
-
-Placeholder.configure({
-	placeholder: '',
-});
-const linkExtension = Link.configure({
-	openOnClick: true,
-	autolink: false,
-});
-
-const editor = useEditor({
-	editable: props.editable,
-	extensions: [StarterKit, linkExtension, Typography, Placeholder, Style, Color],
-	content: props.modelValue,
-	onUpdate: ({ editor, transaction }) => {
-		emits('update:modelValue', editor.getHTML());
-		showSave.value = editor.getHTML().length > 0;
-	},
-});
-
-watch(propsRef.modelValue, (val) => {
-	const isSame = editor.value?.getHTML() === val;
-
-	if (isSame) return;
-
-	editor.value?.commands.setContent(val, false);
-});
-
-onBeforeUnmount(() => {
-	editor.value?.destroy();
-});
-
-function addKomentar() {
-	emits('upload');
-}
-
-function setColor(event: any) {
-	editor.value?.chain().focus().setColor(event.target?.value).run();
-}
-
-function linkBtnClicked() {
-	if (editor.value?.isActive('link')) editor.value?.commands.unsetLink();
-	else linkPopUpVisible.value = true;
-}
-const isTextSelected = computed(() => {
-	if (!editor.value) return false;
-	const { view, state } = editor.value;
-	const { from, to } = view.state.selection;
-
-	const text = state.doc.textBetween(from, to, ' ');
-	return text.length > 0;
-});
-
-const separator = computed(() => (propsRef.baseUrl.value.includes('?') ? '&' : '?'));
-const selectedReference = computed(() => propsRef.references?.value?.find((r) => r.id === linkId.value));
-const selectedHref = computed(() => (selectedReference.value ? `${propsRef.baseUrl.value}${separator.value}guid=${selectedReference.value.id}` : linkId.value));
-
-function addLink() {
-	if (isTextSelected.value)
-		editor.value
-			?.chain()
-			.focus()
-			.toggleLink({ href: selectedHref.value as string, target: '_blank' })
-			.run();
-	else {
-		const text = selectedReference.value ? selectedReference.value.celyNazev : linkId.value;
-		editor.value?.commands.insertContent(`<a href="${selectedHref.value}">${text}</a>`);
-	}
-	linkId.value = null;
-	linkPopUpVisible.value = false;
-}
-</script>
-
-<style scoped>
-.color-picker {
-	width: 36px;
-	height: 24px;
-	padding: 0px;
-}
-</style>

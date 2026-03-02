@@ -8,26 +8,27 @@
 	</k-wrapper>
 </template>
 
-<script lang="ts">
-import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-import { defineComponent, toRefs } from 'vue';
 
-export default defineComponent({
-	name: 'k-date-picker',
-	emits: ['update:modelValue'],
-	props: {
+<script setup lang="ts">
+	import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
+	import { toRefs } from 'vue';
+
+	const emit = defineEmits(['update:modelValue']);
+	const props = defineProps({
 		...baseInputProps,
-	},
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const base = baseInput(propsRef, ctx.emit);
-
-		return {
-			base,
-			...base,
-		};
-	},
-});
+	});
+	const propsRef = toRefs(props);
+	const base = baseInput(propsRef, emit);
+	const {
+		validationPropertyCmp,
+		vmodel,
+		placeholderText,
+		labelText,
+		isDisabled,
+		isHiddenLabel,
+		isListMode,
+	} = base;
+	const { showLabel, wrappClass, wrapp, span } = propsRef;
 </script>
 
 <style scoped lang="scss"></style>

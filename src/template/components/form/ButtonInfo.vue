@@ -4,15 +4,9 @@
 	</el-button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
 
-export default defineComponent({
-	name: 'k-info-button',
-	setup() {
-		return {};
-	},
-});
+<script setup lang="ts">
+// No props or logic needed for this simple wrapper
 </script>
 
 <style scoped></style>

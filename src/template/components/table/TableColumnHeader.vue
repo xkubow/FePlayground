@@ -16,40 +16,29 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { CaretBottom as CaretBottomIcon, CaretTop as CaretTopIcon } from '@element-plus/icons-vue';
-import { defineComponent, toRefs } from 'vue';
+import { toRefs } from 'vue';
 import { baseProps, useBase } from '../base/base';
 import type { Column } from './@types/table';
 import { useTableSorting } from './sorting';
 import TableColumnSearch from './TableColumnSearch.vue';
 
-export default defineComponent({
-	name: 'k-table-column-header',
-	props: {
-		...baseProps,
-		column: { type: Object as () => Column },
-		nextSortIndex: Number,
-	},
-	emits: ['search-input', 'update:column'],
-	components: {
-		CaretTopIcon,
-		CaretBottomIcon,
-		TableColumnSearch,
-	},
-	setup(props, { emit }) {
-		const propsRef = toRefs(props);
-		const { column, nextSortIndex } = propsRef;
-		const baseInit = useBase(propsRef);
-		const { colorAscending, colorDescending, sort } = useTableSorting({ column }, emit, nextSortIndex);
-
-		const updateFilter = (col: Column, filterValue: any) => {
-			emit('update:column', { ...col, filter: filterValue });
-		};
-
-		return { ...baseInit, colorAscending, colorDescending, sort, updateFilter };
-	},
+const emit = defineEmits(['search-input', 'update:column']);
+const props = defineProps({
+	...baseProps,
+	column: { type: Object as () => Column },
+	nextSortIndex: Number,
 });
+const propsRef = toRefs(props);
+const { column, nextSortIndex } = propsRef;
+const baseInit = useBase(propsRef);
+const { colorAscending, colorDescending, sort } = useTableSorting({ column }, emit, nextSortIndex);
+const labelText = baseInit.labelText;
+
+const updateFilter = (col: Column, filterValue: any) => {
+	emit('update:column', { ...col, filter: filterValue });
+};
 </script>
 
 <style scoped>

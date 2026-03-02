@@ -4,21 +4,16 @@
 	</el-button-group>
 </template>
 
-<script lang="ts">
-import { defineComponent, toRefs } from 'vue';
-import { baseProps, useBase } from '../base/base';
 
-export default defineComponent({
-	name: 'k-button-group',
-	props: {
+<script setup lang="ts">
+	import { baseProps, useBase } from '../base/base';
+	import { toRefs } from 'vue';
+
+	const props = defineProps({
 		...baseProps,
-	},
-	setup(props) {
-		const propRefs = toRefs(props);
-		const baseInit = useBase(propRefs);
-		return { ...baseInit };
-	},
-});
+	});
+	const propRefs = toRefs(props);
+	const { isDisabled } = useBase(propRefs);
 </script>
 
 <style scoped></style>

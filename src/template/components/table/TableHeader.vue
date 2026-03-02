@@ -3,17 +3,9 @@
 	<k-button v-if="canExport" :disabled="false" label-key="export" @click="$emit('exportClick', $event)" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-	name: 'k-table-header',
-	emits: ['exportClick', 'createClick'],
-	props: {
-		canExport: { type: Boolean },
-		canCreate: { type: Boolean },
-	},
-});
+<script setup lang="ts">
+defineProps<{ canExport?: boolean; canCreate?: boolean }>();
+defineEmits(['exportClick', 'createClick']);
 </script>
 
 <style scoped></style>

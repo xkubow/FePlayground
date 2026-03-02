@@ -22,79 +22,76 @@
 	</k-wrapper>
 </template>
 
-<script lang="ts">
-import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-import { emptyFunc } from '@/template/utils/dataMapper';
-import type { ElInput } from 'element-plus';
-import _ from 'lodash';
-import { computed, defineComponent, inject, ref, toRefs } from 'vue';
-import { useKVirtualKeyboard } from './KVirtualKeyboard';
-import { useKeyboardStore } from './KVirtualKeyboard/store';
-import type { ChangeOptions } from './KVirtualKeyboard/type';
 
-export default defineComponent({
-	name: 'k-input',
-	emits: ['update:modelValue'],
-	inheritAttrs: false,
-	props: {
-		...baseInputProps,
-		mask: { type: String, default: undefined },
-		autosize: [Boolean, Object],
-		suffixText: { type: String, default: '' },
-		autofocus: { type: Boolean, default: undefined },
-		isAutocomplete: { type: Boolean, default: false },
-		fetchSuggestions: { type: Function, default: () => ({}) },
-		maxlength: { type: Number },
-		controls: { type: Boolean, default: false },
-		modelValue: Number,
-	},
-	setup(props, ctx) {
-		const propsRef = toRefs(props);
-		const base = baseInput(propsRef, ctx.emit);
-		const elInputRef = ref<typeof ElInput | null>(null);
-		const changeKeyboardOptions: ChangeOptions | undefined = inject('changeKeyboardOptions');
-		const keyboardStore = useKeyboardStore();
+<script setup lang="ts">
+	import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
+	import { emptyFunc } from '@/template/utils/dataMapper';
+	import type { ElInput } from 'element-plus';
+	import _ from 'lodash';
+	import { computed, inject, ref, toRefs } from 'vue';
+	import { useKVirtualKeyboard } from './KVirtualKeyboard';
+	import { useKeyboardStore } from './KVirtualKeyboard/store';
+	import type { ChangeOptions } from './KVirtualKeyboard/type';
 
-		const vmodel = computed({
-			get() {
-				return _.isNull(propsRef.modelValue?.value) ? null : propsRef.modelValue?.value;
-			},
-			set(val) {
-				ctx.emit('update:modelValue', _.isUndefined(val) ? null : val);
-			},
-		});
-
-		function input(val: string) {
-			if (val.length) {
-				const num = parseInt(val);
-				!isNaN(num) && (vmodel.value = num);
-			} else {
-				vmodel.value = null;
-			}
-		}
-		if (!changeKeyboardOptions) throw Error('changeKeyboardOptions not injected');
-
-		const filterSubmit = inject('filterSubmit', emptyFunc);
-
-		function onKeyReleased(button: string) {
-			if (base.isListMode && button === '{enter}') {
-				filterSubmit && filterSubmit();
-				keyboardStore.dialogVisible = false;
-			}
-		}
-
-		const { focus } = useKVirtualKeyboard({ changeKeyboardOptions, vmodel, layoutType: 'numeric', onKeyReleased });
-
-		return {
-			base,
-			...base,
-			focus,
-			vmodel,
-			input,
-			elInputRef,
-		};
-	},
-});
+  const emit = defineEmits(['update:modelValue']);
+  defineOptions({ inheritAttrs: false });
+  const props = defineProps({
+    ...baseInputProps,
+    mask: { type: String, default: undefined },
+    autosize: [Boolean, Object],
+    suffixText: { type: String, default: '' },
+    autofocus: { type: Boolean, default: undefined },
+    isAutocomplete: { type: Boolean, default: false },
+    fetchSuggestions: { type: Function, default: () => ({}) },
+    maxlength: { type: Number },
+    controls: { type: Boolean, default: false },
+    modelValue: Number,
+  });
+  const propsRef = toRefs(props);
+  const base = baseInput(propsRef, emit);
+  const {
+    validationPropertyCmp,
+    vmodel: baseVmodel,
+    placeholderText,
+    labelText,
+    isDisabled,
+    isHiddenLabel,
+    isListMode,
+  } = base;
+  const { showLabel, wrappClass, wrapp, span, required, suffixText } = propsRef;
+  const elInputRef = ref<typeof ElInput | null>(null);
+  const changeKeyboardOptions: ChangeOptions | undefined = inject('changeKeyboardOptions');
+  const keyboardStore = useKeyboardStore();
+  
+  const vmodel = computed({
+    get() {
+      return _.isNull(propsRef.modelValue?.value) ? null : propsRef.modelValue?.value;
+    },
+    set(val) {
+      emit('update:modelValue', _.isUndefined(val) ? null : val);
+    },
+  });
+  
+  function input(val: string) {
+    if (val.length) {
+      const num = parseInt(val);
+      !isNaN(num) && (vmodel.value = num);
+    } else {
+      vmodel.value = null;
+    }
+  }
+  if (!changeKeyboardOptions) throw Error('changeKeyboardOptions not injected');
+  
+  const filterSubmit = inject('filterSubmit', emptyFunc);
+  
+  function onKeyReleased(button: string) {
+    if (isListMode && button === '{enter}') {
+      filterSubmit && filterSubmit();
+      keyboardStore.dialogVisible = false;
+    }
+  }
+  
+  const { focus } = useKVirtualKeyboard({ changeKeyboardOptions, vmodel, layoutType: 'numeric', onKeyReleased });
 </script>
 
 <style lang="scss" scoped></style>
