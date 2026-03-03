@@ -1,5 +1,5 @@
 <template>
-  <k-table v-bind="{ columns, objectName: 'VozidloZavada', tableName, rowKey, maxHeight: 300, showSummary, summaryMethod }" v-on="{ rowDelete }">
+  <k-table v-bind="{ columns, objectName: 'VozidloZavada', tableName, rowKey, maxHeight: 300, showSummary, summaryMethod, loadingCount }" v-on="{ rowDelete }">
     <template #opravenoDatum="{ column }">
       <zavada-status-column v-bind="{ column, tableName }" />
     </template>
@@ -23,13 +23,14 @@
     tableName?: string;
     rowKey?: string;
     showSummary?: boolean;
+    loadingCount?: number;
   }
 
   const { t } = useI18n();
 
   const emit = defineEmits(['refresh']);
 
-  withDefaults(defineProps<Props>(), { tableName: zavadaTable.name, rowKey: zavadaTable.rowKey ?? undefined });
+  withDefaults(defineProps<Props>(), { tableName: zavadaTable.name, rowKey: zavadaTable.rowKey ?? undefined, loadingCount: 0 });
 
   async function rowDelete(row: RowZavada) {
     await apiProvider.deleteEntity(row.id);

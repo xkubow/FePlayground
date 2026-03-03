@@ -161,7 +161,7 @@
       const vLoading = computed(() => {
         if (propRefs.loadingCount.value !== undefined) {
           return propRefs.loadingCount.value > 0;
-        } else return propRefs.loading.value;
+        } else return propRefs.loading.value ?? false;
       });
 
       function getRowId(row: Row) {
