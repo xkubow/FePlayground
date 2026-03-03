@@ -6,7 +6,7 @@
       <k-input v-model="barva4Kod" label-key="barva2Kod" />
       <k-color-picker v-model="hexaColor" label-key="uiBarvaKod" />
       <k-date-picker v-model="vstupDatum" :readonly="true" label-key="vstupDatum" />
-      <k-table v-bind="{ columns: tables.label.columns, rows: tables.label.rows, tableName: tables.label.name, rowKey: tables.label.rowKey, loadingCount: tables.label.loadingCount }" />
+      <k-table v-bind="{ columns: tables.label.columns, rows: tables.label.rows, tableName: tables.label.name, rowKey: tables.label.rowKey, loading: tables.label.isLoading() }" />
     </k-card>
   </k-layout-edit>
 </template>

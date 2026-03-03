@@ -37,6 +37,7 @@ export class Table<T extends UnknownObject = UnknownObject, F extends UnknownObj
   public loadByEntityId = false;
   public defaultRowModel = null as Record<string, unknown> | null;
   public totalCount?: number;
+  public initialLoading = true;
 
   public constructor(init?: Partial<Table<T, F, S>>) {
     Object.assign(this, init);
@@ -47,12 +48,13 @@ export class Table<T extends UnknownObject = UnknownObject, F extends UnknownObj
   }
 
   public endLoading(): void {
+    this.initialLoading = false;
     this.loadingCount -= 1;
     this.loadingCount < 0 && (this.loadingCount = 0);
   }
 
   public isLoading(): boolean {
-    return this.loadingCount > 0;
+    return this.loadingCount > 0 || this.initialLoading;
   }
 
   public isPaged(): boolean {

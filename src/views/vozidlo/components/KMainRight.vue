@@ -1,7 +1,7 @@
 <template>
   <k-col>
     <k-table-frame v-if="zavada" label-key="zadaneZavadyKVozu">
-      <zavada-table v-bind="{ rows: zavada.rows, operations: zavada.operations, showSummary: true, loadingCount: zavada.loadingCount }" v-on="{ refresh: refreshVozidloZavadaTable }" />
+      <zavada-table v-bind="{ rows: zavada.rows, operations: zavada.operations, showSummary: true, loading: zavada.isLoading() }" v-on="{ refresh: refreshVozidloZavadaTable }" />
     </k-table-frame>
   </k-col>
   <k-col>
@@ -11,7 +11,7 @@
   </k-col>
   <k-col>
     <k-table-frame v-if="sqsZavady" label-key="sqsZavadyKVozu">
-      <k-table v-bind="{ columns: sqsZavady.columns, rows: sqsZavady.rows, tableName: sqsZavady.name, rowKey: sqsZavady.rowKey, loadingCount: sqsZavady.loadingCount }">
+      <k-table v-bind="{ columns: sqsZavady.columns, rows: sqsZavady.rows, tableName: sqsZavady.name, rowKey: sqsZavady.rowKey, loading: sqsZavady.isLoading() }">
         <template #status="{ column }">
           <k-table-column v-bind="{ tableName: sqsZavady.name, labelKey: column.i18nKey, column, prop: `${column.id}` }">
             <template #default="{ row }">

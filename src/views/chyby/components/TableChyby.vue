@@ -147,13 +147,13 @@
   async function openZavady(ids: Detail2[]) {
     if (ids.length > 1) {
       try {
-        zavady.value.loadingCount += 1;
+        zavady.value.startLoading();
         const vozidloZavadaId = ids.map((i) => i.vozidloZavadaId) as number[];
         const response = await apiProviderZavada.tableData<{ rows: Row<RowZavada>[] }>({ filter: { vozidloZavadaId }, tableName: STORE_TABLE });
         zavady.value.rows = response?.data.rows ?? [];
         visibleDialog.value = true;
       } finally {
-        zavady.value.loadingCount > 0 && (zavady.value.loadingCount -= 1);
+        zavady.value.endLoading();
       }
     } else openEdit(NAME, PageMode.EDIT, { id: ids[0].vozidloZavadaId });
   }

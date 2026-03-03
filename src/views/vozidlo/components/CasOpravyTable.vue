@@ -14,7 +14,7 @@
       :columns="casOpravy.columns"
       :rows="casOpravy.rows"
       :tableName="casOpravy.name"
-      :loadingCount="casOpravy.loadingCount"
+      :loading="casOpravy.isLoading()"
       :extraButtons="extraButtons"
       :showSummary="showSummary"
       @summaryMethod="summaryMethod"

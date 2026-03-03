@@ -11,7 +11,9 @@
   import StarterKit from '@tiptap/starter-kit';
   import { EditorContent, useEditor } from '@tiptap/vue-3';
   import { computed, onBeforeUnmount, ref, toRefs, watch } from 'vue';
-  import { RiBold, RiLinkM, RiStrikethrough2 } from 'vue-remix-icons';
+  import RiBold from 'vue-remix-icons/icons/ri-bold.vue';
+  import RiLinkM from 'vue-remix-icons/icons/ri-link-m.vue';
+  import RiStrikethrough2 from 'vue-remix-icons/icons/ri-strikethrough-2.vue';
 
   defineOptions({ inheritAttrs: false });
 
