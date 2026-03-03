@@ -20,7 +20,7 @@
       </span>
     </k-row>
   </div>
-  <el-divider style="margin: 15px 0px" />
+  <k-divider style="margin: 15px 0px" />
 </template>
 
 <script setup lang="ts">

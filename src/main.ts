@@ -5,8 +5,16 @@ import { createApp } from 'vue';
 import KTemplate from './template/kTemplate';
 import dayjs from 'dayjs';
 
-const app = createApp(template.layouts.MainLayout);
-app.use(KTemplate, { routes, menu });
-app.mount('#app');
+async function enableMocks() {
+  if (import.meta.env.DEV && (import.meta.env.VITE_MOCKS === 'true' || import.meta.env.MODE === 'mock')) {
+    const { worker } = await import('./mocks/browser.ts');
+    await worker.start({ onUnhandledRequest: 'bypass' });
+  }
+}
 
-dayjs.locale('cs');
+enableMocks().then(() => {
+  const app = createApp(template.layouts.MainLayout);
+  app.use(KTemplate, { routes, menu });
+  app.mount('#app');
+  dayjs.locale('cs');
+});

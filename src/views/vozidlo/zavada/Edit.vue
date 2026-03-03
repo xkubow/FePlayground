@@ -3,7 +3,7 @@
     <template #title> {{ `${t('vozidloZavada')}` }} {{ isMobile ? `` : ` (${maskedKnr})` }}</template>
     <span v-if="isMobile" class="ml-10 df title sub-title">{{ maskedKnr }}</span>
     <k-tabs v-model="activeTabName">
-      <el-tab-pane :label="t('hlavniUdaje')" name="HlavniUdaje">
+      <k-tab-panel :label="t('hlavniUdaje')" name="HlavniUdaje">
         <!-- <k-row v-if="isCreateMode">
 					<k-input-number label-key="dobaOpravyMinuty" v-model="dobaOpravyMinuty" />
 				</k-row> -->
@@ -35,7 +35,6 @@
               @update:intervalOpravy="updateIntervalOpravy"
             />
             <k-row>
-              {{ dropDownList.sqsZavadaKategorie }}
               <k-select
                 :span="3"
                 label-key="kategorie"
@@ -120,7 +119,7 @@
             />
           </k-col>
         </k-row>
-      </el-tab-pane>
+      </k-tab-panel>
     </k-tabs>
   </k-layout-edit>
 </template>
@@ -234,7 +233,6 @@
         // }, 2000);
       });
       onUnmounted(() => {
-        console.log('ZAVADA unmount');
         cleanupElementPlusPoppers();
       });
 

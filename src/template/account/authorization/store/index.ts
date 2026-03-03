@@ -83,6 +83,7 @@ export const useStore = defineStore(NAME, {
         const response = await apiProvider.developmentAuthorize({ login: payload.login, password: payload.password });
         if (response?.data) {
           this.user = { zobrazeneJmeno: response.data.zobrazeneJmeno, uzivatelId: response.data.uzivatelId } as AuthUser;
+          debugger;
           this.setUserToken(this.user.uzivatelId);
           this.setLocalKey(response.data.token);
           this.checkAuthorization();

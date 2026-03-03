@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :title="t('CasOpravy')" @close="$emit('update:modelValue', false)" @open="open">
+  <k-dialog :title="t('CasOpravy')" @close="$emit('update:modelValue', false)" @open="open">
     <div v-loading="loading" element-loading-text="Loading...">
       <k-row>
         <k-input-number label-key="dobaOpravyMinuty" v-model="dobaOpravyMinutyCmp" :span="4" />
@@ -15,26 +15,25 @@
       <k-row>
         <k-input label-key="text" v-model="casOpravyVozidla.text" :autosize="{ minRows: 2, maxRows: 4 }" type="textarea" />
       </k-row>
-      <el-descriptions v-if="casOpravyVozidla.id">
-        <el-descriptions-item :span="24" :label="`${t('Zavada')}:`"
-          >{{ casOpravyVozidla.sqsZavadaMistoText }} - {{ casOpravyVozidla.sqsZavadaTypText }} - {{ casOpravyVozidla.sqsZavadaVinikText }}</el-descriptions-item
+      <k-descriptions v-if="casOpravyVozidla.id">
+        <k-descriptions-item :span="24" :label="`${t('Zavada')}:`"
+          >{{ casOpravyVozidla.sqsZavadaMistoText }} - {{ casOpravyVozidla.sqsZavadaTypText }} - {{ casOpravyVozidla.sqsZavadaVinikText }}</k-descriptions-item
         >
-        <el-descriptions-item :span="24" :label="`${t('vytvoril')}:`"
+        <k-descriptions-item :span="24" :label="`${t('vytvoril')}:`"
           >{{ casOpravyVozidla.vstupUzivatelZobrazeneJmeno }} -
-          {{ casOpravyVozidla.vstupDatum ? toLocale(casOpravyVozidla.vstupDatum) : '' }}</el-descriptions-item
+          {{ casOpravyVozidla.vstupDatum ? toLocale(casOpravyVozidla.vstupDatum) : '' }}</k-descriptions-item
         >
-        <el-descriptions-item :span="24" :label="`${t('Editoval')}:`"
-          >{{ casOpravyVozidla.editUzivatelZobrazeneJmeno }} -
-          {{ casOpravyVozidla.editDatum ? toLocale(casOpravyVozidla.editDatum) : '' }}</el-descriptions-item
+        <k-descriptions-item :span="24" :label="`${t('Editoval')}:`"
+          >{{ casOpravyVozidla.editUzivatelZobrazeneJmeno }} - {{ casOpravyVozidla.editDatum ? toLocale(casOpravyVozidla.editDatum) : '' }}</k-descriptions-item
         >
-      </el-descriptions>
+      </k-descriptions>
     </div>
     <template #footer>
       <span class="dialog-footer">
-        <el-button type="success" @click="save">{{ t('ok') }}</el-button>
+        <k-button type="success" @click="save">{{ t('ok') }}</k-button>
       </span>
     </template>
-  </el-dialog>
+  </k-dialog>
 </template>
 
 <script setup lang="ts">

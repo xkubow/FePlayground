@@ -16,8 +16,8 @@
         highlight
       />
       <div class="mt-10">
-        <el-tabs v-model="activeTabName">
-          <el-tab-pane :label="t('hlavniUdaje')" name="HlavniUdaje">
+        <k-tabs v-model="activeTabName">
+          <k-tab-panel :label="t('hlavniUdaje')" name="HlavniUdaje">
             <k-row :gutter="10">
               <k-col :xs="12" :sm="4" :md="5" :lg="3" :xl="2">
                 <semafor v-model="tables.semafor.rows" :fin="fin" />
@@ -49,11 +49,11 @@
                 v-on="{ openVozidloZavada, refreshVozidloZavadaTable }"
               />
             </k-row>
-          </el-tab-pane>
-          <el-tab-pane :label="t('testy')" name="Testy">
+          </k-tab-panel>
+          <k-tab-panel :label="t('testy')" name="Testy">
             <table-chyby :rows="tables.chyby.rows" :columns="tables.chyby.columns" :rjInfopRows="tables.ridiciJednotkaInfo.rows" />
-          </el-tab-pane>
-          <el-tab-pane :label="t('komentare')" name="Komentare">
+          </k-tab-panel>
+          <k-tab-panel :label="t('komentare')" name="Komentare">
             <k-row :gutter="4">
               <k-col :span="20">
                 <frame-komentare
@@ -66,10 +66,10 @@
                 <frame-prilohy v-model="tables.priloha.rows" v-bind="{ entita, parentId: knr, beforeRemove: beforeRemovePriloha, operationDeletePriloha }" />
               </k-col>
             </k-row>
-          </el-tab-pane>
-          <el-tab-pane :label="t('eskalace')" name="Eskalace">
+          </k-tab-panel>
+          <k-tab-panel :label="t('eskalace')" name="Eskalace">
             <div v-if="eskalace.length > 0">
-              <el-pagination
+              <k-pagination
                 layout="prev, pager, next"
                 v-model:current-page="currentEskalace"
                 :total="eskalace.length"
@@ -88,17 +88,17 @@
                         @save="saveEskalace"
                       />
                     </k-row>
-                    <el-tabs v-model="eskalaceActiveTabName">
-                      <el-tab-pane :label="t('komentare')" name="EskalaceKomentare">
+                    <k-tabs v-model="eskalaceActiveTabName">
+                      <k-tab-panel :label="t('komentare')" name="EskalaceKomentare">
                         <frame-komentare
                           v-bind="{ rows: selectedEskalace.komentare?.rows ?? [], references: tables.priloha.rows, entita, parentId: knr }"
                           v-on="{ addKomentar: addEskalaceKomentar, update: updateEskalaceKomentar, delete: deleteEskalaceKomentar }"
                         />
-                      </el-tab-pane>
-                      <el-tab-pane :label="t('history')" name="EskalaceLog">
+                      </k-tab-panel>
+                      <k-tab-panel :label="t('history')" name="EskalaceLog">
                         <ChangeLogFrame :change-log="selectedEskalace.changeLog?.rows ?? []" />
-                      </el-tab-pane>
-                    </el-tabs>
+                      </k-tab-panel>
+                    </k-tabs>
                   </div>
                 </k-col>
                 <k-col :span="4" v-if="selectedEskalace?.priloha?.rows">
@@ -115,8 +115,8 @@
                 </k-col>
               </k-row>
             </div>
-          </el-tab-pane>
-          <el-tab-pane :label="t('prInfo')" name="PrInfo">
+          </k-tab-panel>
+          <k-tab-panel :label="t('prInfo')" name="PrInfo">
             <pr-cislo-frame
               name="PrCislo"
               :rows="tables.prCislo.rows"
@@ -126,11 +126,11 @@
               v-model:filter="tables.prCislo.filter"
               v-on="{ filterClick, loadRows }"
             />
-          </el-tab-pane>
-          <el-tab-pane :label="t('CasOpravy')" name="CasOpravy">
+          </k-tab-panel>
+          <k-tab-panel :label="t('CasOpravy')" name="CasOpravy">
             <CasOpravy v-bind="{ casOpravy: tables.casOpravy, knr, showSummary: true }" @refresh="refreshCasOpravy" />
-          </el-tab-pane>
-        </el-tabs>
+          </k-tab-panel>
+        </k-tabs>
       </div>
     </k-card>
     <create-eskalace-dialog

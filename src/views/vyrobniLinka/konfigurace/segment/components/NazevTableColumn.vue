@@ -8,10 +8,10 @@
         </k-col>
 
         <k-col :span="14" v-if="row.vyrobniLinkaSegmentId && editable" class="d-f jc-fe">
-          <el-icon v-if="!row.editSegment" class="cursor-p mr-10" :size="17" @click.stop="edit(row)"><edit-icon /></el-icon>
-          <el-icon v-if="!row.editSegment" class="cursor-p" :size="17" @click.stop="remove(row)"><minus-icon /></el-icon>
-          <el-icon v-if="row.editSegment" class="cursor-p mr-10" :size="17" @click.stop="save(row)"><finished-icon /></el-icon>
-          <el-icon v-if="row.editSegment" class="cursor-p" :size="17" @click.stop="cancel(row)"><close-icon /></el-icon>
+          <k-icon v-if="!row.editSegment" class="cursor-p mr-10" :size="17" @click.stop="edit(row)"><edit-icon /></k-icon>
+          <k-icon v-if="!row.editSegment" class="cursor-p" :size="17" @click.stop="remove(row)"><minus-icon /></k-icon>
+          <k-icon v-if="row.editSegment" class="cursor-p mr-10" :size="17" @click.stop="save(row)"><finished-icon /></k-icon>
+          <k-icon v-if="row.editSegment" class="cursor-p" :size="17" @click.stop="cancel(row)"><close-icon /></k-icon>
         </k-col>
       </k-row>
     </template>

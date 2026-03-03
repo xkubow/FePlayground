@@ -8,7 +8,7 @@ export default {
     if (options.menu) {
       menuTree.merge(options.menu);
     }
-    app.component('k-main-menu', Menu);
+    app.component('KMainMenu', Menu);
 
     return app;
   },

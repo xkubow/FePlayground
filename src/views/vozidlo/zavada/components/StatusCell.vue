@@ -2,10 +2,10 @@
   <k-row class="jc-c">
     <!-- <k-col :span="23"> -->
     <!-- {{ status }} -->
-    <el-icon :size="20" :color="statusColor(status)">
+    <k-icon :size="20" :color="statusColor(status)">
       <select-icon v-if="statusOk" />
       <warning-filled v-else />
-    </el-icon>
+    </k-icon>
     <!-- </k-col> -->
   </k-row>
 </template>

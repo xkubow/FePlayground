@@ -1,6 +1,6 @@
 import { PageMode } from '@/template/page/providers/pageMode';
 
-/* eslint-disable no-bitwise */
+ 
 export enum UserOperationFlags {
   NONE = 0,
   CREATE = 1,

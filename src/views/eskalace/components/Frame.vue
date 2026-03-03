@@ -116,10 +116,10 @@
       :options="eskalaceCmd.uzivatelSchvalujeDropDownList"
     />
   </template>
-  <el-descriptions>
-    <el-descriptions-item :span="24" :label="`${t('vytvoril')}:`">{{ eskalace.vstupUzivatelText }}</el-descriptions-item>
-    <el-descriptions-item v-if="!keSchvaleni" :span="24" :label="`${t('schvalene')}:`">{{ eskalaceCmd.schvaleniUzivatelText }}</el-descriptions-item>
-  </el-descriptions>
+  <k-descriptions>
+    <k-descriptions-item :span="24" :label="`${t('vytvoril')}:`">{{ eskalace.vstupUzivatelText }}</k-descriptions-item>
+    <k-descriptions-item v-if="!keSchvaleni" :span="24" :label="`${t('schvalene')}:`">{{ eskalaceCmd.schvaleniUzivatelText }}</k-descriptions-item>
+  </k-descriptions>
   <k-col>{{ `${t('text')}:` }}</k-col>
   <k-rich-text v-model="eskalaceCmd.text" v-bind="{ references: eskalace?.priloha?.rows ?? [], baseUrl, uploadVisible: false, editable: !isUzavreta }" />
   <DialogOpnCheck v-model:visible="dialogOpnCheckVisible" />
@@ -141,7 +141,6 @@
   import { NAME as VRACENI_ND_NAME } from '@/views/vraceniBaterie/constants';
   import { NAME } from '../constants';
   import { template } from 'lodash';
-  import { table } from 'console';
 
   export interface Props {
     type?: string;

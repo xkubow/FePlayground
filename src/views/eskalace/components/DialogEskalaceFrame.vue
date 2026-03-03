@@ -78,12 +78,12 @@
       </k-row>
     </k-col>
 
-    <el-descriptions>
-      <el-descriptions-item :span="24" :label="`${t('vytvoril')}:`">{{ user?.zobrazeneJmeno }}</el-descriptions-item>
-      <!-- <el-descriptions-item :span="24" label="Prilohy:">
+    <k-descriptions>
+      <k-descriptions-item :span="24" :label="`${t('vytvoril')}:`">{{ user?.zobrazeneJmeno }}</k-descriptions-item>
+      <!-- <k-descriptions-item :span="24" label="Prilohy:">
 					{{ data.prilohy.value.join(', ') }}
-				</el-descriptions-item> -->
-    </el-descriptions>
+				</k-descriptions-item> -->
+    </k-descriptions>
   </k-row>
 </template>
 

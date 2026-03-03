@@ -8,7 +8,7 @@
   import type { Column, Paging, Row } from '@/template/components/table/@types/table';
   import { useFilterAside } from '@/template/layouts/list/filterAside';
   import FilterAside from '@/template/layouts/list/FilterAside.vue';
-  import { computed, ref, toRefs, watch, type WritableComputedRef } from 'vue';
+  import { computed, toRefs, watch, type WritableComputedRef } from 'vue';
   import type { Filter } from '../tables';
   import type { PrCislo } from '../types';
 

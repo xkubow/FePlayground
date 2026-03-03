@@ -27,7 +27,7 @@ class VozidloProvider extends BaseApi {
   tableDataUrl(tableName: string): string {
     switch (tableName) {
       case 'semafor':
-        return `${this.tableUrl(tableName)}`;
+        return `${this.apiPath}${tableName}`;
       default:
         return `${this.tableUrl(tableName)}Grid`;
     }

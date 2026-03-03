@@ -1,5 +1,4 @@
 <template>
-  casOpravy.rowKey:{{ casOpravy?.rowKey }}
   <k-table-frame v-if="casOpravy" label-key="casOpravy">
     <template #header>
       <span class="pr-10">{{ t(casOpravy.name) }}</span>

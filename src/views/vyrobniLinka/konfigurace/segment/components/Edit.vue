@@ -9,7 +9,7 @@
   >
     <k-input v-bind="{ labelKey: 'vyrobniLinkaSegmentText', wrapp: false, span: 12 }" v-model="vyrobniLinkaSegmentText" />
     <k-input v-bind="{ labelKey: 'upsNazev', wrapp: false, span: 11 }" v-model="upsNazev" />
-    <el-icon @click="addSegment" :size="17"><upload-icon /></el-icon>
+    <k-icon @click="addSegment" :size="17"><upload-icon /></k-icon>
     <k-table ref="mtable" v-bind="{ showHeader: false, rows: segmentList, columns: table.columns, rowKey: table.rowKey, tableName: table.name }">
       <template #vyrobniLinkaSegmentText="{ column }">
         <nazev-table-column

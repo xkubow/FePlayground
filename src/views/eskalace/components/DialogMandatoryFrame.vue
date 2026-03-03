@@ -64,8 +64,6 @@
   });
 
   function uoloadFile(option: UploadRequestOptions) {
-    console.log('UploadFile', option);
-
     const formData = new FormData();
     if (option.data) {
       for (const [key, value] of Object.entries(option.data)) {

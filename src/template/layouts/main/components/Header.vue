@@ -40,11 +40,9 @@
 
   function openUserSetting() {
     // TODO open user setting
-    console.log('not implemented userSetting click');
   }
   function openHelpUrl() {
     // TODO open help
-    console.log('not implemented help click');
   }
   function logout() {
     emit('unauthorize');

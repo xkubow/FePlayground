@@ -1,26 +1,26 @@
 <template>
-  <el-dialog v-model="dialogVisible" :title="t('OPN')">
+  <k-dialog v-model="dialogVisible" :title="t('OPN')">
     <k-row>
-      <k-checkbox :model-value="true" :label="t('EskalaceCheckModel.Baterka')" />
+      <k-check-box :model-value="true" :label="t('EskalaceCheckModel.Baterka')" />
     </k-row>
     <k-row>
-      <k-checkbox :model-value="true" :label="t('EskalaceCheckModel.Svorkovnice')" />
+      <k-check-box :model-value="true" :label="t('EskalaceCheckModel.Svorkovnice')" />
     </k-row>
     <k-row>
-      <k-checkbox :model-value="true" :label="t('EskalaceCheckModel.Poistky')" />
+      <k-check-box :model-value="true" :label="t('EskalaceCheckModel.Poistky')" />
     </k-row>
     <k-row>
-      <k-checkbox :model-value="true" :label="t('EskalaceCheckModel.Kostra')" />
+      <k-check-box :model-value="true" :label="t('EskalaceCheckModel.Kostra')" />
     </k-row>
     <k-row>
-      <k-checkbox :model-value="true" :label="t('EskalaceCheckModel.Svazky')" />
+      <k-check-box :model-value="true" :label="t('EskalaceCheckModel.Svazky')" />
     </k-row>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="dialogVisible = false">{{ t('ok') }}</el-button>
+        <k-button @click="dialogVisible = false">{{ t('ok') }}</k-button>
       </span>
     </template>
-  </el-dialog>
+  </k-dialog>
 </template>
 
 <script setup lang="ts">

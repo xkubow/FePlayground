@@ -1,9 +1,9 @@
 <template>
-  <el-dialog v-model="dialogVisible" :title="title" @closed="$emit('closed')" @close="$emit('close')" v-on="{ open }">
-    <el-steps v-if="isVytvoreni" style="max-width: 600px" :space="200" :active="allMandatoryDone ? 1 : 0" finish-status="success" class="jc-c">
-      <el-step :title="t('odis/opn')" />
-      <el-step :title="t('eskalace')" />
-    </el-steps>
+  <k-dialog v-model="dialogVisible" :title="title" @closed="$emit('closed')" @close="$emit('close')" v-on="{ open }">
+    <k-steps v-if="isVytvoreni" style="max-width: 600px" :space="200" :active="allMandatoryDone ? 1 : 0" finish-status="success" class="jc-c">
+      <k-step :title="t('odis/opn')" />
+      <k-step :title="t('eskalace')" />
+    </k-steps>
     <DialogMandatoryFrame v-show="!allMandatoryDone" ref="mandatoryFrame" v-model:allMandatoryDone="allMandatoryDone" :eskalace-id="newEskalaceId" />
     <DialogEskalaceFrame
       v-show="allMandatoryDone"
@@ -16,11 +16,11 @@
     />
     <template #footer>
       <span class="dialog-footer">
-        <el-button v-show="allMandatoryDone" @click="dialogVisible = false">{{ t('zrusit') }}</el-button>
-        <el-button v-show="allMandatoryDone" type="primary" @click="okClick">{{ t('ulozit') }}</el-button>
+        <k-button v-show="allMandatoryDone" @click="dialogVisible = false">{{ t('zrusit') }}</k-button>
+        <k-button v-show="allMandatoryDone" type="primary" @click="okClick">{{ t('ulozit') }}</k-button>
       </span>
     </template>
-  </el-dialog>
+  </k-dialog>
 </template>
 
 <script setup lang="ts">

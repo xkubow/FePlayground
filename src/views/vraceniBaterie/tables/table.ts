@@ -4,13 +4,13 @@ import { OperationFlags } from '@/template/utils/operationFlags';
 import type { EnumVraceniBaterieStatus } from '../constants';
 
 export type RowVraceniBaterie = {
-  id: Number;
+  id: number;
   vraceniBaterieStatusEnum: EnumVraceniBaterieStatus;
   vraceniBaterieStatusText: string;
   ndNr: string;
   bg?: string;
   fazitId?: string;
-  swVersion: Number;
+  swVersion: number;
   hwVersion: string;
   text?: string;
 };

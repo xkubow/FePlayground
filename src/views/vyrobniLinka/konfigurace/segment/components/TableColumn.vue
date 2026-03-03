@@ -3,7 +3,7 @@
     <template #header>
       <k-table-column-header v-bind="{ column, labelKey: `tables.${tableName}.${column.i18nKey}` }">
         <template #actions>
-          <el-icon v-if="editable" class="cursor-p mr-10" :size="17" @click.stop="$emit('insert')"><edit-icon /></el-icon>
+          <k-icon v-if="editable" class="cursor-p mr-10" :size="17" @click.stop="$emit('insert')"><edit-icon /></k-icon>
         </template>
       </k-table-column-header>
     </template>

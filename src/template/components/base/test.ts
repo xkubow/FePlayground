@@ -5,11 +5,11 @@ const propsDef = {
 };
 
 export default defineComponent({
-  name: 'k-select',
-  emits: ['update:modelValue', 'change'],
+  name: 'KSelect',
   props: {
     ...propsDef,
   },
+  emits: ['update:modelValue', 'change'],
   setup(props) {
     return {};
   },

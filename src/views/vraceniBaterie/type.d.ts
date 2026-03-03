@@ -8,11 +8,11 @@ import type { ChangeLogRow } from './tables/changeLogTable';
 export type SkupinaDropDown = Skupina & { extended: boolean };
 
 export type VraceniBaterie = {
-  id?: Number;
+  id?: number;
   ndNr?: string;
   bg?: string;
   fazitId?: string;
-  swVersion?: Number;
+  swVersion?: number;
   hwVersion?: string;
 
   komentare: Table<Komentar>;

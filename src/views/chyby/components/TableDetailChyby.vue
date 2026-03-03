@@ -5,12 +5,12 @@
         <tr v-for="(d, i) in parsedRows" :key="d.rowNumber ?? i" class="detail-row">
           <td v-if="selectable" :class="[rowClass(d), 'col-select']">
             <div class="pl-10 d-f ai-c">
-              <el-checkbox :model-value="!!d.selected" @change="(val: any) => toggleOne(d, !!val)" @click.stop />
+              <k-check-box :model-value="!!d.selected" @change="(val: any) => toggleOne(d, !!val)" @click.stop />
 
               <span v-if="d.detail?.length" class="ml-10 cursor-p" @click.stop="openZavady(d.detail)" title="Open Zavady">
-                <el-icon style="margin-left: 7px">
+                <k-icon style="margin-left: 7px">
                   <ConnectionIcon />
-                </el-icon>
+                </k-icon>
               </span>
             </div>
           </td>
@@ -30,7 +30,7 @@
           <td class="col-errorcodeNr">
             <div class="d-f ai-c">
               {{ formatErrorCode(d.errorcodeNr) }}
-              <el-icon v-if="d.errorcodeNr" class="ml-10 cursor-p" :size="15" @click="bugDetailClicked($event, parentRow, d)"><link-icon /></el-icon>
+              <k-icon v-if="d.errorcodeNr" class="ml-10 cursor-p" :size="15" @click="bugDetailClicked($event, parentRow, d)"><link-icon /></k-icon>
             </div>
           </td>
 

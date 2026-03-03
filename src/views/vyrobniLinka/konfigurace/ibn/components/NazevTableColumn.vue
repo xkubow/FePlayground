@@ -8,11 +8,11 @@
         </k-col>
         <k-col :span="10" v-if="row.vyrobniLinkaKontrolniBodId && editable">
           <k-row class="jc-fe">
-            <el-icon v-if="!row.editIbn" class="cursor-p mr-10" :size="17" @click.stop="$emit('insertPracoviste', row)"><plus-icon /></el-icon>
-            <el-icon v-if="!row.editIbn" class="cursor-p mr-10" :size="17" @click.stop="edit(row)"><edit-icon /></el-icon>
-            <el-icon v-if="!row.editIbn" class="cursor-p" :size="17" @click.stop="remove(row)"><minus-icon /></el-icon>
-            <el-icon v-if="row.editIbn" class="cursor-p mr-10" :size="17" @click.stop="save(row)"><finished-icon /></el-icon>
-            <el-icon v-if="row.editIbn" class="cursor-p" :size="17" @click.stop="cancel(row)"><close-icon /></el-icon>
+            <k-icon v-if="!row.editIbn" class="cursor-p mr-10" :size="17" @click.stop="$emit('insertPracoviste', row)"><plus-icon /></k-icon>
+            <k-icon v-if="!row.editIbn" class="cursor-p mr-10" :size="17" @click.stop="edit(row)"><edit-icon /></k-icon>
+            <k-icon v-if="!row.editIbn" class="cursor-p" :size="17" @click.stop="remove(row)"><minus-icon /></k-icon>
+            <k-icon v-if="row.editIbn" class="cursor-p mr-10" :size="17" @click.stop="save(row)"><finished-icon /></k-icon>
+            <k-icon v-if="row.editIbn" class="cursor-p" :size="17" @click.stop="cancel(row)"><close-icon /></k-icon>
           </k-row>
         </k-col>
       </k-row>

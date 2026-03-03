@@ -45,7 +45,7 @@ export class Path implements RouteRecordSingleView {
   ) {
     this.path = name;
     this.name = name;
-    // eslint-disable-next-line no-param-reassign
+     
     const isComponents = Object.keys(components).every((key) => ['List', 'SelectList', 'Edit', 'Default'].includes(key));
     if (!isComponents) {
       components = { Default: components };

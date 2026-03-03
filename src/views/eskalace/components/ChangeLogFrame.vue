@@ -17,7 +17,7 @@
           </td>
           <td style="padding: 0px 10px">
             <div>
-              <el-icon><Right /></el-icon>
+              <k-icon><Right /></k-icon>
             </div>
           </td>
           <td style="min-width: 100px">

@@ -13,14 +13,14 @@
 
   const props = defineProps<Props>();
   const propsRef = toRefs(props);
-  const emits = defineEmits(['update:value']);
+  const emits = defineEmits(['update:modelValue']);
 
   const model = computed({
     get() {
       return propsRef.modelValue.value;
     },
     set(value: string[]) {
-      emits('update:value', value);
+      emits('update:modelValue', value);
     },
   });
 </script>

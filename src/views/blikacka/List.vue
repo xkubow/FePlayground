@@ -35,9 +35,9 @@
       </k-select>
     </template>
     <template #content>
-      <el-collapse v-if="!loadingContent" v-model="mainCollapse" style="width: 100%" :loading="true">
-        <el-card v-for="kontrolniBodId in vyrobniLinkaKontrolniBodId" :key="kontrolniBodId" class="card">
-          <el-collapse-item :name="`${kontrolniBodId}`" class="colapse">
+      <k-collapse v-if="!loadingContent" v-model="mainCollapse" style="width: 100%" :loading="true">
+        <k-card v-for="kontrolniBodId in vyrobniLinkaKontrolniBodId" :key="kontrolniBodId" class="card">
+          <k-collapse-item :name="`${kontrolniBodId}`" class="colapse">
             <template #title>
               <k-row class="ai-c">
                 <k-col :span="2">
@@ -61,9 +61,9 @@
             <k-row>
               <voz-card v-for="voz in filteredRowsByKontrolniBod(kontrolniBodId)" :key="voz.knr" v-bind="{ voz, isEditMode }" />
             </k-row>
-          </el-collapse-item>
-        </el-card>
-      </el-collapse>
+          </k-collapse-item>
+        </k-card>
+      </k-collapse>
     </template>
   </k-layout-list>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <k-button @click="uploadImg">
-      <el-icon :class="clickableClass" :size="30"><CameraIcon /></el-icon>
+      <k-icon :class="clickableClass" :size="30"><CameraIcon /></k-icon>
     </k-button>
   </div>
   <div>
@@ -23,7 +23,7 @@
       </div>
     </k-upload>
     <div class="odd-color" :span="24" v-for="file in fileList" :key="file.name">
-      <el-icon :class="clickableClass" @click="handleRemove(file)"><Delete /></el-icon>
+      <k-icon :class="clickableClass" @click="handleRemove(file)"><Delete /></k-icon>
       <span :class="clickableClass" @click="handlePreview(file)">{{ file.name }}</span>
     </div>
   </div>

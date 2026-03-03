@@ -82,7 +82,7 @@
       "testPlaceMin": "První výskyt",
       "vznikZavadyDatum": "Vznik závady"
     },
-    "prCislo": {
+    "PrCislo": {
       "prCisloKod": "@:prCisloKod",
       "prCisloText": "@:prCisloText",
       "prRodinaKod": "@:prRodinaKod",

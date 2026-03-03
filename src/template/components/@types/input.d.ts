@@ -5,7 +5,7 @@ export interface HTMLInputEvent extends Event {
 }
 
 // BUG https://github.com/vuejs/core/issues/4294
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+ 
 export interface IBaseProps extends BaseProps {}
 
 export type BaseProps = {
@@ -24,7 +24,7 @@ export type BaseProps = {
   overwriteHiddenLabel?: boolean;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+ 
 export interface IBaseInputProps extends BaseInputProps {}
 
 export type BaseInputProps = {

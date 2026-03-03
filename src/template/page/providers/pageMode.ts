@@ -59,7 +59,6 @@ export function pageMode(route: Ref<_RouteLocationBase>): PgaeModeComputed {
     return PageModeUtils.isEdit(pageMode.value);
   });
   const isViewMode = computed((): boolean => {
-    console.log('isViewMode', pageMode.value);
     return PageModeUtils.isView(pageMode.value);
   });
   const isFormMode = computed((): boolean => {

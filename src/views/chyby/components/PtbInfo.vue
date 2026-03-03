@@ -1,20 +1,21 @@
 <template>
-  <el-popover :teleported="false" trigger="click" :width="650">
+  <k-popover :teleported="false" trigger="click" :width="650">
     <div style="text-align: right; margin: 0">
-      <el-descriptions :column="1" border>
+      <k-descriptions :column="1" border>
         <template #title>
           <span>{{ t('ridiciJednotkaInfo') }}</span>
         </template>
-        <el-descriptions-item v-for="(value, name) in filteredData" :key="name" :label="`${t(name)}: `">{{ value }}</el-descriptions-item>
-      </el-descriptions>
+        <k-descriptions-item v-for="(value, name) in filteredData" :key="name" :label="`${t(name)}: `">{{ value }}</k-descriptions-item>
+      </k-descriptions>
     </div>
     <template #reference>
-      <el-icon class="cursor-p" :size="15" @click="ptbClicked"><info-filled-icon /></el-icon>
+      <k-icon class="cursor-p" :size="15" @click="ptbClicked"><info-filled-icon /></k-icon>
     </template>
-  </el-popover>
+  </k-popover>
 </template>
 
 <script setup lang="ts">
+  import { ElDescriptionsItem } from 'element-plus';
   import { InfoFilled as InfoFilledIcon } from '@element-plus/icons-vue';
   import _ from 'lodash';
   import { computed } from 'vue';

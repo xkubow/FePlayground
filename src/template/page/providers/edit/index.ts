@@ -38,7 +38,7 @@ export function init<S extends PageStore>(name: string, store: S, props?: Record
     router.go(-1);
   };
   const save = async (id: string = entityId.value) => {
-    var doSave = true;
+    let doSave = true;
     if (options?.beforeSave) doSave = await options?.beforeSave(id);
     if (!doSave) return;
     const response: AxiosResponse<string | unknown> | undefined =
@@ -133,7 +133,6 @@ export function init<S extends PageStore>(name: string, store: S, props?: Record
   }
 
   async function changeUrlToView() {
-    console.log('changeToView', entityId.value);
     const to = getReplaceEditRoute(name, entityId.value, PageMode.VIEW);
     await await router.replace(to);
 

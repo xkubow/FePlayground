@@ -1,5 +1,5 @@
 <template>
-  <el-dialog>
+  <el-dialog v-bind="$attrs">
     <k-row class="ai-c jc-sb">
       <slot />
     </k-row>
@@ -21,6 +21,7 @@
   }
   export default {
     name: 'k-dialog',
+    inheritAttrs: false,
   };
 </script>
 

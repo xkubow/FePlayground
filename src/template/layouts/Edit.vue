@@ -70,7 +70,6 @@
   // expose a small facade so parents can call layoutRef.validate()
   defineExpose({
     async validate(...args: any[]) {
-      console.log('layout model:', props.model);
       return await kFormRef.value?.validate?.(...args);
     },
     async validateField(...args: any[]) {

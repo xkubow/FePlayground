@@ -5,9 +5,9 @@
         {{ knr }}
       </div>
       <div>
-        <el-icon v-for="(item, index) in status" :key="index" :size="15" :color="statusColor(item.status)">
+        <k-icon v-for="(item, index) in status" :key="index" :size="15" :color="statusColor(item.status)">
           <user-icon />
-        </el-icon>
+        </k-icon>
       </div>
     </k-col>
     <k-col :span="3">

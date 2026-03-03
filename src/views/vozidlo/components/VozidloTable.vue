@@ -4,7 +4,7 @@
       <div class="d-f ai-c">
         <div class="knr-label hidden-sm-and-down">{{ t('knr') }}:</div>
         <div ref="knrRef" :class="knrClasses">{{ maskedKnr }}</div>
-        <el-icon class="ml-a mr-10 cursor-p hover-color" size="30px" @click="dialogVisible = true"><InfoFilled /></el-icon>
+        <k-icon class="ml-a mr-10 cursor-p hover-color" size="30px" @click="dialogVisible = true"><InfoFilled /></k-icon>
       </div>
       <div class="d-f ai-c">
         <k-select
@@ -19,7 +19,7 @@
       </div>
       <div class="d-f ai-c jc-sa" v-if="vozidlo && isElectricCar">
         <k-button v-if="!vozidlo!.zavadaVN" @click="$emit('updateZavadaNV', true)" :span="5" :label="t('HighVoltageWarning')" />
-        <el-popconfirm
+        <k-popconfirm
           v-if="vozidlo!.zavadaVN"
           width="340"
           :title="t('RemoveHightVoltage')"
@@ -29,16 +29,16 @@
         >
           <template #reference>
             <k-row :gutter="20" :align="'middle'" :flex-wrap="null">
-              <el-icon :size="100">
+              <k-icon :size="100">
                 <HighVoltageSign />
-              </el-icon>
+              </k-icon>
               <k-col :span="16" :style="{ fontWeight: 'bold' }">{{ t('VNWarninig') }}</k-col>
             </k-row>
           </template>
-        </el-popconfirm>
-        <el-icon :size="100" @click="$emit('updateBaterieVyjmuta')">
+        </k-popconfirm>
+        <k-icon :size="100" @click="$emit('updateBaterieVyjmuta')">
           <BaterieVyjmutaSign :baterie-vyjmuta="vozidlo!.baterieVyjmuta ?? false" />
-        </el-icon>
+        </k-icon>
       </div>
     </k-col>
     <k-col class="hidden-sm-and-down" :span="12">

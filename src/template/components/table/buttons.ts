@@ -56,10 +56,8 @@ export function initButtons(NAME: string, extraButtons?: ExtraButton[], emit?: (
     },
     selectClickAction: (e: Event, row: Row, rowKey?: string) => {
       emit && emit('row-add-to', row);
-      console.log('clicked selectClickAction', e, row);
     },
     processClickAction: (e: Event, row: Row, rowKey?: string) => {
-      console.log('clicked processClickAction', e, row);
       openEdit(NAME, PageMode.EDIT, { id: row[rowKey ?? 0] as number });
     },
     deleteClickAction: (e: Event, row: Row, rowKey?: string) => {

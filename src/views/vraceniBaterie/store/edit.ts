@@ -20,7 +20,6 @@ import { apiProviderVraceniBaterieKomentar } from '@/views/komentar/api';
 import { apiProviderNahradniNd } from '@/views/prilohy/api';
 import { NAME as PRILOHA_NAME } from '@/views/prilohy/constants';
 import { table as prilohaTable } from '@/views/prilohy/table';
-import type { TableOptions } from '@/template/page/@types/api';
 import { useRoute } from 'vue-router';
 
 export const server = {

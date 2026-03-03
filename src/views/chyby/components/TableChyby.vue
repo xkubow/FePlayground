@@ -23,7 +23,7 @@
           <template #default="{ row }">
             <div class="d-f ai-c">
               <k-table-cell v-bind="{ row: row, columnId: column.id, formatter: column.formatter }" />
-              <el-icon class="ml-10 cursor-p" :size="15" @click="bugClicked($event, row)"><link-icon /></el-icon>
+              <k-icon class="ml-10 cursor-p" :size="15" @click="bugClicked($event, row)"><link-icon /></k-icon>
             </div>
           </template>
         </k-table-column>
