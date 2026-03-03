@@ -13,31 +13,21 @@
 
 <script lang="ts">
   import { Close as CloseIcon } from '@element-plus/icons-vue';
-  import { defineComponent, ref } from 'vue';
+  import { defineComponent } from 'vue';
   import { useRouter } from 'vue-router';
 
   export default defineComponent({
     components: {
-      // QrcodeStream,
       CloseIcon,
     },
     setup() {
       const router = useRouter();
 
-      function logErrors(promise: any) {
-        promise.catch(console.error);
-      }
-      function onLoaded(e: any) {
-        // console.log('e', e);
-      }
-
-      const visible = ref(true);
-
       function back() {
         router.back();
       }
 
-      return { logErrors, visible, CloseIcon, back, onLoaded };
+      return { CloseIcon, back };
     },
   });
 </script>

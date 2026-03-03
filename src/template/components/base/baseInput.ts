@@ -42,7 +42,7 @@ export function baseInput<P extends ToRefs<BaseInputProps>, E extends EmitFn<Mod
       if (props.uppercase?.value && typeof val === 'string') theVal = val.toUpperCase();
       else if (props.modelModifiers?.value?.number) {
         theVal = parseInt(val as string);
-        theVal = isNaN(theVal as any) ? null : theVal;
+        theVal = isNaN(theVal as number) ? null : theVal;
       }
 
       emit('update:modelValue', theVal);

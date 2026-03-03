@@ -1,23 +1,10 @@
 import type { Response } from '@/template/api/api.d';
 import { HttpRequest } from '@/template/api/httpRequest';
 import type { Options, TableOptions } from './@types/api';
-// import { Commit } from 'vuex';
 import { STORE_TABLE } from './constants';
-// import { SET_CANCEL_TOKEN } from './store/types';
-
-// export type CancelTokenKeyCommit = { cancelTokenKey: string; commit: Commit } | { cancelTokenKey: null; commit: null };
-
-// export const cancelInit: CancelTokenKeyCommit = { cancelTokenKey: null, commit: null };
 
 export function reportUrl(reportName: string): string {
   return `/Reports/Reports/${reportName}`;
-}
-
-export function setCancelToken() {
-  //{ cancelTokenKey, commit }: CancelTokenKeyCommit, cancelPtr?: { value: string | null }): void {
-  // if (cancelTokenKey && commit && cancelPtr) {
-  // 	cancelTokenKey && commit(SET_CANCEL_TOKEN, { cancelTokenKey, token: cancelPtr.value });
-  // }
 }
 
 export function removeLastSlash(str: string) {

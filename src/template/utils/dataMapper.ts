@@ -5,7 +5,7 @@ export const emptyFunc = () => {
   //empty
 };
 
-const dateMapper = (value: any, key: string) => {
+const dateMapper = (value: unknown, key: string) => {
   /** re-typed form data: "date string" to "Date object" type */
   if (key.endsWith('Datum') && value) {
     if (typeof value === 'object' && 'Od' in value && 'Do' in value) {

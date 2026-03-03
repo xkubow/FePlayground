@@ -14,7 +14,7 @@ export function useLogger() {
     store.log({ message, type });
     showNotification(message, options);
   }
-  function logCatch(err: any) {
+  function logCatch(err: unknown) {
     const e = err as Error;
     const ae = err as AxiosError<AxiosErrorMessageResponse>;
     if (ae) logAxiosError(ae);

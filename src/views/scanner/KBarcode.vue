@@ -23,7 +23,6 @@
   import { StreamBarcodeReader } from 'vue-barcode-reader';
   import { useI18n } from 'vue-i18n';
   import { useRouter } from 'vue-router';
-  // import { QrcodeStream } from 'vue3-qrcode-reader';
   import { useStore as useAuthStore } from '@/template/account/authorization/store';
   import type { Table } from '@/template/components/table';
   import { apiProvider } from '../vozidlo/api';
@@ -32,7 +31,6 @@
 
   export default defineComponent({
     components: {
-      // QrcodeStream,
       CloseIcon,
       StreamBarcodeReader,
     },
@@ -98,11 +96,10 @@
           else openVozidlo(id);
         }
       }
-      function logErrors(promise: any) {
+      function logErrors(promise: Promise<unknown>) {
         promise.catch(console.error);
       }
-      function onLoaded(e: any) {
-        // console.log('e', e);
+      function onLoaded(_e: Event) {
       }
 
       const visible = ref(true);
@@ -160,4 +157,3 @@
   .qr-scaner {
   }
 </style>
-@/template/components/table

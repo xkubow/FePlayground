@@ -191,7 +191,6 @@
   import type { Eskalace } from '../eskalace/type';
   import { useEskalaceKomentar, useVozidloKomentar } from '../komentar/provider';
   import CasOpravy from './components/CasOpravy.vue';
-  // import navrhovaneZavady from './zavada/navrhovane/store/navrhovaneZavady.json';
 
   export default defineComponent({
     name: editName(NAME),
@@ -241,10 +240,10 @@
       const aktualnyStatusBg = computed(() => (mapedLast.statusIoEnum.value === EnumStatusIo.opraveno ? 'success' : 'danger'));
       const neopravene = computed(() => mapedLast.statusIoEnum.value === EnumStatusIo.neopraveno);
       function openTestyUps() {
-        // openList(Test.name, { filter: { vozidloId: mapedLast.entityId.value } });
+        // not yet implemented
       }
       const navrhovanaZavadaUse = () => {
-        // TODO Pouzitie navrhovanej zavady
+        // not yet implemented
       };
 
       const extraButtons = [checkButton(navrhovanaZavadaUse)];
@@ -270,13 +269,6 @@
         } else if (pageManagerStore.previous?.name.includes('eskalace') || pageManagerStore.previous?.name.includes('vraceniBaterie')) {
           mapedLast.activeTabName.value = 'Eskalace';
         }
-        // Automatically create zavada after 2 seconds
-        // setTimeout(() => {
-        // 	if (mapedLast.testRepetionCount.value! > 100) return;
-        // 	mapedLast.testRepetionCount.value = (mapedLast.testRepetionCount.value ?? 0) + 1;
-        // 	createZavadu();
-        // }, 2000);
-        // mapedLast.tables.value.navrhovane.rows = navrhovaneZavady;
       });
 
       async function beforeRemovePriloha(uploadFile: FileItem): Promise<boolean> {
@@ -352,7 +344,7 @@
       }
 
       function saveEskalace() {
-        var sameData = mapedLast.hash.value === hash(mapedLast.localData.value.eskalace);
+        const sameData = mapedLast.hash.value === hash(mapedLast.localData.value.eskalace);
         if (_.isNil(mapedLast.knr.value) || sameData) {
           return;
         }
@@ -364,7 +356,7 @@
         edit.fetchTableData({ filter: mapedLast.serverData.value, tablesToFetch: ['zavada'] });
       }
 
-      async function openVozidloZavada(filter: Record<string, any>) {
+      async function openVozidloZavada(filter: Record<string, unknown>) {
         // TODO add loading
         mapedLast.navrhovanaZavadaSelected.value = {
           rowNumber: filter.rowNumber,

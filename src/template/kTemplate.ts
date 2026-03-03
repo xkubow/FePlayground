@@ -2,7 +2,6 @@ import '@/styles/custom.scss';
 import i18n from '@/template/i18n';
 import Menu from '@/template/menu';
 import ElementPlus from 'element-plus';
-// import "element-plus/lib/theme-chalk/index.css";
 import cs from 'element-plus/es/locale/lang/cs';
 import type { App } from 'vue';
 import type { InstallOptions } from './@types/kTemplate.d';

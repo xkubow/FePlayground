@@ -32,19 +32,16 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
     async default(filter: Record<string, unknown>) {
       const response = await apiProvider?.default(filter);
       const entity = _.last(this.entity);
-      // entity && _.set(entity, 'serverData', response?.data);
       entity && _.merge(entity.serverData, response?.data);
       return response;
     },
     async loadEntity(params: { id: string | number }) {
       const response = await apiProvider?.loadEntity<UnknownObject>(params.id);
       const entity = _.last(this.entity);
-      // entity && _.set(entity, 'serverData', response?.data);
       if (entity && response?.data) {
         entity.operations = (response?.data?.operations as number) ?? null;
         dataMapper(entity.serverData, response?.data);
         entity.hash = hash(entity.serverData);
-        //_.merge(entity.serverData, response?.data);
       }
       return response;
     },
@@ -52,7 +49,6 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
       const entity = _.last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const response = await apiProvider?.createEntity<string>(entity.serverData);
-      // entity && _.set(entity, 'serverData', response?.data);
       entity && _.merge(entity.serverData, response?.data);
       return response;
     },
@@ -60,7 +56,6 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
       const entity = _.last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const response = await apiProvider?.updateEntity(id, entity.serverData);
-      // entity && _.set(entity, 'serverData', response?.data);
       entity && _.merge(entity.serverData, response?.data);
       return response;
     },
@@ -68,7 +63,6 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
       const entity = _.last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const response = await apiProvider?.deleteEntity(id);
-      // entity && _.set(entity, 'serverData', response?.data);
       entity && _.merge(entity.serverData, response?.data);
       return response;
     },
@@ -96,7 +90,7 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
           tableOptions,
         });
         if (response && response.data.rows) {
-          table.rows = this.parseRow(tableName, response.data?.rows ?? response.data); //.map((r) => ({ cells: [...Object.values(r)], operations: 1 }));
+          table.rows = this.parseRow(tableName, response.data?.rows ?? response.data);
           'operations' in response.data && (table.operations = response.data.operations);
           table.totalCount = response.data.totalCount;
         }

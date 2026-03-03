@@ -54,25 +54,6 @@ export async function doRequest<T = unknown>(request: Promise<AxiosResponse<T>>,
   }
 }
 
-// const axiosInstance = applyCaseMiddleware(
-// 	axios.create({
-// 		baseURL: process.env.VUE_APP_API_BASE_URL,
-// 		timeout: 120000,
-// 		headers: {
-// 			Accept: 'application/json',
-// 			'Content-Type': 'application/json',
-// 		},
-// 		withCredentials: true,
-// 	}),
-// 	{
-// 		caseMiddleware: {
-// 			requestInterceptor: (config: any) => {
-// 				// Disable query string transformation
-// 				return config;
-// 			},
-// 		},
-// 	},
-// );
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_BASE_URL as string,
   timeout: 60000,
@@ -230,7 +211,6 @@ class HttpRequest {
     return doRequest(
       this.axiosInstance.post<T>(methodName, data, {
         withCredentials: true,
-        // params: data,
         maxRedirects: 0,
         cancelToken: cancelPtr?.value?.token,
         paramsSerializer: (paramsData: unknown) => qs.stringify(paramsData, { arrayFormat: 'repeat' }),

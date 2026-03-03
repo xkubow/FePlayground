@@ -27,7 +27,6 @@ import TableColumn from './table/TableColumn.vue';
 import TableColumnHeader from './table/TableColumnHeader.vue';
 import TableFrame from './table/TableFrame.vue';
 import TableHeader from './table/TableHeader.vue';
-// ...existing code...
 import type { App } from 'vue';
 import type { IdUpdateStatus } from './@types';
 import KCheckBox3state from './form/KCheckBox3state.vue';
@@ -47,15 +46,6 @@ import KTabs from './form/layout/KTabs.vue';
 import KMenu from './form/menu/KMenu.vue';
 import KMenuItem from './form/menu/KMenuItem.vue';
 import KSubMenu from './form/menu/KSubMenu.vue';
-import KUploadVue from './form/KUpload.vue';
-import KVirtualKeyboardVue from './form/KVirtualKeyboard/KVirtualKeyboard.vue';
-import KCollapseVue from './form/layout/KCollapse.vue';
-import KCollapseItemVue from './form/layout/KCollapseItem.vue';
-import KTabPanelVue from './form/layout/KTabPanel.vue';
-import KTabsVue from './form/layout/KTabs.vue';
-import KMenuVue from './form/menu/KMenu.vue';
-import KMenuItemVue from './form/menu/KMenuItem.vue';
-import KSubMenuVue from './form/menu/KSubMenu.vue';
 import TableColumnSelect from './table/TableColumnSelect.vue';
 
 export default {

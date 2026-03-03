@@ -25,15 +25,12 @@
   import { generateComputed } from '@/template/page/providers/store';
   import { storeToRefs } from 'pinia';
   import { defineComponent, ref, toRefs } from 'vue';
-  // import KnrStautsColumn from './components/KnrStatusColumn.vue';
   import { NAME } from './constants';
   import { local, props as storeProps, server, tables, useStore } from './store/list';
 
   export default defineComponent({
     name: listName(NAME),
-    components: {
-      // KnrStautsColumn,
-    },
+    components: {},
     setup(props) {
       const store = useStore();
       const cacheStore = useCacheStore();

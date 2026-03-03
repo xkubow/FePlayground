@@ -63,8 +63,6 @@ export function generateComputed<S extends StateTree, L extends StateTree, P ext
     ...mapedEntity,
     ...mapedServerData,
     ...mapedLocalData,
-    // ..._.mapValues(state.tables, (keyValue, key: string) => getterAndSetterFromKeyDvm(`tables.${key}`, storeUri, rootStore)),
-    // ..._.mapValues(store.getters, (keyValue, key: string) => getterFromKeyDvm(key, storeUri, rootStore)),
   } as VuexComputedsReturn<S, L, P, T>;
 }
 
