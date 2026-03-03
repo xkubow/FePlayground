@@ -32,11 +32,11 @@
     size: { type: Number, default: 32 },
   });
   const propsRef = toRefs(props);
-  const base = baseInput(propsRef, emit);
+  const { isDisabled, vmodel } = baseInput(propsRef, emit);
 
   function clicked() {
-    if (base.isDisabled.value) return;
-    base.vmodel.value = !base.vmodel.value;
+    if (isDisabled.value) return;
+    vmodel.value = !vmodel.value;
   }
 </script>
 

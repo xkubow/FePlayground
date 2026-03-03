@@ -88,6 +88,7 @@ export default {
     app.component('KUpload', KUpload);
     app.component('KVirtualKeyboard', KVirtualKeyboard);
     app.component('KSvgCheckBox', SvgCheckBox);
+    app.component('KDivider', Divider);
     app.component('KSelect', Select);
 
     // Menu
