@@ -1,4 +1,4 @@
-import type { ComputedRef } from 'vue';
+import type { Component, ComputedRef } from 'vue';
 import { MenuType, UriType } from './constants';
 
 export type MenuItem = {
@@ -10,6 +10,7 @@ export type MenuItem = {
   to?: string | (() => string);
   id?: number;
   dynamicValue?: ComputedRef<string | null>;
+  icon?: Component;
 };
 
 export type Menu = {

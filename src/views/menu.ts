@@ -19,6 +19,7 @@ import { AutomatickeZpracovaniTestu } from './ciselniky/automatickeZpracovaniTes
 import { Uzivatel } from './uzivatel';
 import { VraceniBaterie } from './vraceniBaterie';
 import { TypBaterie } from './ciselniky/typBaterie';
+import RiDatabase2Line from 'vue-remix-icons/icons/ri-database-2-line.vue';
 
 export const menu = [
   Scanner.menu[1],
@@ -31,6 +32,7 @@ export const menu = [
   {
     i18nKey: 'ciselnik',
     menuType: MenuType.SUBMENU,
+    icon: RiDatabase2Line,
     items: [
       VyrobniLinkaKonfigurace.menu,
       VyrobniLinka.menu,

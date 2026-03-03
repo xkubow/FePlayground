@@ -1,6 +1,6 @@
 <template>
   <el-menu v-bind="{ defaultActive }" class="k-menu" :collapse="toggleMenu">
-    <k-main-menu-item />
+    <k-main-menu-item :collapsed="toggleMenu" />
   </el-menu>
 </template>
 
