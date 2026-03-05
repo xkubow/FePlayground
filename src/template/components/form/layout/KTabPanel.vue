@@ -1,5 +1,5 @@
 <template>
-  <el-tab-pane label="Hlavni udaje" name="HlavniUdaje"> TEST </el-tab-pane>
+  <el-tab-pane label="Hlavni udaje" name="HlavniUdaje"> <slot /> </el-tab-pane>
 </template>
 
 <script setup lang="ts">
