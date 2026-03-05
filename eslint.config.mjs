@@ -73,6 +73,14 @@ export default [
                 }
 
                 // Note: no property rules => we don't fight DTO / API keys
+            ],
+            "@typescript-eslint/no-unused-vars": [
+                "warn",
+                {
+                    argsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_",
+                    caughtErrorsIgnorePattern: "^_"
+                }
             ]
         }
     },
@@ -82,5 +90,6 @@ export default [
         files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}"],
         // If you use Cypress plugin in flat config, we can add it here later.
         rules: {}
-    }
+    },
+
 ];
