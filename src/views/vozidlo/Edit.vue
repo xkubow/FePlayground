@@ -324,7 +324,7 @@
       }
 
       function openPuvodniSqs() {
-        const url = `https://sqs-prohlizecky.skoda.vwgroup.com/ordssqsm/sqsr/FePlayground_kd?i_knr13=${mapedLast.knr.value}`;
+        const url = 'http://google.com';
         window.open(url, '_blank');
       }
 
@@ -332,14 +332,14 @@
         if (authStore.isPanel) {
           router.push({ name: 'PuvodniUps', params: { knr: mapedLast.knr.value } });
         } else {
-          const url = `https://sqs-prohlizecky.skoda.vwgroup.com/ordssqsm/sqsr/ups_viewer.show_results?p_ident=${mapedLast.knr.value}`;
+          const url = 'http://google.com';
           window.open(url, '_blank');
         }
       }
 
       function openCarRfid() {
         const linka = mapedLast?.linka.value?.startsWith('KV') ? 'm3' : mapedLast?.linka.value?.endsWith('M1') ? 'm1' : 'm13';
-        const url = `https://eportal.skoda.vwg/carrfid-${linka}/users?searchKNR=${mapedLast.knr.value}`;
+        const url = 'http://google.com';
         window.open(url, '_blank');
       }
 
@@ -371,7 +371,7 @@
 
       async function openElsa() {
         await navigator.clipboard.writeText(mapedLast.vin.value ?? '');
-        window.open('https://grp.volkswagenag.com/elsapro/elsaweb/ctr/DP/startElsa', '_blank');
+        window.open('http://google.com', '_blank');
       }
 
       async function refreshCasOpravy() {

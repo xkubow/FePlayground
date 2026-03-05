@@ -1,6 +1,6 @@
 <template>
   <div class="w-100">
-    <iframe :src="`https://sqs-prohlizecky.skoda.vwgroup.com/ordssqsm/sqsr/ups_viewer.show_results?p_ident=${knr}`" height="99%" width="100%" frameborder="0" />
+    <iframe :src="'http://google.com'" height="99%" width="100%" frameborder="0" />
     <k-button class="float" @click="back" :icon="CloseIcon" />
   </div>
 </template>
