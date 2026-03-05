@@ -1,6 +1,7 @@
-# vur-project-2
+# FePlayground
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is a Vue 3 playground using Vite, Element Plus, Pinia, and more. It includes mock API support, unit and e2e tests, and a rich set of scripts for
+development and testing.
 
 ## Recommended IDE Setup
 
@@ -35,13 +36,18 @@ npm install
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+npm run dev         # Start Vite dev server
+npm run dev:mock    # Start dev server with mock API
+npm run host        # Start dev server with host/https
 ```
 
 ### Type-Check, Compile and Minify for Production
 
 ```sh
-npm run build
+npm run build       # Type-check and build for production
+npm run build_dev   # Build for development mode
+npm run buildTest   # Build with VITE_CJS_TRACE enabled
+npm run build3      # Build using vue-tsc -b
 ```
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
@@ -53,8 +59,9 @@ npm run test:unit
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
-npm run build
-npm run test:e2e # or `npm run test:e2e:ci` for headless testing
+npm run preview         # Preview production build on port 5050
+npm run test:e2e        # Open Cypress after preview
+npm run test:e2e:ci     # Run Cypress headless after preview
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
@@ -63,13 +70,19 @@ npm run test:e2e # or `npm run test:e2e:ci` for headless testing
 npm run lint
 ```
 
+### Type Checking
+
+```sh
+npm run typecheck   # Type-check using vue-tsc
+```
+
 ### Check Node version [NodeVersion](https://github.com/coreybutler/nvm-windows)
 
 ```sh
 nvm -v
 ```
 
-### package update with [CheckUpdates](https://www.npmjs.com/package/npm-check-updates)
+### Update Packages with [npm-check-updates](https://www.npmjs.com/package/npm-check-updates)
 
 ```sh
 ncu -u
@@ -93,3 +106,22 @@ vehicle.
 ```sh
 npm run dev:mock
 ```
+
+(empty)
+
+## Main Dependencies
+
+- Vue 3
+- Vite
+- Element Plus
+- Pinia
+- Vue Router
+- Vitest
+- Cypress
+- Lodash
+- Axios
+- Day.js
+- Tiptap
+- DomPurify
+
+See `package.json` for the full list.
