@@ -167,7 +167,7 @@
   import { apiProvider as vozidloStitekApiProvider } from '@/views/vozidloStitek/api/vozidloVozidloStitek';
   import { Check as CheckIcon, Expand as ExpandIcon } from '@element-plus/icons-vue';
   import _ from 'lodash';
-  import { computed, defineComponent, onMounted, onBeforeUnmount, ref, toRefs, type ComputedRef } from 'vue';
+  import { computed, defineComponent, onMounted, ref, toRefs, type ComputedRef } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { EnumStatusIo } from '../chyby/constants';
   import EskalaceDialog from '../eskalace/components/Dialog.vue';

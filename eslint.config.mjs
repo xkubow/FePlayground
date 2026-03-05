@@ -1,70 +1,86 @@
-// eslint.config.js
+// eslint.config.mjs
 import js from "@eslint/js";
-import tseslint from "typescript-eslint";
 import vue from "eslint-plugin-vue";
+import vueParser from "vue-eslint-parser";
+import tsParser from "@typescript-eslint/parser";
+import tseslint from "typescript-eslint";
+import globals from "globals";
 
 export default [
+    // Base JS recommendations
     js.configs.recommended,
 
-    // Vue flat configs
-    ...vue.configs["flat/recommended"],
+    // Vue rules (flat)
+    ...vue.configs["flat/essential"],
 
-    // TypeScript flat configs
+    // TypeScript rules (flat)
     ...tseslint.configs.recommended,
 
     {
-        files: ["**/*.ts", "**/*.tsx", "**/*.vue"],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node
+            }
+        }
+    },
+
+    // ✅ Important: parse .vue files correctly
+    {
+        files: ["**/*.vue"],
+        languageOptions: {
+            parser: vueParser,
+            parserOptions: {
+                parser: tsParser,
+                ecmaVersion: "latest",
+                sourceType: "module",
+                extraFileExtensions: [".vue"]
+            }
+        }
+    },
+
+    // Your rules + naming convention
+    {
+        files: ["**/*.{ts,tsx,vue}"],
         rules: {
+            // keep your older behavior
+            "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
+            "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+
+            quotes: ["error", "single"],
+            semi: ["error", "always"],
+
+            // ✅ naming rules (Vue-friendly, no invalid format:null, no imported modifier)
             "@typescript-eslint/naming-convention": [
                 "error",
 
-                // 1) Functions + variables: camelCase by default
-                {
-                    selector: ["variableLike", "function"],
-                    format: ["camelCase"]
-                },
+                { selector: "function", format: ["camelCase"] },
 
-                // 2) Allow UPPER_CASE for constants (but don't force it for exported const)
-                //    This fixes your `export const props = {}` problem.
-                {
-                    selector: "variable",
-                    modifiers: ["const"],
-                    format: ["camelCase", "UPPER_CASE"]
-                },
+                // allow PascalCase for Vue component imports + UPPER_CASE constants
+                { selector: "variable", format: ["camelCase", "PascalCase", "UPPER_CASE"] },
 
-                // 3) Classes / types / enums: PascalCase
+                // consts can be camelCase or UPPER_CASE
+                { selector: "variable", modifiers: ["const"], format: ["camelCase", "UPPER_CASE"] },
+
                 { selector: "class", format: ["PascalCase"] },
                 { selector: "typeAlias", format: ["PascalCase"] },
                 { selector: "enum", format: ["PascalCase"] },
 
-                // 4) Interfaces: PascalCase + I-prefix (your preference)
                 {
                     selector: "interface",
                     format: ["PascalCase"],
                     custom: { regex: "^I[A-Z]", match: true }
-                },
-
-                // 5) Vue SFC imports are often PascalCase (UserCard, BaseButton)
-                //    If you import components as variables, they would violate camelCase unless we allow this.
-                {
-                    selector: "variable",
-                    format: ["camelCase", "PascalCase"]
-                },
-
-                // 6) Optional: object properties usually match API fields; don't enforce here
-                //    (prevents breaking DTOs like { consumer_id: ... } or backend-provided keys)
-                {
-                    selector: "property",
-                    format: null
-                },
-
-                // 7) Optional: allow quoted properties ({"some-key": 1}) without complaints
-                {
-                    selector: "objectLiteralProperty",
-                    modifiers: ["requiresQuotes"],
-                    format: null
                 }
+
+                // Note: no property rules => we don't fight DTO / API keys
             ]
         }
+    },
+
+    // Cypress override (flat config style)
+    {
+        files: ["cypress/integration/**.spec.{js,ts,jsx,tsx}"],
+        // If you use Cypress plugin in flat config, we can add it here later.
+        rules: {}
     }
 ];
