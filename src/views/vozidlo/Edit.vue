@@ -1,5 +1,9 @@
 <template>
-  <k-layout-edit v-bind="{ leaving, canDelete: false, canSave: false }" v-on="{ ...layoutListeners }">
+  <div data-cy="vozidlo-edit-page">
+    <k-layout-edit
+      v-bind="{ leaving, canDelete: false, canSave: false }"
+      v-on="{ ...layoutListeners }"
+    >
     <template #title> {{ t('detaiVozidla') }} </template>
     <template #actions>
       <k-actions
@@ -146,7 +150,8 @@
       }"
       @closed="dialogClosed"
     />
-  </k-layout-edit>
+    </k-layout-edit>
+  </div>
 </template>
 
 <script lang="ts">
