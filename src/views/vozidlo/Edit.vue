@@ -12,7 +12,7 @@
         v-on="{ openTestyUps, createZavadu, createEskalaci, openPuvodniSqs, openPuvodniUps, openCarRfid, openElsa }"
       />
     </template>
-    <k-card>
+    <k-card data-cy="vozidlo-form">
       <vozidlo-table
         v-bind="{ vozidlo, eskalace, vozidloStitekList: tables.vozidloStitek.rows, uzivatelSkupinaList }"
         v-model:vozidloStitek="vozidloStitek"
