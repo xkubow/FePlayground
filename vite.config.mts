@@ -31,6 +31,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [vue(), vueJsx()],
+    optimizeDeps: {
+      include: ['@storybook/vue3', 'element-plus', 'vue-i18n', 'vue-router'],
+    },
     css: {
       preprocessorOptions: {
         scss: {
