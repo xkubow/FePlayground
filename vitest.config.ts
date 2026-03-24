@@ -1,7 +1,31 @@
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vitest/config';
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-// https://vitejs.dev/config/
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
 export default defineConfig({
-	plugins: [vue()],
+  test: {
+    projects: [
+      {
+        extends: './vite.config.mts',
+        plugins: [
+          storybookTest({
+            configDir: path.join(dirname, '.storybook'),
+            storybookScript: 'npm run storybook -- --ci --quiet',
+          }),
+        ],
+        test: {
+          name: 'storybook',
+          browser: {
+            enabled: true,
+            provider: 'playwright',
+            headless: true,
+            instances: [{ browser: 'chromium' }],
+          },
+        },
+      },
+    ],
+  },
 });
