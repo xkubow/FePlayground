@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { expect } from '@storybook/test';
+import { expect } from 'storybook/test';
 import UnCheckedBox from './UnCheckedBox.vue';
 
 const meta = {

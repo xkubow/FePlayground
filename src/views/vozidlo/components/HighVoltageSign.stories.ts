@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
-import { expect } from '@storybook/test';
+import { expect } from 'storybook/test';
 import HighVoltageSign from './HighVoltageSign.vue';
 
 const meta = {
@@ -11,7 +11,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const defaultStory: Story = {
+  name: 'Default',
   play: async ({ canvasElement }) => {
     const paths = canvasElement.querySelectorAll('path');
 

@@ -56,6 +56,14 @@ npm run build3      # Build using vue-tsc -b
 npm run test:unit
 ```
 
+### Run Storybook Component Tests
+
+```sh
+npm run storybook                 # Start Storybook UI
+npm run test:storybook            # Run Storybook tests with Vitest addon
+npm run test:storybook:coverage   # Run Storybook tests with coverage
+```
+
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
