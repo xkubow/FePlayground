@@ -6,10 +6,20 @@ const meta = {
   title: 'Template/Form/ButtonInfo',
   component: ButtonInfo,
   tags: ['autodocs'],
+  argTypes: {
+    label: { control: 'text' },
+    disabled: { control: 'boolean' },
+    showLabel: { control: 'boolean' },
+  },
+  args: {
+    label: 'Open Details',
+    disabled: false,
+    showLabel: true,
+  },
   render: args => ({
     components: { ButtonInfo },
     setup: () => ({ args }),
-    template: '<ButtonInfo v-bind="args">Open Details</ButtonInfo>',
+    template: '<ButtonInfo v-bind="args">{{ args.label }}</ButtonInfo>',
   }),
 } satisfies Meta<typeof ButtonInfo>;
 

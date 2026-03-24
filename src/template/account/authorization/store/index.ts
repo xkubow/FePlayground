@@ -1,4 +1,3 @@
-import { useStore as useCacheStore } from '@/template/cache';
 import { useLogger } from '@/template/logger';
 import { defineStore } from 'pinia';
 import type { AuthUser } from '../../@types/authorization';
@@ -88,6 +87,7 @@ export const useStore = defineStore(NAME, {
           this.setLocalKey(response.data.token);
           this.checkAuthorization();
 
+          const { useStore: useCacheStore } = await import('@/template/cache');
           const cacheStore = useCacheStore();
           await cacheStore.loadCache();
           Promise.resolve();
@@ -103,8 +103,11 @@ export const useStore = defineStore(NAME, {
       this.setLocalKey(null);
       this.user = null;
       sessionStorage.clear();
-      const cacheStore = useCacheStore();
-      cacheStore.clear();
+      // Lazy import avoids circular dependency with HttpRequest during module init.
+      void import('@/template/cache').then(({ useStore: useCacheStore }) => {
+        const cacheStore = useCacheStore();
+        cacheStore.clear();
+      });
       return;
     },
   },
