@@ -1,36 +1,36 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import { expect } from '@storybook/test';
-import CheckedBox from './CheckedBox.vue';
+import UnCheckedBox from './UnCheckedBox.vue';
 
 const meta = {
-  title: 'Template/SVG/CheckedBox',
-  component: CheckedBox,
+  title: 'Template/SVG/UnCheckedBox',
+  component: UnCheckedBox,
   tags: ['autodocs'],
   args: {
-    color: '#16a34a',
+    color: '#dc2626',
   },
   render: args => ({
-    components: { CheckedBox },
+    components: { UnCheckedBox },
     setup: () => ({ args }),
     template: `
       <svg viewBox="0 0 24 24" width="64" height="64">
-        <CheckedBox v-bind="args" />
+        <UnCheckedBox v-bind="args" />
       </svg>
     `,
   }),
-} satisfies Meta<typeof CheckedBox>;
+} satisfies Meta<typeof UnCheckedBox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   play: async ({ canvasElement }) => {
-    const path = canvasElement.querySelector('path');
     const group = canvasElement.querySelector('g');
+    const path = canvasElement.querySelector('path');
 
     await expect(canvasElement.querySelector('svg')).not.toBeNull();
     await expect(group).not.toBeNull();
     await expect(path).not.toBeNull();
-    await expect(group?.getAttribute('fill')).toBe('#16a34a');
+    await expect(group?.getAttribute('fill')).toBe('#dc2626');
   },
 };
