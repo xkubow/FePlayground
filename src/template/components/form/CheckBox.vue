@@ -4,7 +4,7 @@
     :show-label="!isHiddenLabel && showLabel"
     v-bind="{ ...base, disabled: isDisabled, validationProperty: validationPropertyCmp, span, class: wrappClass, wrapp: false }"
   >
-    <el-checkbox v-bind="{ ...base, disabled: isDisabled, label: showLabel ? labelText : undefined, indeterminate }" v-model="vmodel" />
+    <el-checkbox :disabled="isDisabled" :label="showLabel ? labelText : undefined" :indeterminate="indeterminate" v-model="vmodel" />
   </k-wrapper>
 </template>
 

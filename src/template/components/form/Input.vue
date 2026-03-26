@@ -4,7 +4,7 @@
     :show-label="!isHiddenLabel && showLabel"
     v-bind="{ ...base, disabled: isDisabled, validationProperty: validationPropertyCmp, label: labelText, wrapp, class: wrappClass, span, required }"
   >
-    <el-input ref="elInputRef" v-bind="{ ...$attrs, ...$props, ...base, disabled: isDisabled, placeholder: placeholderText }" v-model="vmodel" v-on="{ focus }">
+    <el-input ref="elInputRef" v-bind="{ ...$attrs, ...$props, disabled: isDisabled, placeholder: placeholderText }" v-model="vmodel" v-on="{ focus }">
       <template v-if="$slots.suffix || suffixText" v-slot:suffix>
         {{ suffixText }}
         <slot name="suffix" />

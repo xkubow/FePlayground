@@ -50,7 +50,7 @@ export const routes: Array<RouteRecordRaw> = [
     PrCislo.route,
     About.route,
     Scanner.route,
-    ...Language.route,
+    Language.route,
     VozidloZavadaNavrhovana.route,
     RidiciJednotka.route,
     AutomatickeZpracovaniTestu.route,

@@ -4,7 +4,7 @@
     :show-label="!isHiddenLabel && showLabel"
     v-bind="{ ...base, disabled: isDisabled, validationProperty: validationPropertyCmp, label: labelText, wrapp, class: wrappClass, span }"
   >
-    <el-date-picker :teleported="false" v-bind="{ ...base, disabled: isDisabled, label: showLabel ? labelText : undefined }" v-model="vmodel" />
+    <el-date-picker :teleported="false" :disabled="isDisabled" :placeholder="placeholderText" v-model="vmodel" />
   </k-wrapper>
 </template>
 

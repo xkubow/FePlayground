@@ -6,7 +6,7 @@
   >
     <el-input
       ref="elInputRef"
-      v-bind="{ ...$attrs, ...$props, ...base, disabled: isDisabled, placeholder: placeholderText }"
+      v-bind="{ ...$attrs, ...$props, disabled: isDisabled, placeholder: placeholderText }"
       v-on="{ focus, input }"
       :value-on-clear="null"
       :modelValue="vmodel"

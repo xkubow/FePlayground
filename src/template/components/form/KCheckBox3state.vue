@@ -5,7 +5,10 @@
     v-bind="{ ...base, disabled: isDisabled, validationProperty: validationPropertyCmp, span, class: wrappClass, wrapp: false }"
   >
     <el-checkbox
-      v-bind="{ ...base, disabled: isDisabled, label: showLabel ? labelText : undefined, indeterminate, 'model-value': modelValue }"
+      :disabled="isDisabled"
+      :label="showLabel ? labelText : undefined"
+      :indeterminate="indeterminate"
+      :model-value="modelValue"
       v-on="{ 'update:modelValue': update }"
     />
   </k-wrapper>

@@ -1,5 +1,5 @@
 <template>
-  <k-col v-bind="{ ...$attrs, ...$props }">
+  <k-col v-bind="colBind">
     <k-form-item v-if="wrapp" v-bind="{ label: labelCmp, disabled, required, prop: validationProperty }">
       <slot />
     </k-form-item>
@@ -9,11 +9,12 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, toRefs } from 'vue';
+  import { computed, defineComponent, toRefs, useAttrs } from 'vue';
   import { baseProps } from '../base/base';
 
   export default defineComponent({
     name: 'k-wrapper',
+    inheritAttrs: false,
     props: {
       ...baseProps,
       showLabel: { type: Boolean, default: true },
@@ -24,10 +25,19 @@
       disabled: Boolean,
     },
     setup(props) {
-      const { showLabel, label, span } = toRefs(props);
+      const attrs = useAttrs();
+      const { showLabel, label, span, sm, xs } = toRefs(props);
       const labelCmp = computed((): string | undefined => (showLabel.value ? label.value : undefined));
 
-      return { labelCmp };
+      const colBind = computed(() => ({
+        xs: xs.value,
+        sm: sm.value,
+        span: span.value,
+        class: attrs.class as string | Record<string, boolean> | undefined,
+        style: attrs.style as string | Record<string, string> | undefined,
+      }));
+
+      return { labelCmp, colBind };
     },
   });
 </script>

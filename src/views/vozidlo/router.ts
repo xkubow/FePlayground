@@ -1,13 +1,11 @@
 import { Path } from '@/template/router/path';
 import { NAME } from './constants';
-import Edit from './Edit.vue';
-import List from './List.vue';
-import VyhledavaniVue from './Vyhledavani.vue';
-import PuvodniSqs from './puvodni/Sqs.vue';
-import PuvodniUps from './puvodni/Ups.vue';
 
-export const route = new Path(NAME, { List, Edit }).addChildren([
-  { name: 'VozidloSearch', path: 'vyhledat/:id?', component: VyhledavaniVue, props: true },
-  { name: 'PuvodniSqs', path: 'puvodniSqs/:knr', component: PuvodniSqs, props: true },
-  { name: 'PuvodniUps', path: 'puvodniUps/:knr', component: PuvodniUps, props: true },
+export const route = new Path(NAME, {
+  List: () => import('./List.vue'),
+  Edit: () => import('./Edit.vue'),
+}).addChildren([
+  { name: 'VozidloSearch', path: 'vyhledat/:id?', component: () => import('./Vyhledavani.vue'), props: true },
+  { name: 'PuvodniSqs', path: 'puvodniSqs/:knr', component: () => import('./puvodni/Sqs.vue'), props: true },
+  { name: 'PuvodniUps', path: 'puvodniUps/:knr', component: () => import('./puvodni/Ups.vue'), props: true },
 ]);

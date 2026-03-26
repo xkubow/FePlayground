@@ -4,7 +4,7 @@
     :show-label="!isHiddenLabel && showLabel"
     v-bind="{ ...base, disabled: isDisabled, validationProperty: validationPropertyCmp, label: labelText, wrapp, class: wrappClass, span }"
   >
-    <el-color-picker v-bind="{ ...base, disabled: isDisabled, label: showLabel ? labelText : undefined }" v-model="vmodel" />
+    <el-color-picker :disabled="isDisabled" v-model="vmodel" />
   </k-wrapper>
 </template>
 
