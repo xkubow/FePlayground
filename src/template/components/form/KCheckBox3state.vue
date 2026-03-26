@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
   import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
-  import _ from 'lodash';
+  import { isNull } from 'lodash-es';
   import { computed, toRefs } from 'vue';
 
   const emit = defineEmits(['update:modelValue']);
@@ -42,7 +42,7 @@
     emit('update:modelValue', map(propsRef.modelValue?.value));
   }
 
-  const indeterminate = computed(() => (_.isNull(propsRef.modelValue?.value) ? true : false));
+  const indeterminate = computed(() => (isNull(propsRef.modelValue?.value) ? true : false));
 </script>
 
 <style scoped lang="scss"></style>

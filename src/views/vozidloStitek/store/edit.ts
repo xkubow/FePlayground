@@ -7,7 +7,7 @@ import { dataMapper } from '@/template/utils/dataMapper';
 import { OperationFlags } from '@/template/utils/operationFlags';
 import { table as prCislo } from '@/views/ciselniky/prCislo/tables';
 import type { PrCislo } from '@/views/ciselniky/prCislo/types';
-import _ from 'lodash';
+import { last } from 'lodash-es';
 import type { _GettersTree } from 'pinia';
 import { apiProvider } from '../api';
 import { NAME } from '../constants';
@@ -43,7 +43,7 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {
   async loadEntity(params: { id: string | number }) {
     const response = await apiProvider?.loadEntity<VozidloStitek>(params.id);
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     entity && response?.data && dataMapper(entity.serverData, response?.data);
     return response;
   },

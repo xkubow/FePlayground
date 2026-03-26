@@ -11,7 +11,7 @@ import type { SkupinaDropDown } from '@/views/eskalace/type';
 import type { DropdownItem } from '@/template/page/@types/mode';
 import type { UnknownObject } from '@/template/@types/kTemplate';
 import { dataMapper } from '@/template/utils/dataMapper';
-import _ from 'lodash';
+import { last, merge } from 'lodash-es';
 import { useLogger } from '@/template/logger';
 import { apiProvider as uzivatelSkupinaApiProvider } from '@/views/uzivatel/skupina/api';
 import type { Table } from '@/template/components/table';
@@ -61,19 +61,19 @@ const extraGetters: _GettersTree<typeof page> = {};
 const extraActions = {
   async default(filter: Record<string, unknown>) {
     const route = useRoute();
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
 
     if (route.params.eskalaceId) {
       const response = await apiProvider?.default({ eskalaceId: route.params.eskalaceId });
       if (entity) {
-        _.merge(entity.serverData, response?.data);
+        merge(entity.serverData, response?.data);
         entity.serverData.eskalaceId = parseInt(route.params.eskalaceId.toString());
       }
     }
     await this.loadUzivatel();
   },
   async tableData<K extends keyof typeof tables>({ filter, tableName }: { filter?: Record<string, unknown>; tableName: K }) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) throw new Error('Entity doesnt exists');
     const table: Table = entity.tables[tableName];
 
@@ -94,7 +94,7 @@ const extraActions = {
   },
   async loadEntity(params: { id: string | number }) {
     const response = await apiProvider?.loadEntity<UnknownObject>(params.id);
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     response?.data && dataMapper(entity.serverData, response?.data);
     await this.loadUzivatel();
@@ -106,7 +106,7 @@ const extraActions = {
     return response;
   },
   async loadUzivatel() {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     const logger = useLogger();
     try {
@@ -118,13 +118,13 @@ const extraActions = {
     }
   },
   async loadKomentar() {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity || !entity.id) return;
     const response = await apiProviderVraceniBaterieKomentar.getByMasterId(entity.id as number);
     if (response?.data.rows) entity.tables[KOMENTAR_NAME].rows = response?.data.rows;
   },
   async loadPrilohy() {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity || !entity.id) return;
     // const response = await apiProvider.tableData<TablePriloha>({
     // 	filter: { vraceniBaterieId: entity.id },

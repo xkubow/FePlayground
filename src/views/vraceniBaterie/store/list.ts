@@ -4,7 +4,6 @@ import { Page } from '@/template/page/@types/page';
 import type { ActionOptions, PageActionsGlobal, PageGetters } from '@/template/page/@types/store';
 import { listName, STORE_TABLE } from '@/template/page/constants';
 import { pageStoreFactory } from '@/template/page/store';
-import _ from 'lodash';
 import { table } from '../tables/table';
 import { apiProvider } from '../api';
 import { EnumVraceniBaterieStatus, NAME, vraceniBaterieStatusList } from '../constants';
@@ -54,7 +53,7 @@ const extraActions = {
       const uzivatelSkupinaResponse = await uzivatelSkupinaApiProvider.tableData<Table<Skupina>>({ tableName: STORE_TABLE });
       entity.localData.prirazenaSkupinaUzivateluIdList = uzivatelSkupinaResponse?.data.rows.map((i) => ({ value: i.id, text: i.text })) ?? [];
       // const response = await apiProvider?.filter(filter);
-      // response?.data && _.merge(entity.serverData, response.data);
+      // response?.data && merge(entity.serverData, response.data);
       return;
     } catch (error) {
       log('filter');

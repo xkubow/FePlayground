@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { NAME } from './constants';
-import _ from 'lodash';
+import { remove } from 'lodash-es';
 
 export class PageManagerPage {
   toRemove: boolean;
@@ -40,7 +40,7 @@ export const useStore = defineStore(NAME, {
     },
     remove() {
       if (this.list.length === 0) return;
-      _.remove(this.list, (p) => p.toRemove);
+      remove(this.list, (p) => p.toRemove);
     },
     removeAll() {
       this.list = [];

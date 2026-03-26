@@ -6,7 +6,7 @@ import { apiProvider as apiProvidervyrobniLinka } from '@/views/vyrobniLinka/api
 import { defineStore } from 'pinia';
 import type { DropdownItem } from '../page/@types/mode';
 import { NAME } from './constants';
-import _ from 'lodash';
+import { isNil, merge } from 'lodash-es';
 import { USE_SW_KEYBOARD } from '../constants';
 
 export const useStore = defineStore(NAME, {
@@ -49,14 +49,14 @@ export const useStore = defineStore(NAME, {
       await Ciselniky.loadToCache(this.dropDownList);
       const responseNastaveni = await apiProviderNastaveni.loadEntity();
       if (responseNastaveni?.data) {
-        this.nastaveni = _.merge(this.nastaveni, responseNastaveni.data);
+        this.nastaveni = merge(this.nastaveni, responseNastaveni.data);
       }
       const responseVyrobniLinka = await apiProvidervyrobniLinka.getDropDownList();
       this.dropDownList.vyrobniLinka = responseVyrobniLinka?.data ?? [];
 
       this.cacheLoaded = true;
       this.loading = false;
-      if (!_.isNil(localStorage.getItem(USE_SW_KEYBOARD))) {
+      if (!isNil(localStorage.getItem(USE_SW_KEYBOARD))) {
         const val = JSON.parse(localStorage.getItem(USE_SW_KEYBOARD) ?? 'false');
         this.nastaveni ? (this.nastaveni.useSwKeyboard = val) : (this.nastaveni = { useSwKeyboard: val, prilohaVelikostMax: null });
       }

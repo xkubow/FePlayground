@@ -41,7 +41,7 @@
   import { dayjs, type UploadFile, type UploadRawFile, type UploadRequestOptions } from 'element-plus';
   import { Camera as CameraIcon } from '@element-plus/icons-vue';
 
-  import _ from 'lodash';
+  import { remove } from 'lodash-es';
   import { computed, ref, toRefs } from 'vue';
   import { DatetimeFormat, useI18n } from 'vue-i18n';
   import { NAME as NAME_PRILOHY } from '../../prilohy/constants';
@@ -123,7 +123,7 @@
 
   function removeItem(file: FileItem) {
     const updated = [...propsRef.modelValue.value];
-    _.remove(updated, (i) => ('id' in file ? i.id === file.id : i.uid === file.uid));
+    remove(updated, (i) => ('id' in file ? i.id === file.id : i.uid === file.uid));
     emits('update:modelValue', updated);
   }
 

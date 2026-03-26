@@ -4,7 +4,6 @@ import { ref, type Ref, type WritableComputedRef } from 'vue';
 import { apiProvider } from './api';
 import type { Uzivatel, UzivatelPrirazeno } from './type';
 import type { DropdownItem } from '@/template/page/@types/mode';
-import _ from 'lodash';
 import { apiProvider as uzivatelApiProvider } from '../uzivatel/api';
 
 export function useUzivatel(payload: { filter?: { selectedId?: Ref<string | null>; selectedIds?: Ref<string[]>; filteredList: Ref<Uzivatel[]> } }) {

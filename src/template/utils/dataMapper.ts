@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { assign, mapValues } from 'lodash-es';
 import type { UnknownObject } from '../@types/kTemplate';
 
 export const emptyFunc = () => {
@@ -27,7 +27,7 @@ const dateMapper = (value: unknown, key: string) => {
 
 export const valueMapper = (value: unknown, key: string) => dateMapper(value, key);
 
-export const dataMapper = (state: UnknownObject, data: UnknownObject) => _.assign(state, _.mapValues(data, valueMapper));
+export const dataMapper = (state: UnknownObject, data: UnknownObject) => assign(state, mapValues(data, valueMapper));
 
 export function removeWhiteSpaceToClipboard(evt: ClipboardEvent) {
   evt.stopPropagation();

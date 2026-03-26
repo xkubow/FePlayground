@@ -17,7 +17,7 @@
 <script setup lang="ts">
   import { ElDescriptionsItem } from 'element-plus';
   import { InfoFilled as InfoFilledIcon } from '@element-plus/icons-vue';
-  import _ from 'lodash';
+  import { omit } from 'lodash-es';
   import { computed } from 'vue';
   import { useI18n } from 'vue-i18n';
   import type { Row as RjInfo } from '../tables/ridiciJednotka';
@@ -30,7 +30,7 @@
 
   const { t } = useI18n();
 
-  const filteredData = computed(() => _.omit(props.rjInfo, ['rowNumber', 'testId', 'ridiciJednotkaId']));
+  const filteredData = computed(() => omit(props.rjInfo, ['rowNumber', 'testId', 'ridiciJednotkaId']));
 
   function ptbClicked(event: Event) {
     event.stopPropagation();

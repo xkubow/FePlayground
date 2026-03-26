@@ -73,7 +73,6 @@
   import { apiProvider as apiProviderZavada } from '@/views/vozidlo/zavada/api';
   import { NAME } from '@/views/vozidlo/zavada/constants';
   import { table as zavadyTable, type RowZavada } from '@/views/vozidlo/zavada/tables/table';
-  import _ from 'lodash';
   import { computed, ref, toRefs } from 'vue';
   import { useI18n } from 'vue-i18n';
   import type { Row as RowRjInfo } from '../tables/ridiciJednotka';

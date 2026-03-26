@@ -37,7 +37,7 @@
 <script setup lang="ts">
   import { useLogger } from '@/template/logger';
   import type { AxiosError } from 'axios';
-  import _ from 'lodash';
+  import { mapValues } from 'lodash-es';
   import { computed, onBeforeMount, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { apiProvider } from './api';
@@ -50,7 +50,7 @@
   const feVersionDate = computed(() => import.meta.env.VITE_APP_VERSION_DATE);
   const versions = ref<Record<string, ServicesVersion> | null>(null);
 
-  const versionArray = computed(() => _.mapValues(versions.value, (keyValue, key: string) => ({ key, ...keyValue })));
+  const versionArray = computed(() => mapValues(versions.value, (keyValue, key: string) => ({ key, ...keyValue })));
 
   onBeforeMount(async () => {
     try {

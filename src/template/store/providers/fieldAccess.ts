@@ -1,7 +1,7 @@
-import _ from 'lodash';
+import { setWith } from 'lodash-es';
 
 export const fieldAccess = {
   setField(fildName: string, value: any): void {
-    _.setWith(this, fildName, value);
+    setWith(this, fildName, value);
   },
 };

@@ -2,7 +2,7 @@
 import { apiProvider } from '@/views/eskalace/api';
 import { NAME as ESKALCE_NAME } from '@/views/eskalace/constants';
 import type { AxiosError } from 'axios';
-import _ from 'lodash';
+  import { isNil, isNumber } from 'lodash-es';
 import { computed, onBeforeUnmount, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { RouteMeta, RouteParams } from 'vue-router';
@@ -31,7 +31,7 @@ async function pocetNezpracovanych() {
   }
 }
 
-eskalkaceMenuItem && (eskalkaceMenuItem.dynamicValue = computed(() => (_.isNumber(eskalaceCount.value) ? `${eskalaceCount.value}` : null)));
+eskalkaceMenuItem && (eskalkaceMenuItem.dynamicValue = computed(() => (isNumber(eskalaceCount.value) ? `${eskalaceCount.value}` : null)));
 
 // Need to be , meta: {createNewModule: 'true', clearAllPages: 'true' } implemented in the route definition to work correctly
 function getRoute(item: MenuItem): { name: string; params?: RouteParams; meta?: RouteMeta } | string {
@@ -60,7 +60,7 @@ function getHrefRoute(item: MenuItem): string {
 
 function menuText(item: MenuItem): string {
   let itemText = item.i18nKey ? t(item.i18nKey) : item.text;
-  item.dynamicValue && !_.isNil(item.dynamicValue.value) && (itemText = `${itemText} (${item.dynamicValue.value})`);
+  item.dynamicValue && !isNil(item.dynamicValue.value) && (itemText = `${itemText} (${item.dynamicValue.value})`);
   return itemText ?? 'undefined';
 }
 

@@ -9,7 +9,7 @@
   import { useKVirtualKeyboard } from './KVirtualKeyboard';
   import { useKeyboardStore } from './KVirtualKeyboard/store';
   import { emptyFunc } from '@/template/utils/dataMapper';
-  import _ from 'lodash';
+  import { isArray } from 'lodash-es';
 
   const emit = defineEmits(['update:modelValue', 'change', 'show-more']);
   const props = defineProps({
@@ -43,7 +43,7 @@
   const selectOption = computed(() => {
     const items = optionsDisabledFiltered.value as DropdownItem[];
     const isSelected = (value: number | string): boolean => {
-      if (propsRef.multiple.value && _.isArray(vmodel.value)) return vmodel.value?.includes(value);
+      if (propsRef.multiple.value && isArray(vmodel.value)) return vmodel.value?.includes(value);
       else return vmodel.value === value;
     };
     return items.map((i) => ({ ...i, selected: isSelected(i.value) }));

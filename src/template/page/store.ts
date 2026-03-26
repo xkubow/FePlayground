@@ -1,5 +1,5 @@
 import type { BaseApi } from '@/template/page/api';
-import _ from 'lodash';
+import { cloneDeep, last } from 'lodash-es';
 import type { StateTree, StoreDefinition, _ActionsTree, _GettersTree } from 'pinia';
 import { defineStore } from 'pinia';
 import type { UnwrapRef } from 'vue';
@@ -31,17 +31,17 @@ export const pageStoreFactory = <
   extraActions: A;
 }): StoreDefinition<Id, Page<S, L, P, T>, PageGetters<S, L, P, T> & G, PageActionsGlobal<S, L, P, T, A>> =>
   defineStore<Id, Page<S, L, P, T>, PageGetters<S, L, P, T> & G, PageActionsGlobal<S, L, P, T, A>>(name, {
-    state: (): Page<S, L, P, T> => ({ ..._.cloneDeep(page) }),
+    state: (): Page<S, L, P, T> => ({ ...cloneDeep(page) }),
     getters: {
-      last: (state) => _.last(state.entity),
+      last: (state) => last(state.entity),
       entityById: (state) => (id: string) => state.entity.find((e) => e.id === id),
-      loading: (state) => (_.last(state.entity)?.loadingCount ?? 0) > 0,
+      loading: (state) => (last(state.entity)?.loadingCount ?? 0) > 0,
       ...extraGetters,
     },
     actions: {
       ...pageActions({ apiProvider }),
       createFromDefault() {
-        this.entity.push(_.cloneDeep(this.entityDefault));
+        this.entity.push(cloneDeep(this.entityDefault));
       },
       createNew(serverData: UnwrapRef<S>, localData: UnwrapRef<L>, tables: UnwrapRef<T>, props: UnwrapRef<P>) {
         const entity = new Entity(serverData, localData, tables, props);

@@ -1,17 +1,17 @@
-import _ from 'lodash';
+import { concat } from 'lodash-es';
 import { reactive } from 'vue';
 import type { MenuItem } from './menu.d';
 
 class MenuTree {
   menu: MenuItem[] = reactive([]);
   merge(payload: MenuItem[]) {
-    // Vue.$set(this.menu, _.concat(this.menu, payload));
-    // getCurrentInstance.$set(this.menu, _.concat(this.menu, payload));
+    // Vue.$set(this.menu, concat(this.menu, payload));
+    // getCurrentInstance.$set(this.menu, concat(this.menu, payload));
     // const maped = payload.map((i) => {
     // 	if (!i.uriType) i.uriType = UriType.LIST;
     // 	return i;
     // });
-    this.menu = _.concat(this.menu, payload);
+    this.menu = concat(this.menu, payload);
   }
 }
 

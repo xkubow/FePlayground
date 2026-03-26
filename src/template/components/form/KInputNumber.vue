@@ -34,7 +34,7 @@
   import { baseInput, baseInputProps } from '@/template/components/base/baseInput';
   import { emptyFunc } from '@/template/utils/dataMapper';
   import type { ElInput } from 'element-plus';
-  import _ from 'lodash';
+  import { isNull, isUndefined } from 'lodash-es';
   import { computed, inject, ref, toRefs } from 'vue';
   import { useKVirtualKeyboard } from './KVirtualKeyboard';
   import { useKeyboardStore } from './KVirtualKeyboard/store';
@@ -64,10 +64,10 @@
 
   const vmodel = computed({
     get() {
-      return _.isNull(propsRef.modelValue?.value) ? null : propsRef.modelValue?.value;
+      return isNull(propsRef.modelValue?.value) ? null : propsRef.modelValue?.value;
     },
     set(val) {
-      emit('update:modelValue', _.isUndefined(val) ? null : val);
+      emit('update:modelValue', isUndefined(val) ? null : val);
     },
   });
 

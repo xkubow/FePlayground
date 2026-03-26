@@ -58,7 +58,7 @@
   import { init } from '@/template/page/providers/list';
   import { generateComputed } from '@/template/page/providers/store';
   import { openEdit } from '@/template/router/path';
-  import _ from 'lodash';
+  import { isNil } from 'lodash-es';
   import { storeToRefs } from 'pinia';
   import { computed, defineComponent, onBeforeMount, toRefs, watch } from 'vue';
   import { EnumStatusIo } from '../chyby/constants';
@@ -91,7 +91,7 @@
       }
 
       onBeforeMount(() => {
-        if (!_.isNil(mapedLast.vyrobniLinkaId.value)) store.loadOnLinkaChange();
+        if (!isNil(mapedLast.vyrobniLinkaId.value)) store.loadOnLinkaChange();
       });
 
       watch(mapedLast.vyrobniLinkaId, () => {

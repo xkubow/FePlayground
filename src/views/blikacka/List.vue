@@ -76,7 +76,7 @@
   import { generateComputed } from '@/template/page/providers/store';
   import { roundTo } from '@/template/utils/math';
   import { OperationFlags } from '@/template/utils/operationFlags';
-  import _ from 'lodash';
+  import { groupBy, sortBy, values } from 'lodash-es';
   import { storeToRefs } from 'pinia';
   import { computed, defineComponent, onBeforeUnmount, ref, toRefs } from 'vue';
   import { useI18n } from 'vue-i18n';
@@ -119,8 +119,8 @@
         return mappedLast.vyrobniLinkaKontrolniBodId.value.map((lId) => {
           const cars = list.table.value?.rows.filter((v) => v.kontrolniBodId === lId) as Blikacka[];
           const main = pocetUspesnost(cars);
-          const models = _.values(_.groupBy(cars, 'model')).map((m) => ({ label: m[0].model, ...pocetUspesnost(m) }));
-          return { id: lId, main, models: _.sortBy(models, 'label') };
+          const models = values(groupBy(cars, 'model')).map((m) => ({ label: m[0].model, ...pocetUspesnost(m) }));
+          return { id: lId, main, models: sortBy(models, 'label') };
         });
       });
 

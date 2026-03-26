@@ -140,8 +140,6 @@
   import { createName, editName, PageMode } from '@/template/page/constants';
   import { NAME as VRACENI_ND_NAME } from '@/views/vraceniBaterie/constants';
   import { NAME } from '../constants';
-  import { template } from 'lodash';
-
   export interface Props {
     type?: string;
     eskalace: Eskalace;

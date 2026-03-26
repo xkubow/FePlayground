@@ -137,7 +137,7 @@
   import { UserOperationFlags } from '@/template/utils/operationFlags';
   import TableChyby from '@/views/chyby/components/TableChyby.vue';
   import type { Detail } from '@/views/chyby/type';
-  import _ from 'lodash';
+  import { isNil } from 'lodash-es';
   import { storeToRefs } from 'pinia';
   import { computed, defineComponent, onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
@@ -259,7 +259,7 @@
 
       const maskedKnr = computed(() => maskKnr(mappedLast.knr.value?.toString()));
 
-      const odeslanoDoSqsDatumCheck = computed(() => !_.isNil(mappedLast.odeslanoDoSqsDatum.value));
+      const odeslanoDoSqsDatumCheck = computed(() => !isNil(mappedLast.odeslanoDoSqsDatum.value));
 
       const statusColor = computed(() => {
         return {

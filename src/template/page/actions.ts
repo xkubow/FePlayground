@@ -1,6 +1,6 @@
 import { useLogger } from '@/template/logger';
 import { dataMapper } from '@/template/utils/dataMapper';
-import _ from 'lodash';
+import { last, merge, set } from 'lodash-es';
 import type { UnknownObject } from '../@types/kTemplate';
 import type { Row } from '../components/table/@types/table';
 import type { Table } from '../components/table';
@@ -20,7 +20,7 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
         const entity = this.last;
         const response = await apiProvider?.filter(filter);
         if (response?.status === 200) {
-          entity && _.set(entity, 'serverData', response?.data);
+          entity && set(entity, 'serverData', response?.data);
         }
         return response;
       } catch (error) {
@@ -31,13 +31,13 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
     },
     async default(filter: Record<string, unknown>) {
       const response = await apiProvider?.default(filter);
-      const entity = _.last(this.entity);
-      entity && _.merge(entity.serverData, response?.data);
+      const entity = last(this.entity);
+      entity && merge(entity.serverData, response?.data);
       return response;
     },
     async loadEntity(params: { id: string | number }) {
       const response = await apiProvider?.loadEntity<UnknownObject>(params.id);
-      const entity = _.last(this.entity);
+      const entity = last(this.entity);
       if (entity && response?.data) {
         entity.operations = (response?.data?.operations as number) ?? null;
         dataMapper(entity.serverData, response?.data);
@@ -46,24 +46,24 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
       return response;
     },
     async create() {
-      const entity = _.last(this.entity);
+      const entity = last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const response = await apiProvider?.createEntity<string>(entity.serverData);
-      entity && _.merge(entity.serverData, response?.data);
+      entity && merge(entity.serverData, response?.data);
       return response;
     },
     async update({ id }: { id: string | number }) {
-      const entity = _.last(this.entity);
+      const entity = last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const response = await apiProvider?.updateEntity(id, entity.serverData);
-      entity && _.merge(entity.serverData, response?.data);
+      entity && merge(entity.serverData, response?.data);
       return response;
     },
     async delete({ id }: { id: string | number }) {
-      const entity = _.last(this.entity);
+      const entity = last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const response = await apiProvider?.deleteEntity(id);
-      entity && _.merge(entity.serverData, response?.data);
+      entity && merge(entity.serverData, response?.data);
       return response;
     },
     async tableData(
@@ -71,7 +71,7 @@ export function pageActions({ apiProvider }: { apiProvider?: BaseApi }): Unknown
         tableName: STORE_TABLE,
       },
     ) {
-      const entity = _.last(this.entity);
+      const entity = last(this.entity);
       if (!entity) throw new Error('Entity doesnt exists');
       const table: Table = entity.tables[tableName];
       if (!table) throw new Error('Table doesnt exists');

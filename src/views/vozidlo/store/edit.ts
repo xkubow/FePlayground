@@ -19,7 +19,7 @@ import { table as tableKomentar } from '@/views/komentar/tables/komentare';
 import { apiProvider as uzivatelSkupinaApiProvider } from '@/views/uzivatel/skupina/api';
 import { apiProvider as vozidloStitekApiProvider } from '@/views/vozidloStitek/api/vozidloVozidloStitek';
 import { table as vozidloStitek } from '@/views/vozidloStitek/tables';
-import _ from 'lodash';
+import { last } from 'lodash-es';
 import type { _GettersTree } from 'pinia';
 import { table as tablePrilohy } from '../../prilohy/table';
 import { apiProvider } from '../api';
@@ -103,7 +103,7 @@ const extraGetters: _GettersTree<PageType> = {};
 const extraActions = {
   async loadEntity(params: { id: string | number }) {
     const response = await apiProvider?.loadEntity<UnknownObject>(params.id);
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     response?.data && dataMapper(entity.serverData, response?.data);
     await this.loadEskalace();
@@ -113,7 +113,7 @@ const extraActions = {
     return response;
   },
   async loadEskalace(forceLoad = false) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     const logger = useLogger();
     try {
@@ -139,7 +139,7 @@ const extraActions = {
     entity.hash = hash(entity.localData.eskalace);
   },
   async tableData<K extends keyof typeof tables>({ filter, tableName }: { filter?: Record<string, unknown>; tableName: K }) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) throw new Error('Entity doesnt exists');
     const table: Table = entity.tables[tableName];
     let tableFilter: Record<string, unknown> | undefined = filter ?? table.filter ?? entity.serverData;
@@ -182,14 +182,14 @@ const extraActions = {
     return rows;
   },
   async loadEskalaceKomentar(eskalaceId: number) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     const response = await apiProviderEskalaceKomentar.getByMasterId(eskalaceId);
     const eskalace = entity.localData.eskalace.find((p) => p.id === eskalaceId);
     eskalace && (eskalace.komentare = response?.data);
   },
   async loadEskalaceData(eskalaceId) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     await this.loadEskalaceKomentar(eskalaceId);
     await this.loadEskalacePrilohy(eskalaceId);
@@ -223,7 +223,7 @@ const extraActions = {
     // }
   },
   async loadEskalacePrilohy(eskalaceId) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     const response = await eskalaceApiProvider.tableData({
       filter: { eskalaceId },
@@ -234,7 +234,7 @@ const extraActions = {
     eskalace && (eskalace.priloha = response?.data);
   },
   async loadEskalaceChangeLog(eskalaceId) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     const response = await eskalaceApiProvider.tableData({
       filter: { eskalaceId },
@@ -245,7 +245,7 @@ const extraActions = {
     eskalace && (eskalace.changeLog = response?.data);
   },
   async loadVraceniBaterie(eskalaceId) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     const eskalace = entity.localData.eskalace.find((p) => p.id === eskalaceId);
     if (!eskalace?.vraceniBaterieId) return;
@@ -254,7 +254,7 @@ const extraActions = {
   },
   async loadVozidloEntity(params: { id: string | number }) {
     const response = await apiProvider?.loadEntity<UnknownObject>(params.id);
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) return;
     response?.data && dataMapper(entity.serverData, response?.data);
   },

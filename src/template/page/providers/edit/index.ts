@@ -3,7 +3,7 @@ import { getReplaceEditRoute } from '@/template/router/path';
 import { useStore as usePageMgrStore } from '@/template/store/pageManager';
 import { OperationFlags } from '@/template/utils/operationFlags';
 import { isNotNull } from '@/template/utils/typeCheck';
-import _ from 'lodash';
+import { isNil, last, merge } from 'lodash-es';
 import { computed, onMounted, watch } from 'vue';
 import { onBeforeRouteUpdate, useRoute, useRouter, type _RouteLocationBase } from 'vue-router';
 import type { InitOptions, InitResult } from '../../@types/edit';
@@ -176,13 +176,13 @@ export function init<S extends PageStore>(name: string, store: S, props?: Record
     if (!key) return;
     const payloadStr = localStorage.getItem(key);
     if (!payloadStr || !store.last) return;
-    _.merge(store.last.serverData, JSON.parse(payloadStr));
+    merge(store.last.serverData, JSON.parse(payloadStr));
   }
 
   async function checkEditMode(operations: number | null = null) {
-    const theOperations = operations ? operations : _.last(store.entity)?.operations;
+    const theOperations = operations ? operations : last(store.entity)?.operations;
 
-    if (!_.isNil(theOperations) && !(theOperations & OperationFlags.EDIT)) {
+    if (!isNil(theOperations) && !(theOperations & OperationFlags.EDIT)) {
       await changeUrlToView();
     }
   }

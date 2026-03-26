@@ -2,7 +2,7 @@ import type { Table } from '@/template/components/table';
 import { useLogger } from '@/template/logger';
 import type { DropdownItem } from '@/template/page/@types/mode';
 import { STORE_TABLE } from '@/template/page/constants';
-import _ from 'lodash';
+import { isNil } from 'lodash-es';
 import { computed, ref, type Ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { apiProvider as uzivatelApiProvider } from '../uzivatel/api';
@@ -129,7 +129,7 @@ export function useEskalace(
   }
 
   const keSchvaleni = computed(() => eskalaceRef.value.eskalaceStatusEnum === EnumEskalaceStatus.KeSchvaleni);
-  const schvalena = computed(() => !_.isNil(eskalaceRef.value.schvaleniDatum));
+  const schvalena = computed(() => !isNil(eskalaceRef.value.schvaleniDatum));
 
   async function save(forceCreateOrUpdate = false) {
     if (!forceCreateOrUpdate) {

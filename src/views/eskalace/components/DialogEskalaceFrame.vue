@@ -97,8 +97,6 @@
   import { eskalace, useEskalace } from '../provider';
   import type { Eskalace, SkupinaDropDown } from '../type';
   import { useStore as useCacheStore } from '@/template/cache';
-  import _ from 'lodash';
-
   export interface Props {
     vozidloId: number;
     eskalace: Eskalace;

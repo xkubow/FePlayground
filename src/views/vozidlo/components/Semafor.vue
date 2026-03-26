@@ -27,7 +27,7 @@
   import type { Row } from '@/template/components/table/@types/table';
   import { EnumStatusIo } from '@/views/chyby/constants';
   import { useLocale } from 'element-plus';
-  import _ from 'lodash';
+  import { isNil } from 'lodash-es';
   import type { Row as RowSemafor } from '../tables/semafor';
   import { Check as CheckIcon, Warning } from '@element-plus/icons-vue';
   import { computed } from 'vue';
@@ -41,16 +41,16 @@
 
   const props = defineProps<Props>();
 
-  const isFinNull = computed(() => _.isNil(props.fin));
+  const isFinNull = computed(() => isNil(props.fin));
 
   const statusFinBacground = (fin: boolean | null) => {
-    const bgColor = _.isNil(fin) ? 'white' : fin ? '#9bd1a7' : 'red';
+    const bgColor = isNil(fin) ? 'white' : fin ? '#9bd1a7' : 'red';
 
     return `background-color: ${bgColor}`;
   };
 
   const statusBacground = (stav: EnumStatusIo) => {
-    const bgColor = _.isNil(stav) || stav === EnumStatusIo.bezChyb ? 'white' : stav === EnumStatusIo.neopraveno ? 'red' : '#9bd1a7';
+    const bgColor = isNil(stav) || stav === EnumStatusIo.bezChyb ? 'white' : stav === EnumStatusIo.neopraveno ? 'red' : '#9bd1a7';
 
     return `background-color: ${bgColor}`;
   };

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { cloneDeep, isArray, mergeWith } from 'lodash-es';
 import { nextTick, onMounted } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
 import type { FilterInit } from '../../@types/filter.d';
@@ -23,7 +23,7 @@ export function init<S extends PageStore>(pageStore: S, route: RouteLocationNorm
   }
   function filterResetClick() {
     if (!pageStore.last?.serverData) return;
-    pageStore.last.serverData = _.cloneDeep(pageStore.entityDefault.serverData);
+    pageStore.last.serverData = cloneDeep(pageStore.entityDefault.serverData);
   }
 
   function toggleFilter() {
@@ -64,7 +64,7 @@ export function init<S extends PageStore>(pageStore: S, route: RouteLocationNorm
 
     const filterStr = localStorage.getItem(key);
     if (!filterStr || !pageStore.last) return;
-    _.mergeWith(pageStore.last.serverData, JSON.parse(filterStr), (a, b) => (a === null || (_.isArray(a) && a.length === 0) ? b : a));
+    mergeWith(pageStore.last.serverData, JSON.parse(filterStr), (a, b) => (a === null || (isArray(a) && a.length === 0) ? b : a));
   }
 
   return { loadFilterData, filterListeners: filterListeners, filterClick, toggleFilter, saveFilterToLocalStore, setFilterFromLocalStore, filterResetClick };

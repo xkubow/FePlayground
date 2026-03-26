@@ -10,7 +10,7 @@
   import { ref, toRefs } from 'vue';
   import type { CasOpravy } from '../tables/casOpravy';
   import { CasOpravyVozidla } from '../type.d';
-  import _ from 'lodash';
+  import { mapValues } from 'lodash-es';
 
   export interface Props {
     casOpravy?: Table | null;
@@ -30,7 +30,7 @@
   const casOpravyVysible = ref<boolean>(false);
 
   function addCasOpravy() {
-    _.mapValues(casOpravyVozidla.value, () => null);
+    mapValues(casOpravyVozidla.value, () => null);
     propsRef.knr.value && (casOpravyVozidla.value!.knr = propsRef.knr.value);
     casOpravyId.value = null;
     casOpravyVysible.value = true;

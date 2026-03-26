@@ -47,7 +47,7 @@
   import { Table } from '@/template/components/table';
   import type { Row } from '@/template/components/table/@types/table';
   import { useI18n } from 'vue-i18n';
-  import _ from 'lodash';
+  import { isNil } from 'lodash-es';
 
   export default defineComponent({
     name: listName(NAME),
@@ -70,7 +70,7 @@
       }
 
       onBeforeMount(() => {
-        if (!_.isNil(mapedLast.vyrobniLinkaId.value)) store.loadOnLinkaChange();
+        if (!isNil(mapedLast.vyrobniLinkaId.value)) store.loadOnLinkaChange();
       });
 
       watch(mapedLast.vyrobniLinkaId, () => {

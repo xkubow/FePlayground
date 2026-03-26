@@ -1,7 +1,7 @@
 import { useLogger } from '@/template/logger';
 import type { AxiosError, AxiosInstance, AxiosResponse, CancelTokenSource } from 'axios';
 import axios from 'axios';
-import _ from 'lodash';
+import { isNil } from 'lodash-es';
 import { useStore as loggerStore } from '@/template/logger/store';
 import qs from 'qs';
 import { TOKEN_HEADER_NAME } from '../account/authorization/constants';
@@ -22,7 +22,7 @@ export function checkUId(response: AxiosResponse) {
 export function checkUserMessage<T = unknown>(response: AxiosResponse<T>) {
   const apiResponse = response.data as T & ApiResponse;
 
-  if (!_.isNil(apiResponse.userMessageList) && apiResponse.userMessageList.length > 0) {
+  if (!isNil(apiResponse.userMessageList) && apiResponse.userMessageList.length > 0) {
     const logger = loggerStore();
     const alert = parseUserMessageError(apiResponse.userMessageList);
     logger.log({ message: alert.message, title: alert.title, type: apiResponse.userMessageList[0].type, apiUrl: response.config.url });

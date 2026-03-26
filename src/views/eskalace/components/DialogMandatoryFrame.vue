@@ -27,7 +27,7 @@
   import { computed, toRefs, ref, watch } from 'vue';
   import { Plus as PlusIcon } from '@element-plus/icons-vue';
   import type { UploadRequestOptions, UploadInstance } from 'element-plus';
-  import { isArray } from 'lodash';
+  import { isArray } from 'lodash-es';
   import { apiProviderEskalace } from '@/views/prilohy/api';
   import { useI18n } from 'vue-i18n';
 

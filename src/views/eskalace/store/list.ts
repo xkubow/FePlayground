@@ -9,7 +9,6 @@ import { pageStoreFactory } from '@/template/page/store';
 import { apiProvider as uzivatelSkupinaApiProvider } from '@/views/uzivatel/skupina/api';
 import type { Skupina } from '@/views/uzivatel/skupina/type';
 import type { Uzivatel } from '@/views/uzivatel/type';
-import _ from 'lodash';
 import { apiProvider } from '../api';
 import { EnumEskalaceStatus, eskalaceStatusEnumList, NAME } from '../constants';
 import { table } from '../tables/table';
@@ -58,7 +57,7 @@ const extraActions = {
       const uzivatelSkupinaResponse = await uzivatelSkupinaApiProvider.tableData<Table<Skupina>>({ tableName: STORE_TABLE });
       entity.localData.prirazenaSkupinaUzivateluIdList = uzivatelSkupinaResponse?.data.rows.map((i) => ({ value: i.id, text: i.text })) ?? [];
       // const response = await apiProvider?.filter(filter);
-      // response?.data && _.merge(entity.serverData, response.data);
+      // response?.data && merge(entity.serverData, response.data);
       return;
     } catch (error) {
       log('filter');

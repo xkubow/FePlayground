@@ -4,7 +4,7 @@ import { Page } from '@/template/page/@types/page';
 import type { ActionOptions, PageActionsGlobal, PageGetters } from '@/template/page/@types/store';
 import { listName } from '@/template/page/constants';
 import { pageStoreFactory } from '@/template/page/store';
-import _ from 'lodash';
+import { set } from 'lodash-es';
 import { apiProvider } from '../api';
 import { NAME } from '../constants';
 import { table } from '../tables/';
@@ -59,7 +59,7 @@ const extraActions = {
       entity.serverData.vyrobniLinkaId = userStore.user.value?.vyrobniLinkaId ?? null;
       const [response, vyrobniZavodResponse] = await Promise.allSettled([apiProvider.filter(), apiProvider.vyrobniZavod()]);
       await this.getVerze();
-      response.status === 'fulfilled' && _.set(entity, 'serverData', response.value?.data);
+      response.status === 'fulfilled' && set(entity, 'serverData', response.value?.data);
       if (vyrobniZavodResponse.status === 'fulfilled' && vyrobniZavodResponse.value?.data)
         entity.localData.vyrobniZavodList = vyrobniZavodResponse.value?.data.rows.map((r) => ({ ...r, value: r.id })) ?? [];
       return response;

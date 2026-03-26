@@ -10,7 +10,7 @@ import { dataMapper } from '@/template/utils/dataMapper';
 import { table as tableRidiciJednotkaInfo } from '@/views/chyby/tables/ridiciJednotka';
 import { table as tableChyby } from '@/views/chyby/tables/table';
 import type { ChybaId, Detail, RowChyby } from '@/views/chyby/type';
-import _ from 'lodash';
+import { last, merge } from 'lodash-es';
 import type { _GettersTree } from 'pinia';
 import { apiProvider } from '../api';
 import { EnumSqsZavadaKategorie, NAME } from '../constants';
@@ -143,7 +143,7 @@ const extraActions = {
     const pracovisteVznikuZavadyResponse = (await apiProvider?.pracovisteVznikuZavadyDropDownList(knr)) as { data: DropdownItem[] };
     const pracovisteZadaniZavadyResponse = (await apiProvider?.pracovisteZadaniZavadyDropDownList(knr)) as { data: DropdownItem[] };
 
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (entity) {
       entity.localData.dropDownLists.pracovisteVznikuZavady = pracovisteVznikuZavadyResponse?.data ?? [];
       entity.localData.dropDownLists.pracovisteZadaniZavady = pracovisteZadaniZavadyResponse?.data ?? [];
@@ -163,13 +163,13 @@ const extraActions = {
   },
   async default(filter: P) {
     const { vozidloId, knr } = filter;
-    const entity = this.last; //_.last(this.entity);
+    const entity = this.last; //last(this.entity);
     if (entity) {
       entity.serverData.knr = vozidloId ? parseInt(vozidloId, 10) : knr!;
       const response = await apiProvider?.default({ ...filter, knr: entity.serverData.knr });
-      // const entity = _.last(this.entity);
-      // entity && _.set(entity, 'serverData', response?.data);
-      entity && _.merge(entity.serverData, response?.data);
+      // const entity = last(this.entity);
+      // entity && set(entity, 'serverData', response?.data);
+      entity && merge(entity.serverData, response?.data);
 
       this.prerequisite({ knr: entity?.serverData.knr });
       // if (entity.props.isFromNavrhovane) {
@@ -203,7 +203,7 @@ const extraActions = {
   },
   async loadEntity(params: { id: string }) {
     const response = await apiProvider?.loadEntity<UnknownObject>(params.id);
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (response?.data.knr) await this.prerequisite({ knr: response?.data.knr as number });
     if (entity && response?.data) {
       entity.operations = (response?.data?.operations as number) ?? null;

@@ -1,5 +1,5 @@
 import { PageManagerPage, useStore } from '@/template/store/pageManager';
-import _ from 'lodash';
+import { findLast, get, mapValues as lodashMapValues, merge, set } from 'lodash-es';
 import type { StateTree, Store } from 'pinia';
 import { computed, type UnwrapRef, type WritableComputedRef } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';
@@ -16,7 +16,7 @@ export function init<S extends PageStore>(
 ): InitStoreModule {
   const { createNewModule } = options ?? { createNewModule: false };
   const pageManagerStore = useStore();
-  const page = _.findLast(pageManagerStore.list);
+  const page = findLast(pageManagerStore.list);
 
   if (createNewModule || !page || store.entity.length === 0) {
     route.meta.createNewModule = 'true';
@@ -36,7 +36,7 @@ export function init<S extends PageStore>(
 
   function setPropsToServerStore() {
     if (store.last) {
-      _.merge(store.last.serverData, route.params);
+      merge(store.last.serverData, route.params);
     }
   }
 
@@ -56,9 +56,9 @@ export function generateComputed<S extends StateTree, L extends StateTree, P ext
 ): VuexComputedsReturn<S, L, P, T> {
   const entity: Entity<S, L, P, T> = store.entityDefault;
 
-  const mapedEntity = _.mapValues(entity, (keyValue, key: string) => getterAndSetterFromKey(key, store));
-  const mapedServerData = _.mapValues(entity?.serverData, (keyValue, key: string) => getterAndSetterFromKey(`serverData.${key}`, store));
-  const mapedLocalData = _.mapValues(entity?.localData, (keyValue, key: string) => getterAndSetterFromKey(`localData.${key}`, store));
+  const mapedEntity = lodashMapValues(entity, (keyValue, key: string) => getterAndSetterFromKey(key, store));
+  const mapedServerData = lodashMapValues(entity?.serverData, (keyValue, key: string) => getterAndSetterFromKey(`serverData.${key}`, store));
+  const mapedLocalData = lodashMapValues(entity?.localData, (keyValue, key: string) => getterAndSetterFromKey(`localData.${key}`, store));
   return {
     ...mapedEntity,
     ...mapedServerData,
@@ -75,10 +75,10 @@ export function getterAndSetterFromKey<
 >(key: string, store: PS) {
   return computed({
     get() {
-      return _.get(store.last, key);
+      return get(store.last, key);
     },
     set(value): void {
-      _.set(store.last!, key, value);
+      set(store.last!, key, value);
     },
   });
 }
@@ -94,10 +94,10 @@ export function test<S, L, P, T extends StateTree, PS extends Store<string, Page
 export function getterAndSetterFromKey_v2<T>(key: string, store: PageStore) {
   return computed({
     get(): T[keyof T] {
-      return _.get(store.last, key);
+      return get(store.last, key);
     },
     set(value: T[keyof T]): void {
-      _.set(store.last!, key, value);
+      set(store.last!, key, value);
     },
   });
 }
@@ -109,10 +109,10 @@ export function mapValues<T, K extends keyof T>(data: T, store: PageStore, prefi
   keys.forEach((key) => {
     colector[key as K] = computed({
       get(): T[K] {
-        return _.get(store.last, prefix ? `${prefix}.${key}` : key);
+        return get(store.last, prefix ? `${prefix}.${key}` : key);
       },
       set(value: T[K]): void {
-        _.set(store.last!, prefix ? `${prefix}.${key}` : key, value);
+        set(store.last!, prefix ? `${prefix}.${key}` : key, value);
       },
     }) as WritableComputedRef<T[K]>;
   });

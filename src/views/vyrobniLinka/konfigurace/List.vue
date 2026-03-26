@@ -82,7 +82,7 @@ RowKOnfigurace
   import { OperationFlags } from '@/template/utils/operationFlags';
   import { Minus as MinusIcon, Plus as PlusIcon } from '@element-plus/icons-vue';
   import type { TableColumnCtx } from 'element-plus/lib/components/table/src/table-column/defaults';
-  import _ from 'lodash';
+  import { isNil, last } from 'lodash-es';
   import { storeToRefs } from 'pinia';
   import { computed, defineComponent, ref, toRefs, watch } from 'vue';
   import { useI18n } from 'vue-i18n';
@@ -128,7 +128,7 @@ RowKOnfigurace
 
       watch(mapedLast.verze, (verze) => {
         mapedLast.tables.value.table.rows = [];
-        if (!_.isNil(verze)) list.loadRows();
+        if (!isNil(verze)) list.loadRows();
       });
 
       //#region segmentace
@@ -186,13 +186,13 @@ RowKOnfigurace
       //#endregion
 
       const { verzeFilter } = useVerze(mapedLast.verzeList);
-      const isVerzeSelected = computed(() => !_.isNil(mapedLast.verze.value) && !_.isNil(mapedLast.vyrobniLinkaId.value));
+      const isVerzeSelected = computed(() => !isNil(mapedLast.verze.value) && !isNil(mapedLast.vyrobniLinkaId.value));
       const isVerzeEditabled = computed(() => {
         if (!((list.table.value?.operations ?? 0) & OperationFlags.EDIT)) return false;
         if (!isVerzeSelected.value) return false;
         const linka = mapedLast.vyrobniLinkaList.value.find((v) => v.id === mapedLast.vyrobniLinkaId.value);
         const verzeLinky = mapedLast.verzeList.value.filter((v) => v.vyrobniLinkaId === mapedLast.vyrobniLinkaId.value).sort((v) => v.verze) ?? [];
-        return !_.isNil(linka?.aktivniVerze) ? linka!.aktivniVerze < (mapedLast.verze.value ?? 0) : mapedLast.verze.value === _.last(verzeLinky)?.verze;
+        return !isNil(linka?.aktivniVerze) ? linka!.aktivniVerze < (mapedLast.verze.value ?? 0) : mapedLast.verze.value === last(verzeLinky)?.verze;
       });
       const isVerzeEditabledPracoviste = computed(() => {
         if (!((list.table.value?.operations ?? 0) & OperationFlags.EDIT)) return false;

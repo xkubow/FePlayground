@@ -63,7 +63,6 @@
   import type { Eskalace, SkupinaDropDown } from '@/views/eskalace/type.d';
   import type { VozidloStitek } from '@/views/vozidloStitek/type';
   import { InfoFilled } from '@element-plus/icons-vue';
-  import _ from 'lodash';
   import { computed, defineComponent, onBeforeUnmount, onMounted, ref, toRefs, type PropType } from 'vue';
   import { useI18n } from 'vue-i18n';
   import { maskKnr } from '../provider';

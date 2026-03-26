@@ -7,7 +7,7 @@ import { Page } from '@/template/page/@types/page';
 import type { ActionOptions } from '@/template/page/@types/store';
 import { listName, STORE_TABLE } from '@/template/page/constants';
 import { pageStoreFactory } from '@/template/page/store';
-import _ from 'lodash';
+import { last } from 'lodash-es';
 import { apiProvider } from '../api';
 import { NAME } from '../constants';
 import { apiProvider as apiProviderIbn } from '../ibn/api';
@@ -68,7 +68,7 @@ const extraActions = {
       tableName: STORE_TABLE,
     },
   ) {
-    const entity = _.last(this.entity);
+    const entity = last(this.entity);
     if (!entity) throw new Error('Entity doesnt exists');
     if (entity.serverData.vyrobniLinkaId == null || !entity.serverData.verze == null) return;
     const table: Table = entity.tables.table;

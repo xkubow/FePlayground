@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-  import _ from 'lodash';
+  import { debounce } from 'lodash-es';
   import { defineComponent, ref } from 'vue';
   import { useI18n } from 'vue-i18n';
 
@@ -22,7 +22,7 @@
       const fastSearch = () => {
         emit('tableFilterQuery', tableFilterQuery.value);
       };
-      const debouncedFastSearch = _.debounce(fastSearch, 300);
+      const debouncedFastSearch = debounce(fastSearch, 300);
 
       return { fastSearch, quickSearchHint, quickSearchPlaceholder, debouncedFastSearch, tableFilterQuery };
     },

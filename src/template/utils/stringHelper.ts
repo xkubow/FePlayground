@@ -1,11 +1,11 @@
-import _ from 'lodash';
+import { capitalize, snakeCase } from 'lodash-es';
 
 export function toDbFieldName(stringInput: string): string {
-  return _.snakeCase(stringInput).toUpperCase();
+  return snakeCase(stringInput).toUpperCase();
 }
 
 export function snakeToPascalCase(stringInput: string): string {
-  return stringInput.split('_').map(_.capitalize).join('');
+  return stringInput.split('_').map(capitalize).join('');
 }
 
 export function toCamelCase(strings: string[]): string[] {

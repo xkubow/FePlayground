@@ -30,7 +30,7 @@
   import { EnumEskalaceDialogType } from '../constants';
   import { eskalace, useEskalace } from '../provider';
   import type { Eskalace, SkupinaDropDown } from '../type';
-  import _ from 'lodash';
+  import { cloneDeep } from 'lodash-es';
   import DialogEskalaceFrame from './DialogEskalaceFrame.vue';
   import DialogMandatoryFrame from './DialogMandatoryFrame.vue';
   import { useLogger } from '@/template/logger';
@@ -53,13 +53,13 @@
   const logger = useLogger();
   const emit = defineEmits(['update:eskalace', 'update:visible', 'closed', 'close', 'update:eskalaceEditDatum']);
 
-  const eskalaceCmd = ref<Eskalace>(_.cloneDeep(eskalace));
+  const eskalaceCmd = ref<Eskalace>(cloneDeep(eskalace));
   const newEskalaceId = ref<number | null>(null);
   function open() {
     allMandatoryDone.value = true;
     mandatoryFrame.value?.clear();
     if (propsRef.type.value === EnumEskalaceDialogType.Vytvoreni) {
-      eskalaceCmd.value = _.cloneDeep(eskalace);
+      eskalaceCmd.value = cloneDeep(eskalace);
       allMandatoryDone.value = false;
     } else if (propsRef.eskalace.value) eskalaceCmd.value = propsRef.eskalace.value;
 

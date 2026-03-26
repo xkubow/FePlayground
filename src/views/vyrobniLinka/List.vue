@@ -114,7 +114,7 @@
   import { generateComputed } from '@/template/page/providers/store';
   import { OperationFlags } from '@/template/utils/operationFlags';
   import { Minus as MinusIcon, Plus as PlusIcon, Top as TopIcon } from '@element-plus/icons-vue';
-  import _ from 'lodash';
+  import { isNil, pick } from 'lodash-es';
   import { storeToRefs } from 'pinia';
   import { computed, defineComponent, ref, toRefs } from 'vue';
   import { useI18n } from 'vue-i18n';
@@ -154,7 +154,7 @@
       async function saveRow(e: Event, row: Row<RowLinka>) {
         e.stopPropagation();
         row.edit = false;
-        const data = _.pick(row, ['vyrobniZavodId', 'id', 'aktivni', 'name', 'text']);
+        const data = pick(row, ['vyrobniZavodId', 'id', 'aktivni', 'name', 'text']);
         await apiProvider.updateEntity(row.id, data);
         await list.filterClick();
       }
@@ -172,7 +172,7 @@
       const { verzeFilter } = useVerze(mapedLast.verzeList);
 
       function isLastVersionActive(row: Row<RowLinka>) {
-        return _.isNil(row.pripravovanaVerze);
+        return isNil(row.pripravovanaVerze);
       }
 
       function vyrobniZavodText(vyrobniZavodId: number) {

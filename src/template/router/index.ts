@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { has } from 'lodash-es';
 import type { App } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import type { InstallOptions } from '../@types/kTemplate.d';
@@ -10,7 +10,7 @@ export const router = createRouter({
 
 export default {
   install: (app: App, options: InstallOptions): App => {
-    if (_.has(options, 'routes')) {
+    if (has(options, 'routes')) {
       options.routes.forEach((route) => {
         router.addRoute(route);
       });
