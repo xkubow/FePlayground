@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import path from 'path';
+import { visualizer } from 'rollup-plugin-visualizer';
 import { defineConfig, loadEnv, ProxyOptions } from 'vite';
 
 const kestrelProxy = {
@@ -30,7 +31,21 @@ export default defineConfig(({ mode }) => {
       };
 
   return {
-    plugins: [vue(), vueJsx()],
+    plugins: [
+      vue(),
+      vueJsx(),
+      ...(mode === 'analyze'
+        ? [
+            visualizer({
+              filename: path.resolve(__dirname, 'dist/bundle-stats.html'),
+              open: true,
+              gzipSize: true,
+              brotliSize: true,
+              template: 'treemap',
+            }),
+          ]
+        : []),
+    ],
     optimizeDeps: {
       include: ['@storybook/vue3', 'element-plus', 'vue-i18n', 'vue-router'],
     },
