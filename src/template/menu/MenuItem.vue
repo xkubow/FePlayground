@@ -2,7 +2,7 @@
 import { apiProvider } from '@/views/eskalace/api';
 import { NAME as ESKALCE_NAME } from '@/views/eskalace/constants';
 import type { AxiosError } from 'axios';
-  import { isNil, isNumber } from 'lodash-es';
+import { isNil, isNumber } from 'lodash-es';
 import { computed, onBeforeUnmount, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import type { RouteMeta, RouteParams } from 'vue-router';

@@ -70,6 +70,13 @@ js.configs.recommended, // Vue rules (flat)
                 varsIgnorePattern: "^_",
                 caughtErrorsIgnorePattern: "^_"
             }
+        ],
+        "@typescript-eslint/no-unused-expressions": [
+            "error",
+            {
+                allowShortCircuit: true,
+                allowTernary: true
+            }
         ]
     }
 }, // Cypress override (flat config style)
