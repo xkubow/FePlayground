@@ -1,5 +1,12 @@
 import type { AxiosResponse } from 'axios';
 
+declare module 'axios' {
+  export interface AxiosRequestConfig {
+    /** When false, skip `checkUserMessage` for this response (default: show messages). */
+    showUserMessages?: boolean;
+  }
+}
+
 export type ApiResponse = {
   userMessageList: UserMessage[];
 };

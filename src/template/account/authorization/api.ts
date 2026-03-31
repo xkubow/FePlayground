@@ -1,35 +1,27 @@
+import type { LoginResponse } from '@/api/generated/model';
+import type { PrihlasenyUzivatelDto } from '@/api/generated/model/prihlasenyUzivatelDto';
+import { postApiAuthDevelopmentLogin } from '@/api/generated/user-authentication/user-authentication';
+import { getApiUzivatel } from '@/api/generated/uzivatel/uzivatel';
 import type { Response } from '@/template/api/api.d';
-import { checkError, HttpRequest } from '../../api/httpRequest';
-import { NAME } from '../constants';
-import type { DevUserRespose } from '../types';
+import { executeRequest } from '@/template/api/requestHelpers';
+import type { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { HttpRequest } from '../../api/httpRequest';
 
 export class AuthorizationProvider extends HttpRequest {
-  authorize(payload: { login: string; password: string }): Response {
-    const methodName = `${NAME}/login`;
-    return this.post(methodName, { Login: payload.login, Password: payload.password, signal: this.cancelPrevious(methodName) });
-  }
   stationIdReset(): Response<{ stationId: string }> {
     const methodName = '/auth/station/reset';
     return this.axiosInstance.post<{ stationId: string }>(methodName);
   }
-  async checkUser() {
-    try {
+  async checkUser(): Promise<AxiosResponse<PrihlasenyUzivatelDto> | undefined> {
       const methodName = '/uzivatel';
-      // const response = await this.axiosInstance.get(methodName, { maxRedirects: 0, signal: this.cancelPrevious(methodName) });
-      const response = await this.axiosInstance.get(methodName, { maxRedirects: 0 });
-      return response;
-    } catch (error) {
-      checkError(error);
-    }
+      const request = (config: AxiosRequestConfig) => getApiUzivatel(config);
+      return executeRequest<PrihlasenyUzivatelDto>(methodName, request);
   }
-  async station(userId: string, stationId: string) {
-    const methodName = '/auth/station/login';
-    return this.axiosInstance.post(methodName, { id: userId, key: stationId, signal: this.cancelPrevious(methodName) });
-  }
-  developmentAuthorize<T = DevUserRespose>(payload: { login: string; password: string }): Response<T> {
+  developmentAuthorize(payload: { login: string; password: string }): Promise<AxiosResponse<LoginResponse> | undefined> {
     const methodName = 'auth/developmentLogin';
-    return this.post(methodName, { Login: payload.login, Password: payload.password, signal: this.cancelPrevious(methodName) }) as Response<T>;
+    return executeRequest<LoginResponse>(methodName, (config: AxiosRequestConfig) => postApiAuthDevelopmentLogin({ login: payload.login, password: payload.password },config));
   }
 }
 
 export const apiProvider = new AuthorizationProvider();
+

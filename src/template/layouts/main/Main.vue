@@ -21,9 +21,6 @@
               <k-main width="auto" class="k-main full-content-height-container">
                 <router-view />
               </k-main>
-              <!-- <k-footer>
-							<slot name="footer" />
-						</k-footer> -->
             </k-container>
           </k-container>
         </k-container>
@@ -31,41 +28,34 @@
       <template v-else>
         <slot name="login">
           <k-login v-if="developmentLogin" />
-          <k-login-station v-else-if="stationId" v-bind="{ stationId }" />
           <div v-else class="d-f w-100 h-100 at-c">
             <h1>{{ t('unauthorized') }}</h1>
           </div>
         </slot>
       </template>
     </div>
-    <!-- <k-dialog v-model="keyboard.dialogVisible.value" v-bind="{ showCancel: false, showOk: false }" v-on="{ opened: keyboard.opened }">
-			<el-input :modelValue="keyboard.keyboardInput.value" readonly :autosize="{ minRows: 2, maxRows: 4 }" type="textarea" />
-			<div v-show="keyboard.visible.value" :class="keyboard.keyboardClass"></div>
-		</k-dialog> -->
     <k-virtual-keyboard-vue v-bind="{ keyboard }" />
   </el-config-provider>
 </template>
 
 <script lang="ts">
-  import LoginVue from '@/template/account/authorization/Login.vue';
-  import KLoginStation from '@/template/account/authorization/LoginStation.vue';
-  import { useAuthorization as useProviderAuthorization } from '@/template/account/authorization/provider';
-  import { useStore as useAuthorizationStore } from '@/template/account/authorization/store';
-  import { useStore as useCacheStore } from '@/template/cache';
-  import { DEFAULT, LARGE } from '@/template/constants';
-  import { computed, defineComponent, onBeforeMount, provide, ref } from 'vue';
-  import { useI18n } from 'vue-i18n';
-  import { useRouter } from 'vue-router';
-  import Header from './components/Header.vue';
-  import KVirtualKeyboardVue from '@/template/components/form/KVirtualKeyboard/KVirtualKeyboard.vue';
-  import { useKeyboard } from '@/template/components/form/KVirtualKeyboard/keyboard';
+import LoginVue from '@/template/account/authorization/Login.vue';
+import { useAuthorization as useProviderAuthorization } from '@/template/account/authorization/provider';
+import { useStore as useAuthorizationStore } from '@/template/account/authorization/store';
+import { useStore as useCacheStore } from '@/template/cache';
+import KVirtualKeyboardVue from '@/template/components/form/KVirtualKeyboard/KVirtualKeyboard.vue';
+import { useKeyboard } from '@/template/components/form/KVirtualKeyboard/keyboard';
+import { DEFAULT, LARGE } from '@/template/constants';
+import { computed, defineComponent, onBeforeMount, provide, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
+import Header from './components/Header.vue';
 
   export default defineComponent({
     name: 'k-layout-main',
     components: {
       'k-main-header': Header,
       'k-login': LoginVue,
-      KLoginStation,
       KVirtualKeyboardVue,
     },
     setup() {

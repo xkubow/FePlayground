@@ -1,28 +1,26 @@
 import { MenuType } from '@/template/menu/constants';
+import RiDatabase2Line from 'vue-remix-icons/icons/ri-database-2-line.vue';
 import { About } from './about';
 import { Nastaveni } from './administrace/nastaveni';
 import { Blikacka } from './blikacka';
+import { AutomatickeZpracovaniTestu } from './ciselniky/automatickeZpracovaniTestu';
 import { Barva2 } from './ciselniky/barva2';
 import { Barva4 } from './ciselniky/barva4';
 import { ModelovaSkupina } from './ciselniky/modelovaSkupina';
 import { ModelovaTrida } from './ciselniky/modelovaTrida';
+import { RidiciJednotka } from './ciselniky/ridiciJednotka';
+import { TypBaterie } from './ciselniky/typBaterie';
 import { Eskalace } from './eskalace';
-import { Scanner } from './scanner';
+import { Uzivatel } from './uzivatel';
 import { Skupina } from './uzivatel/skupina';
 import { Vozidlo } from './vozidlo';
+import { VozidloZavadaNavrhovana } from './vozidlo/zavada/navrhovane';
 import { VozidloStitek } from './vozidloStitek';
+import { VraceniBaterie } from './vraceniBaterie';
 import { VyrobniLinka } from './vyrobniLinka';
 import { VyrobniLinkaKonfigurace } from './vyrobniLinka/konfigurace';
-import { VozidloZavadaNavrhovana } from './vozidlo/zavada/navrhovane';
-import { RidiciJednotka } from './ciselniky/ridiciJednotka';
-import { AutomatickeZpracovaniTestu } from './ciselniky/automatickeZpracovaniTestu';
-import { Uzivatel } from './uzivatel';
-import { VraceniBaterie } from './vraceniBaterie';
-import { TypBaterie } from './ciselniky/typBaterie';
-import RiDatabase2Line from 'vue-remix-icons/icons/ri-database-2-line.vue';
 
 export const menu = [
-  Scanner.menu[1],
   ...Vozidlo.menu,
   Blikacka.menu,
   Eskalace.menu,

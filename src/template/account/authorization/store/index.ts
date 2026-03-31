@@ -80,11 +80,10 @@ export const useStore = defineStore(NAME, {
     async authorize(payload: { login: string; password: string }) {
       try {
         const response = await apiProvider.developmentAuthorize({ login: payload.login, password: payload.password });
-        if (response?.data) {
+        if (response?.data && response.status === 200) {
           this.user = { zobrazeneJmeno: response.data.zobrazeneJmeno, uzivatelId: response.data.uzivatelId } as AuthUser;
-          debugger;
           this.setUserToken(this.user.uzivatelId);
-          this.setLocalKey(response.data.token);
+          this.setLocalKey(response.data.token!);
           this.checkAuthorization();
 
           const { useStore: useCacheStore } = await import('@/template/cache');
@@ -92,7 +91,6 @@ export const useStore = defineStore(NAME, {
           await cacheStore.loadCache();
           Promise.resolve();
         }
-        // }
       } catch (error) {
         this.clearStore();
         return Promise.reject();

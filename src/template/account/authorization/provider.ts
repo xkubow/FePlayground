@@ -1,12 +1,12 @@
 import { useStore as useStoreAuthorization } from '@/template/account/authorization/store';
+import { useLogger } from '@/template/logger';
+import type { AxiosErrorMessageResponse } from '@/template/logger/type';
 import type { AxiosError } from 'axios';
+import { ElLoading } from 'element-plus';
 import { computed, nextTick } from 'vue';
+import type { Router } from 'vue-router';
 import type { AuthUser, Mixin } from '../@types/authorization.d';
 import { apiProvider } from './api';
-import { useLogger } from '@/template/logger';
-import type { Router } from 'vue-router';
-import { ElLoading } from 'element-plus';
-import type { AxiosErrorMessageResponse } from '@/template/logger/type';
 
 // HELP https://www.danvega.dev/blog/2020/02/12/vue3-ref-vs-reactive/
 export const useAuthorization = (options?: { router?: Router }): Mixin => {
